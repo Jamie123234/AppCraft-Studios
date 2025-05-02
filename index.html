@@ -30,32 +30,74 @@
         .phone {
             background-image: url('https://unpkg.com/lucide-static@latest/icons/phone.svg');
         }
+
+        /* --- Button Primary --- */
         .button-primary {
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6); /* Added third color stop for looping effect */
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease-in-out;
+            transition: all 0.4s ease-in-out; /* Slightly longer transition for gradient */
             font-weight: 600;
             font-size: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             cursor: pointer;
+            background-size: 200% auto; /* Make gradient wider than button */
+            background-position: 0% 0; /* Start at the beginning */
         }
         .button-primary:hover {
              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-            transform: scale(1.05);
+             transform: scale(1.05);
+             background-position: 100% 0; /* Shift gradient fully on hover */
         }
 
+        /* --- Button Ghost (formerly had secondary styling too) --- */
+        .button-ghost {
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            /* transition: all 3.0s ease-in-out; /* REPLACED - too long */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Only transition specific hover effects */
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6); /* Added third color stop for seamless loop */
+            background-size: 200% auto; /* Keep gradient wider */
+            /* animation: gradient-animation 5.0s ease-in-out infinite; /* REPLACED */
+            animation: gradient-flow 4s linear infinite; /* Use linear for smoother loop, adjusted duration */
+            border: 2px solid rgba(255, 255, 255, 0.5); /* Added border like button-secondary */
+        }
+
+        .button-ghost:hover {
+            /* background-position: 100% 0; /* REMOVED - Let animation control position */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            /* Optional: Speed up animation slightly on hover */
+            /* animation-duration: 3s; */
+        }
+
+        /* --- Keyframes for the continuous animation --- */
+        /* @keyframes gradient-animation { ... } /* Old animation - replaced */
+        @keyframes gradient-flow {
+             0% { background-position: 0% 50%; } /* Start */
+             100% { background-position: 200% 50%; } /* End (double width) */
+             /* Linear timing function handles the smoothness */
+        }
+
+        /* --- Unused Button Secondary (kept for reference, similar logic to ghost) --- */
         .button-secondary {
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6);
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             border: 2px solid rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             font-weight: 600;
             font-size: 1rem;
             display: inline-flex;
@@ -63,49 +105,13 @@
             gap: 0.5rem;
             cursor: pointer;
             background-size: 200% auto;
-            animation: gradient-animation 1.5s ease-in-out infinite;
+            animation: gradient-flow 4s linear infinite; /* Using the same smooth animation */
         }
-
         .button-secondary:hover {
-            background-position: 100% 0;
-             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-            transform: scale(1.05);
-        }
-
-
-        @keyframes gradient-animation {
-            0% {
-                background-position: 0% 0;
-            }
-            100% {
-                background-position: 100% 0;
-            }
-        }
-
-
-        .button-ghost {
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            transition: all 3.0s ease-in-out;
-            font-weight: 600;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
-        }
-
-        .button-ghost:hover {
-            background-position: 100% 0;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
             transform: scale(1.05);
         }
-        .button-ghost {
-            background-size: 200% auto;
-            animation: gradient-animation 5.0s ease-in-out infinite;
-        }
+
 
     </style>
 </head>
@@ -136,12 +142,10 @@
                 Crafting exceptional mobile experiences. We turn your ideas into innovative apps.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="./pages/services.html" class="button-primary">
-                    <span class="icon rocket mr-2"></span>
+                <a href="./pages/services.html" class="button-primary"> <span class="icon rocket mr-2"></span>
                     Get Started
                 </a>
-                <a href="./pages/contact.html" class="button-ghost">
-                    <span class="icon phone mr-2"></span>
+                <a href="./pages/contact.html" class="button-ghost"> <span class="icon phone mr-2"></span>
                     Contact Us
                 </a>
             </div>
