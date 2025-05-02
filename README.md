@@ -39,17 +39,6 @@ AppCraft Studios is presented as a modern, responsive website showcasing service
     * On Windows: `start index.html`
     * On Linux: `xdg-open index.html`
 
-## Contact Form Note
-
-The contact form included is for demonstration purposes only. As this is a static site, the form **does not actually send emails** out of the box. To make it functional, you would need to integrate it with a backend service or a third-party form handling service like:
-
-* [Formspree](https://formspree.io/)
-* [Netlify Forms](https://www.netlify.com/products/forms/)
-* [Getform](https://getform.io/)
-* A custom backend endpoint
-
-The current JavaScript only simulates a "message sent" confirmation.
-
 ## License
 
 Consider adding a license file (e.g., MIT License) to define how others can use your code.
