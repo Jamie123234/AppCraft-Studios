@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - AppCraft Studios</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .icon {
+            display: inline-block;
+            background-size: cover;
+            background-position: center;
+            width: 24px;
+            height: 24px;
+            filter: invert(100%);
+        }
+        .sparkles {
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
+        }
+        .button-primary {
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .button-primary:hover {
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+        }
+        .service-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
+            padding: 2rem; /* p-8 */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .service-card:hover {
+            transform: translateY(-0.5rem); /* hover:translate-y-2 */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* hover:shadow-xl approximation */
+        }
+
+        .service-icon {
+            width: 3rem; /* w-12 */
+            height: 3rem; /* h-12 */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #8b5cf6; /* text-purple-500 */
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-purple-500 text-white py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">
+                <span class="icon sparkles mr-2"></span>
+                AppCraft Studios
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="/services" class="text-white hover:text-gray-200 transition-colors">Our Services</a></li>
+                    <li><a href="/contact" class="text-white hover:text-gray-200 transition-colors">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-12 px-4">
+        <h1 class="text-3xl font-semibold text-gray-800 text-center mb-8">Our Services</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="service-card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Mobile App Development</h2>
+                <p class="text-gray-600 mb-6">
+                    We create native and cross-platform mobile applications for iOS and Android.
+                    Our expertise spans a wide range of technologies to bring your app idea to life.
+                </p>
+                <ul class="list-disc list-inside text-gray-500">
+                    <li>Native iOS (Swift)</li>
+                    <li>Native Android (Kotlin)</li>
+                    <li>Cross-Platform (React Native)</li>
+                    <li>UI/UX Design</li>
+                    <li>App Store Deployment</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Web Application Development</h2>
+                <p class="text-gray-600 mb-6">
+                    We build robust and scalable web applications using modern frameworks.  From
+                    e-commerce platforms to complex web portals, we have you covered.
+                </p>
+                <ul class="list-disc list-inside text-gray-500">
+                    <li>Front-End (React, Angular, Vue.js)</li>
+                    <li>Back-End (Node.js, Python/Django, Ruby on Rails)</li>
+                    <li>Database Design (PostgreSQL, MySQL, MongoDB)</li>
+                    <li>Responsive Design</li>
+                    <li>Deployment & Hosting</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">UI/UX Design</h2>
+                <p class="text-gray-600 mb-6">
+                    Our design team focuses on creating intuitive and visually appealing user
+                    interfaces that enhance the user experience and drive engagement.
+                </p>
+                <ul class="list-disc list-inside text-gray-500">
+                    <li>User Research</li>
+                    <li>Information Architecture</li>
+                    <li>Wireframing & Prototyping</li>
+                    <li>Visual Design</li>
+                    <li>Usability Testing</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Custom Software Development</h2>
+                <p class="text-gray-600 mb-6">
+                    We develop tailored software solutions to address your specific business needs.
+                    Our team can handle projects of any complexity, ensuring seamless integration
+                    with your existing systems.
+                </p>
+                <ul class="list-disc list-inside text-gray-500">
+                    <li>Software Architecture</li>
+                    <li>Full-Stack Development</li>
+                    <li>API Development</li>
+                    <li>System Integration</li>
+                    <li>Quality Assurance</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Cloud Services</h2>
+                <p class="text-gray-600 mb-6">
+                    Leverage the power of the cloud with our comprehensive cloud services.  We
+                    help you migrate, manage, and optimize your applications and infrastructure
+                    on leading cloud platforms.
+                </p>
+                <ul class="list-disc list-inside text-gray-500">
+                    <li>Cloud Migration (AWS, Azure, GCP)</li>
+                    <li>Cloud Infrastructure Management</li>
+                    <li>DevOps & Automation</li>
+                    <li>Serverless Computing</li>
+                    <li>Database Management</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Consulting & Strategy</h2>
+                <p class="text-gray-600 mb-6">
+                    Our experienced consultants work with you to define your technology strategy
+                    and provide expert guidance on software development best practices.
+                </p>
+                <ul class="list-disc list-inside text-gray-500">
+                    <li>Technology Roadmaps</li>
+                    <li>Software Architecture Review</li>
+                    <li>Project Management</li>
+                    <li>Agile Coaching</li>
+                    <li>IT Strategy</li>
+                </ul>
+            </div>
+        </div>
+         <div class="mt-12 text-center">
+            <a href="/contact" class="button-primary">Get a Quote</a>
+        </div>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-600 py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            &copy; 2025 AppCraft Studios. All rights reserved.
+            <p class="mt-2 text-sm">
+                <a href="/privacy-policy" class="hover:text-blue-600 transition-colors">Privacy Policy</a>
+                <span class="mx-2">•</span>
+                <a href="/terms-of-service" class="hover:text-blue-600 transition-colors">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
