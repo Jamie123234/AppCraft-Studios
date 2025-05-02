@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - AppCraft Studios</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,160 +14,77 @@
             display: inline-block;
             background-size: cover;
             background-position: center;
-            width: 24px;
-            height: 24px;
+            width: 24px; /* Default size */
+            height: 24px; /* Default size */
+            /* Icon Color: White (for dark theme). Remove filter for light theme */
             filter: invert(100%);
-            vertical-align: middle;
+            /* For Light Theme: Remove or comment out the line above */
+            vertical-align: middle; /* Align icons better with text */
         }
         .sparkles {
-             background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
         }
+        .rocket {
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/rocket.svg');
+        }
+        .code-2 {
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/code-2.svg');
+        }
+        .phone {
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/phone.svg');
+        }
+        .send {
+             background-image: url('https://unpkg.com/lucide-static@latest/icons/send.svg');
+             width: 20px; /* Specific size for send button */
+             height: 20px;
+             filter: invert(100%); /* Keep white for dark theme */
+        }
+
+
+        /* --- Button Primary --- */
         .button-primary {
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6); /* Restored gradient flow */
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease-in-out;
+            transition: all 0.4s ease-in-out;
             font-weight: 600;
             font-size: 1rem;
-            display: inline-flex; /* Changed to inline-flex for alignment */
+            display: inline-flex;
             align-items: center;
-            justify-content: center; /* Center content */
+            justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
-            border: none;
-            text-align: center; /* Ensure text centers */
+            background-size: 200% auto; /* For gradient animation */
+            background-position: 0% 0; /* Start position for animation */
+            text-align: center;
+            border: none; /* Ensure no default border */
         }
         .button-primary:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
             transform: scale(1.05);
+            background-position: 100% 0; /* Animate gradient on hover */
         }
-        .button-primary:focus {
+         .button-primary:focus { /* Added focus style */
              outline: 2px solid transparent;
              outline-offset: 2px;
              box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4);
-        }
+         }
 
-        /* Form Styles - Largely mirroring Tailwind */
-        .contact-form {
-            background-color: white; /* bg-white */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
-            padding: 2rem; /* p-8 */
-            /* removed margin-bottom: 2rem; Use grid gap */
-        }
-        .contact-form h2 {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 600; /* font-semibold */
-            color: #1f2937; /* text-gray-800 */
-            margin-bottom: 1.5rem; /* mb-6 */
-        }
-        .form-group {
-            margin-bottom: 1rem; /* mb-4 */
-        }
-        .form-group label {
-            display: block;
-            font-size: 0.875rem; /* text-sm */
-            font-weight: 500; /* font-medium */
-            color: #374151; /* text-gray-700 */
-            margin-bottom: 0.5rem; /* mb-2 */
-        }
-        .form-control {
-            width: 100%; /* w-full */
-            padding: 0.75rem; /* p-3 */
-            border-radius: 0.375rem; /* rounded-md */
-            border: 1px solid #d1d5db; /* border border-gray-300 */
-            font-size: 1rem; /* text-base */
-            color: #4b5563; /* text-gray-600 */
-            outline: none;
-            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            appearance: none;
-        }
-        .form-control:focus {
-            border-color: #8b5cf6; /* focus:border-purple-500 */
-            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); /* focus:ring focus:ring-purple-500/15 */
-        }
-        textarea.form-control {
-            height: 10rem;
-            resize: vertical;
-        }
 
-        /* Contact Info Styles */
-        .contact-info {
-             /* Added background and padding for consistency */
-             background-color: #f9fafb; /* bg-gray-50 or similar */
-             border-radius: 0.75rem; /* rounded-xl */
-             padding: 2rem; /* p-8 */
-             border: 1px solid #e5e7eb; /* border border-gray-200 */
-        }
-        .contact-info h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 1.5rem;
-        }
-        .contact-info p {
-            font-size: 1rem;
-            color: #4b5563;
-            margin-bottom: 1rem;
-            line-height: 1.6; /* Improve readability */
-        }
-        .contact-info a {
-            color: #6b7280; /* Slightly adjusted for contrast */
-            text-decoration: none;
-            transition: color 0.2s ease-in-out;
-            word-break: break-all; /* Prevent long emails/links breaking layout */
-        }
-        .contact-info a:hover {
-            color: #8b5cf6;
-        }
-        .contact-info strong {
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-        /* Container: Ensure consistent padding */
-        .container {
-            padding-left: 1rem; /* px-4 */
-            padding-right: 1rem; /* px-4 */
-        }
-
-        /* --- Mobile Responsive Styles --- */
-        @media (max-width: 767px) { /* Matches Tailwind's 'md' breakpoint */
-            /* Header: Stack logo and nav, center align */
-            header .container { /* Target container inside header */
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-            header nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.75rem;
-                padding-top: 0.5rem; /* Space from logo */
-                width: 100%; /* Ensure nav takes full width for centering */
-            }
-             header nav ul li {
-                 width: 100%; /* Make list items full width */
-                 text-align: center; /* Center text within list items */
-             }
-             header nav ul li a {
-                 display: block; /* Make links block for full width click area */
-                 padding: 0.25rem 0; /* Add some vertical padding */
-             }
-
-            /* Main Content: Adjust padding/margins */
+        /* --- Mobile Responsive Styles (Keep general ones) --- */
+        @media (max-width: 767px) {
+             /* Main Heading: Reduce size */
             main h1 {
-                font-size: 1.875rem; /* text-3xl -> text-2xl */
-                margin-bottom: 1.5rem; /* mb-8 -> mb-6 */
-            }
-            .contact-form, .contact-info {
-                padding: 1.5rem; /* p-8 -> p-6 */
+                font-size: 1.875rem; /* text-2xl */
+                margin-bottom: 1.5rem; /* mb-6 */
             }
 
-            /* Grid: Ensure single column (already default via grid-cols-1) */
-            /* No change needed for grid stacking */
+             /* Adjust card padding */
+            .contact-form-card, .contact-info-card {
+                padding: 1.5rem; /* p-6 */
+            }
 
             /* Button: Make full width */
             .button-primary {
@@ -175,87 +92,173 @@
             }
 
             /* Footer Links: Stack them */
-            footer p.mt-2 {
+            footer .footer-links { /* Use class selector */
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.25rem;
+                flex-direction: column; /* Stack links */
+                align-items: center; /* Center them */
+                gap: 0.25rem; /* Space between links */
             }
-            footer p.mt-2 span { /* Hide separator */
+            footer .footer-links span.separator { /* Hide the bullet point separator */
                 display: none;
             }
 
              /* Reduce top margin for footer on mobile */
              footer {
-                 margin-top: 2rem; /* mt-12 -> mt-8 */
+                 margin-top: 2rem; /* mt-8 */
              }
+        }
+
+        /* Optional: Even smaller screen adjustments */
+        @media (max-width: 480px) {
+            main h1 {
+                font-size: 1.5rem; /* Further reduce heading size */
+            }
         }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
-    <header class="bg-purple-500 text-white py-4 sm:py-6"> <div class="container mx-auto flex flex-wrap justify-between items-center"> <a href="../" class="text-2xl font-bold flex items-center shrink-0 mr-6"> <span class="icon sparkles mr-2"></span> AppCraft Studios
+<body class="min-h-screen bg-gray-900 text-gray-100 flex flex-col overflow-x-hidden">
+
+    <header class="container mx-auto py-6 px-4 relative z-20">
+        <div class="flex justify-between items-center">
+            <a href="../" class="text-2xl font-bold flex items-center shrink-0 text-white">
+                <span class="icon sparkles mr-2"></span>
+                AppCraft Studios
             </a>
-            <nav class="flex-shrink"> <ul class="flex space-x-6">
-                    <li><a href="./services.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Our Services</a></li>
-                    <li><a href="./" class="hover:text-gray-200 transition-colors font-semibold whitespace-nowrap">Contact Us</a></li> <li><a href="./privacy-policy.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                    <li><a href="./terms-of-service.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Terms of Service</a></li>
+
+            <nav class="hidden md:flex flex-shrink">
+                <ul class="flex space-x-6 text-white">
+                    <li><a href="./services.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Services</a></li>
+                    <li><a href="./contact.html" class="font-semibold whitespace-nowrap">Contact Us</a></li>
+                    <li><a href="./privacy-policy.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                    <li><a href="./terms-of-service.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Terms of Service</a></li>
                 </ul>
             </nav>
+
+            <button id="menu-toggle" class="md:hidden p-2 rounded text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-lg py-4 z-30">
+            <ul class="flex flex-col items-center space-y-4 text-white">
+                 <li><a href="./services.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Our Services</a></li>
+                 <li><a href="./contact.html" class="block px-4 py-2 bg-gray-700 rounded font-semibold whitespace-nowrap">Contact Us</a></li> <li><a href="./privacy-policy.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                 <li><a href="./terms-of-service.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Terms of Service</a></li>
+            </ul>
         </div>
     </header>
 
-    <main class="container mx-auto py-8 sm:py-12 flex-grow"> <h1 class="text-3xl font-semibold text-gray-800 text-center mb-6 sm:mb-8">Contact Us</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div class="contact-form">
-                <h2>Send us a message</h2>
+    <main class="container mx-auto py-8 sm:py-12 flex-grow px-4">
+        <h1 class="text-3xl font-semibold text-gray-100 text-center mb-6 sm:mb-8">Contact Us</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+
+            <div class="bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 contact-form-card">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-6">Send us a message</h2>
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter the subject" required>
+                    <div class="mb-4">
+                        <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" class="w-full p-3 rounded-md border border-gray-600 bg-gray-700 text-gray-100 focus:border-purple-500 focus:ring focus:ring-purple-500/30 placeholder-gray-400" placeholder="Enter the subject" required>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" class="form-control" placeholder="Enter your message" required></textarea>
+                    <div class="mb-4">
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Your Message</label>
+                        <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-md border border-gray-600 bg-gray-700 text-gray-100 focus:border-purple-500 focus:ring focus:ring-purple-500/30 placeholder-gray-400 resize-vertical" placeholder="Enter your message" required></textarea>
                     </div>
-                    <button type="submit" class="button-primary mt-4"> <span class="icon" style="background-image: url('https://unpkg.com/lucide-static@latest/icons/send.svg'); width: 20px; height: 20px; filter: invert(100%);"></span> Send Message
+                    <button type="submit" class="button-primary mt-4 w-full md:w-auto">
+                        <span class="icon send"></span> Send Message
                     </button>
                 </form>
             </div>
 
-            <div class="contact-info">
-                <h2>Contact Information</h2>
-                <p><strong>Address:</strong><br> Cape Town, South Africa</p> <p><strong>Phone:</strong><br> <a href="tel:+27760605261">+27 76 060 5261</a></p> <p><strong>Email:</strong><br> <a href="mailto:support@appcraftstudios.com">support@appcraftstudios.com</a></p>
-                <p class="mt-6"> <strong>Connect with us:</strong>
-                    <span class="block mt-2"> <a href="#" class="hover:text-purple-500 mr-3 inline-block">Facebook</a>
-                        <a href="#" class="hover:text-purple-500 mr-3 inline-block">Twitter</a>
-                        <a href="#" class="hover:text-purple-500 inline-block">LinkedIn</a>
-                    </span>
-                </p>
+            <div class="bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 contact-info-card">
+                <h2 class="text-2xl font-semibold text-gray-100 mb-6">Contact Information</h2>
+                <div class="space-y-4 text-gray-300">
+                    <p>
+                        <strong class="text-gray-100">Address:</strong><br> Cape Town, South Africa
+                    </p>
+                    <p>
+                        <strong class="text-gray-100">Phone:</strong><br>
+                        <a href="tel:+27760605261" class="text-purple-400 hover:text-purple-300 transition-colors break-all">+27 76 060 5261</a>
+                    </p>
+                    <p>
+                        <strong class="text-gray-100">Email:</strong><br>
+                        <a href="mailto:support@appcraftstudios.com" class="text-purple-400 hover:text-purple-300 transition-colors break-all">support@appcraftstudios.com</a>
+                    </p>
+                    <p class="pt-4">
+                         <strong class="text-gray-100">Connect with us:</strong>
+                         <span class="block mt-2 space-x-3">
+                             <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors inline-block">Facebook</a>
+                             <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors inline-block">Twitter</a>
+                             <a href="#" class="text-purple-400 hover:text-purple-300 transition-colors inline-block">LinkedIn</a>
+                         </span>
+                    </p>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-gray-200 text-gray-600 py-6 mt-auto"> <div class="container mx-auto text-center">
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-auto border-t border-gray-700">
+        <div class="container mx-auto text-center px-4">
             &copy; 2025 AppCraft Studios. All rights reserved.
-             <p class="mt-2 text-sm footer-links">
-                <a href="./privacy-policy.html" class="hover:text-purple-500 transition-colors">Privacy Policy</a>
-                <span class="mx-2">•</span>
-                <a href="./terms-of-service.html" class="hover:text-purple-500 transition-colors">Terms of Service</a>
+            <p class="mt-2 text-sm footer-links">
+                <a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span class="mx-2 separator">•</span>
+                <a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
             </p>
         </div>
     </footer>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const messageContent = document.getElementById('message').value;
-            const subjectContent = document.getElementById('subject').value;
-            const recipientEmail = 'support@appcraftstudios.com'; // Your email here
-            const encodedSubject = encodeURIComponent(subjectContent);
-            const encodedMessage = encodeURIComponent(messageContent);
-            const mailtoLink = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedMessage}`;
-            window.location.href = mailtoLink;
-        });
+        // Mobile Menu Toggle Script (Copied from index.html)
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) { // Add check to prevent errors if elements don't exist
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+
+            // Optional: Close menu if user clicks outside
+            document.addEventListener('click', (event) => {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+
+                if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        // Contact Form Mailto Script (Existing)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) { // Add check
+             contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const messageInput = document.getElementById('message');
+                const subjectInput = document.getElementById('subject');
+                // Basic check if elements exist before getting value
+                const messageContent = messageInput ? messageInput.value : '';
+                const subjectContent = subjectInput ? subjectInput.value : '';
+
+                const recipientEmail = 'support@appcraftstudios.com'; // Your email here
+                const encodedSubject = encodeURIComponent(subjectContent);
+                const encodedMessage = encodeURIComponent(messageContent);
+                const mailtoLink = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedMessage}`;
+
+                // Attempt to open mail client
+                window.location.href = mailtoLink;
+
+                // Optional: Provide feedback to user as mailto doesn't guarantee sending
+                // console.log("Attempting to open email client...");
+                // alert("Your email client should open shortly to send the message.");
+            });
+        }
+
     </script>
+
 </body>
 </html>
