@@ -7,229 +7,250 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Base body styles */
+        /* Standard Styles from other pages */
         body {
             font-family: 'Inter', sans-serif;
-            /* REMOVED padding-bottom: 100px; */
         }
-        /* Icon styles */
         .icon {
             display: inline-block;
             background-size: cover;
             background-position: center;
-            width: 24px;
-            height: 24px;
+            width: 24px; /* Default size */
+            height: 24px; /* Default size */
+            /* Icon Color: White (for dark theme) */
             filter: invert(100%);
-            vertical-align: middle; /* Better alignment */
+            vertical-align: middle; /* Align icons better with text */
         }
         .sparkles {
             background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
         }
-        /* Button styles */
+        /* Add other icons if needed */
+        .phone {
+             background-image: url('https://unpkg.com/lucide-static@latest/icons/phone.svg');
+        }
+
+        /* --- Button Primary --- */
         .button-primary {
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6);
             color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease-in-out;
+            transition: all 0.4s ease-in-out;
             font-weight: 600;
             font-size: 1rem;
-            display: inline-flex; /* Ensures content centers nicely */
+            display: inline-flex;
             align-items: center;
-            justify-content: center; /* Center text/icon */
+            justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
-            border: none; /* Remove default border */
-            text-align: center; /* Center text if it wraps */
+            background-size: 200% auto;
+            background-position: 0% 0;
+            text-align: center;
+            border: none;
         }
         .button-primary:hover {
-             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-             transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            background-position: 100% 0;
         }
-        /* Service Card styles */
-        .service-card {
-            background-color: white;
-            border-radius: 0.75rem; /* rounded-lg */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
-            padding: 2rem; /* p-8 */
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            height: 100%; /* Make cards equal height in a row */
-            display: flex;
-            flex-direction: column; /* Stack content vertically */
-        }
-        .service-card:hover {
-            transform: translateY(-0.5rem); /* hover:translate-y-2 */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* hover:shadow-xl */
-        }
-        .service-card-content {
-            flex-grow: 1; /* Allow content to grow */
-        }
-        /* Removed .service-icon as it wasn't used in the HTML */
+         .button-primary:focus {
+             outline: 2px solid transparent;
+             outline-offset: 2px;
+             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4);
+         }
 
-        /* REMOVED fixed footer CSS block */
-        /* footer { ... } */
-
-        /* Container: Ensure consistent padding (optional if Tailwind handles it) */
-        .container {
-            padding-left: 1rem; /* px-4 */
-            padding-right: 1rem; /* px-4 */
-        }
-
-        /* --- Mobile Responsive Styles --- */
-        @media (max-width: 767px) { /* Matches Tailwind's 'md' breakpoint */
-            /* Header: Stack logo and nav */
-            header .container {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-            header nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.75rem;
-                padding-top: 0.5rem;
-                width: 100%;
-            }
-             header nav ul li {
-                 width: 100%;
-                 text-align: center;
-             }
-             header nav ul li a {
-                 display: block;
-                 padding: 0.25rem 0;
-             }
-
+        /* --- Mobile Responsive Styles (Keep relevant ones) --- */
+        @media (max-width: 767px) {
             /* Main Content: Adjust text sizes and spacing */
             main h1 {
                 font-size: 1.875rem; /* text-2xl */
                 margin-bottom: 1rem; /* mb-4 */
             }
-            main p.text-center {
-                font-size: 0.9rem; /* Slightly larger than text-sm */
-                margin-bottom: 1.5rem; /* mb-10 -> mb-6 */
-                line-height: 1.6; /* Improve readability */
+            main p.intro-paragraph { /* Target intro paragraph */
+                font-size: 0.9rem;
+                margin-bottom: 1.5rem; /* mb-6 */
+                line-height: 1.6;
             }
-            .service-card {
-                padding: 1.5rem; /* p-8 -> p-6 */
+            /* Service Card adjustments */
+            .service-card-instance { /* Use a specific class if needed */
+                 padding: 1.5rem; /* p-6 */
             }
-            .service-card h2 {
-                font-size: 1.125rem; /* text-xl -> text-lg */
-            }
-            .service-card p, .service-card ul {
-                font-size: 0.9rem; /* Adjust base text size in cards */
-            }
-
-            /* CTA Button: Adjust width and center */
-            .button-container { /* Assuming the div wrapping the button has this class */
-                margin-top: 2rem; /* mt-12 -> mt-8 */
-            }
-            .button-container .button-primary {
-                 width: 90%; /* Make button wider */
-                 max-width: 320px; /* Limit max width */
-                 margin-left: auto; /* Center */
-                 margin-right: auto;
-                 display: flex; /* Overwrite inline-flex if needed, ensure centering */
-                 justify-content: center;
+             .service-card-instance h2 {
+                 font-size: 1.125rem; /* text-lg */
+             }
+             .service-card-instance p, .service-card-instance ul {
+                 font-size: 0.9rem;
              }
 
+            /* CTA Button: Adjust width and center */
+            .button-container {
+                margin-top: 2rem; /* mt-8 */
+            }
+            .button-container .button-primary {
+                width: 90%;
+                max-width: 320px;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex; /* Ensure flex for centering */
+                justify-content: center;
+            }
+
             /* Footer Links: Stack them */
-            footer p.mt-2 {
+            footer .footer-links {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: 0.25rem;
             }
-            footer p.mt-2 span { /* Hide separator */
+            footer .footer-links span.separator {
                 display: none;
             }
+             /* Reduce top margin for footer on mobile */
+             footer {
+                 margin-top: 2rem; /* mt-8 */
+             }
         }
 
+        /* Optional: Even smaller screen adjustments */
+        @media (max-width: 480px) {
+            main h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body class="min-h-screen bg-gray-900 text-gray-100 flex flex-col overflow-x-hidden">
 
-    <header class="bg-purple-500 text-white py-4 sm:py-6">
-        <div class="container mx-auto flex flex-wrap justify-between items-center">
-             <a href="../" class="text-2xl font-bold flex items-center shrink-0 mr-6">
+    <header class="container mx-auto py-6 px-4 relative z-20">
+        <div class="flex justify-between items-center">
+            <a href="../" class="text-2xl font-bold flex items-center shrink-0 text-white">
                 <span class="icon sparkles mr-2"></span>
                 AppCraft Studios
             </a>
-            <nav class="flex-shrink">
-                <ul class="flex space-x-6">
-                    <li><a href="./" class="hover:text-gray-200 transition-colors font-semibold whitespace-nowrap">Our Services</a></li> <li><a href="./contact.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Contact Us</a></li>
-                    <li><a href="./privacy-policy.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                    <li><a href="./terms-of-service.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Terms of Service</a></li>
+
+            <nav class="hidden md:flex flex-shrink">
+                <ul class="flex space-x-6 text-white">
+                    <li><a href="./services.html" class="font-semibold whitespace-nowrap">Our Services</a></li>
+                    <li><a href="./contact.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Contact Us</a></li>
+                    <li><a href="./privacy-policy.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                    <li><a href="./terms-of-service.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Terms of Service</a></li>
                 </ul>
             </nav>
+
+            <button id="menu-toggle" class="md:hidden p-2 rounded text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-lg py-4 z-30">
+            <ul class="flex flex-col items-center space-y-4 text-white">
+                 <li><a href="./services.html" class="block px-4 py-2 bg-gray-700 rounded font-semibold whitespace-nowrap">Our Services</a></li> <li><a href="./contact.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Contact Us</a></li>
+                 <li><a href="./privacy-policy.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                 <li><a href="./terms-of-service.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Terms of Service</a></li>
+            </ul>
         </div>
     </header>
 
-    <main class="container mx-auto py-8 sm:py-12 flex-grow">
-        <h1 class="text-3xl font-semibold text-gray-800 text-center mb-4 sm:mb-8">Our Services</h1>
-        <p class="text-center text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto px-2"> We specialize in crafting beautiful, high-performance mobile applications primarily using Flutter for seamless cross-platform experiences on iOS and Android. We also offer custom solutions tailored to your unique requirements.
+    <main class="container mx-auto py-8 sm:py-12 flex-grow px-4">
+        <h1 class="text-3xl font-semibold text-gray-100 text-center mb-4 sm:mb-8">Our Services</h1>
+        <p class="text-center text-gray-300 mb-8 sm:mb-10 max-w-2xl mx-auto intro-paragraph">
+            We specialize in crafting beautiful, high-performance mobile applications primarily using Flutter for seamless cross-platform experiences on iOS and Android. We also offer custom solutions tailored to your unique requirements.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-            <div class="service-card">
-                <div class="service-card-content">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Flutter App Development (iOS & Android)</h2>
-                    <p class="text-gray-600 mb-4 sm:mb-6">
+            <div class="bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 h-full flex flex-col transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl service-card-instance">
+                <div class="flex-grow"> <h2 class="text-xl font-semibold text-gray-100 mb-3 sm:mb-4">Flutter App Development (iOS & Android)</h2>
+                    <p class="text-gray-300 mb-4 sm:mb-6">
                         Leveraging the power of Flutter, we build stunning, natively compiled applications for mobile from a single codebase. Get your app on the Google Play Store and Apple App Store quickly and efficiently.
                     </p>
-                    <ul class="list-disc list-inside text-gray-500 space-y-1"> <li>Cross-Platform (iOS & Android)</li>
+                    <ul class="list-disc list-inside text-gray-400 space-y-1 marker:text-purple-400">
+                        <li>Cross-Platform (iOS & Android)</li>
                         <li>Beautiful UI/UX Implementation</li>
                         <li>High-Performance Applications</li>
                         <li>Firebase Integration</li>
                         <li>App Store Deployment & Maintenance</li>
                     </ul>
                 </div>
+                </div>
+
+            <div class="bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 h-full flex flex-col transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl service-card-instance">
+                <div class="flex-grow">
+                     <h2 class="text-xl font-semibold text-gray-100 mb-3 sm:mb-4">Custom Platform Development</h2>
+                     <p class="text-gray-300 mb-4 sm:mb-6">
+                         Need an application beyond iOS and Android? Upon request, we can utilize our diverse skillset to build custom applications for Windows and macOS, ensuring a consistent brand experience across platforms.
+                     </p>
+                     <ul class="list-disc list-inside text-gray-400 space-y-1 marker:text-purple-400">
+                         <li>Windows Desktop Applications</li>
+                         <li>macOS Applications</li>
+                         <li>Cross-Platform Desktop Solutions</li>
+                         <li>Integration with Mobile Apps</li>
+                         <li>Tailored Feature Development</li>
+                     </ul>
+                </div>
             </div>
 
-            <div class="service-card">
-                 <div class="service-card-content">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Custom Platform Development</h2>
-                    <p class="text-gray-600 mb-4 sm:mb-6">
-                        Need an application beyond iOS and Android? Upon request, we can utilize our diverse skillset to build custom applications for Windows and macOS, ensuring a consistent brand experience across platforms.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-500 space-y-1">
-                        <li>Windows Desktop Applications</li>
-                        <li>macOS Applications</li>
-                        <li>Cross-Platform Desktop Solutions</li>
-                        <li>Integration with Mobile Apps</li>
-                        <li>Tailored Feature Development</li>
-                    </ul>
-                 </div>
-            </div>
-
-            <div class="service-card">
-                  <div class="service-card-content">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Backend & API Development</h2>
-                    <p class="text-gray-600 mb-4 sm:mb-6">
+            <div class="bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 h-full flex flex-col transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl service-card-instance">
+                <div class="flex-grow">
+                    <h2 class="text-xl font-semibold text-gray-100 mb-3 sm:mb-4">Backend & API Development</h2>
+                    <p class="text-gray-300 mb-4 sm:mb-6">
                         Power your mobile applications with robust and scalable backend systems. We build secure APIs and manage server-side logic using modern technologies to support your app's functionality.
                     </p>
-                    <ul class="list-disc list-inside text-gray-500 space-y-1">
+                    <ul class="list-disc list-inside text-gray-400 space-y-1 marker:text-purple-400">
                         <li>RESTful API Design & Development</li>
                         <li>Python (Flask, Django)</li>
                         <li>C# (.NET Core)</li>
                         <li>Database Design (SQL, NoSQL)</li>
                         <li>Cloud Integration (Firebase, AWS, Azure)</li>
                     </ul>
-                  </div>
+                </div>
             </div>
 
-            </div> <div class="mt-10 sm:mt-12 text-center button-container"> <a href="./contact.html" class="button-primary">Request a Custom Quote</a>
-             </div>
+        </div>
+
+        <div class="mt-10 sm:mt-12 text-center button-container">
+             <a href="./contact.html" class="button-primary">
+                <span class="icon phone mr-2"></span> Request a Custom Quote
+            </a>
+        </div>
     </main>
 
-    <footer class="mt-auto bg-gray-200 text-gray-600 py-6">
-        <div class="container mx-auto text-center">
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-auto border-t border-gray-700">
+        <div class="container mx-auto text-center px-4">
             &copy; 2025 AppCraft Studios. All rights reserved.
-            <p class="mt-2 text-sm footer-links"> <a href="./privacy-policy.html" class="hover:text-purple-600 transition-colors">Privacy Policy</a> <span class="mx-2">•</span>
-                <a href="./terms-of-service.html" class="hover:text-purple-600 transition-colors">Terms of Service</a>
+            <p class="mt-2 text-sm footer-links">
+                <a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span class="mx-2 separator">•</span>
+                <a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
             </p>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Toggle Script (Standard)
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+
+            document.addEventListener('click', (event) => {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+
+                if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
