@@ -19,13 +19,8 @@
             filter: invert(100%); /* Make icon white for dark backgrounds */
             vertical-align: middle; /* Align icon nicely with text */
         }
-        /* You need to provide the actual path or URL to your sparkles icon */
-        /* Using a placeholder background color for demonstration */
         .sparkles {
-             /* Example using Lucide icons SVG URL if you prefer */
              background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
-             /* Or use a placeholder if you don't have the SVG yet */
-            /* background-color: #fff; */ /* Placeholder */
         }
         .button-primary {
             background-image: linear-gradient(to right, #8b5cf6, #ec4899); /* Tailwind purple-500 to pink-500 */
@@ -46,14 +41,13 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
             transform: scale(1.05);
         }
-        /* Add focus styles for accessibility */
         .button-primary:focus {
              outline: 2px solid transparent;
              outline-offset: 2px;
              box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4); /* Ring focus style */
         }
 
-        /* Form Styles (using Tailwind classes where possible, but keeping custom for clarity) */
+        /* Form Styles */
         .contact-form {
             background-color: white; /* bg-white */
             border-radius: 0.75rem; /* rounded-xl */
@@ -160,6 +154,10 @@
                         <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter the subject" required>
+                    </div>
+                    <div class="form-group">
                         <label for="message">Your Message</label>
                         <textarea id="message" name="message" class="form-control" placeholder="Enter your message" required></textarea>
                     </div>
@@ -185,7 +183,8 @@
 
     <footer class="bg-gray-200 text-gray-600 py-6 mt-12">
         <div class="container mx-auto px-4 text-center">
-            &copy; 2025 AppCraft Studios. All rights reserved. <p class="mt-2 text-sm">
+            &copy; 2025 AppCraft Studios. All rights reserved.
+            <p class="mt-2 text-sm">
                 <a href="/privacy-policy" class="hover:text-purple-500 transition-colors">Privacy Policy</a>
                 <span class="mx-2">•</span>
                 <a href="/terms-of-service" class="hover:text-purple-500 transition-colors">Terms of Service</a>
@@ -198,24 +197,26 @@
             // 1. Prevent the default form submission behavior
             event.preventDefault();
 
-            // 2. Get the value from the message textarea
+            // 2. Get values from the form fields
             const messageContent = document.getElementById('message').value;
+            const subjectContent = document.getElementById('subject').value; // Get subject
+            // Note: name and email fields are still not used in the mailto link as per original request focus
 
-            // 3. Define the recipient email address (taken from your original form action)
+            // 3. Define the recipient email address
             const recipientEmail = 'jamieabrahams@appcraftstudios.com';
 
             // 4. Construct the mailto link
-            // Encode the message content for URL safety
+            // Encode subject and message content for URL safety
+            const encodedSubject = encodeURIComponent(subjectContent);
             const encodedMessage = encodeURIComponent(messageContent);
 
-            // Create the mailto link with ONLY the message in the body
-            // Note: The user's name and email from the form fields are not included here.
-            const mailtoLink = `mailto:${recipientEmail}?body=${encodedMessage}`;
+            // Create the mailto link including recipient, subject, AND body
+            // Parameters are separated by '&'
+            const mailtoLink = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedMessage}`;
 
             // 5. Open the user's default email client
             window.location.href = mailtoLink;
         });
     </script>
-
-</body>
+    </body>
 </html>
