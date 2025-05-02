@@ -7,10 +7,12 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base body styles */
         body {
             font-family: 'Inter', sans-serif;
-            padding-bottom: 100px; /* Add padding to prevent footer overlap */
+            /* REMOVED padding-bottom: 100px; */
         }
+        /* Icon styles */
         .icon {
             display: inline-block;
             background-size: cover;
@@ -18,10 +20,12 @@
             width: 24px;
             height: 24px;
             filter: invert(100%);
+            vertical-align: middle; /* Better alignment */
         }
         .sparkles {
             background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
         }
+        /* Button styles */
         .button-primary {
             background-image: linear-gradient(to right, #8b5cf6, #ec4899);
             color: white;
@@ -31,86 +35,149 @@
             transition: all 0.3s ease-in-out;
             font-weight: 600;
             font-size: 1rem;
-            display: inline-flex;
+            display: inline-flex; /* Ensures content centers nicely */
             align-items: center;
+            justify-content: center; /* Center text/icon */
             gap: 0.5rem;
             cursor: pointer;
+            border: none; /* Remove default border */
+            text-align: center; /* Center text if it wraps */
         }
         .button-primary:hover {
              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-            transform: scale(1.05);
+             transform: scale(1.05);
         }
+        /* Service Card styles */
         .service-card {
             background-color: white;
             border-radius: 0.75rem; /* rounded-lg */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
             padding: 2rem; /* p-8 */
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            height: 100%; /* Make cards equal height */
-            display: flex; /* Enable flexbox */
+            height: 100%; /* Make cards equal height in a row */
+            display: flex;
             flex-direction: column; /* Stack content vertically */
         }
         .service-card:hover {
             transform: translateY(-0.5rem); /* hover:translate-y-2 */
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* hover:shadow-xl approximation */
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* hover:shadow-xl */
         }
         .service-card-content {
-            flex-grow: 1; /* Allow content to grow and push button down */
+            flex-grow: 1; /* Allow content to grow */
         }
-        .service-icon {
-            width: 3rem; /* w-12 */
-            height: 3rem; /* h-12 */
-            margin-bottom: 1rem; /* mb-4 */
-            color: #8b5cf6; /* text-purple-500 */
+        /* Removed .service-icon as it wasn't used in the HTML */
+
+        /* REMOVED fixed footer CSS block */
+        /* footer { ... } */
+
+        /* Container: Ensure consistent padding (optional if Tailwind handles it) */
+        .container {
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
         }
-       footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        background-color: #e5e7eb; /* bg-gray-200 */
-        color: #4b5563; /* text-gray-600 */
-        padding-top: 1.5rem; /* py-6 */
-        padding-bottom: 1.5rem; /* py-6 */
-        margin-top: 3rem; /* mt-12 */
-       }
+
+        /* --- Mobile Responsive Styles --- */
+        @media (max-width: 767px) { /* Matches Tailwind's 'md' breakpoint */
+            /* Header: Stack logo and nav */
+            header .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            header nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                padding-top: 0.5rem;
+                width: 100%;
+            }
+             header nav ul li {
+                 width: 100%;
+                 text-align: center;
+             }
+             header nav ul li a {
+                 display: block;
+                 padding: 0.25rem 0;
+             }
+
+            /* Main Content: Adjust text sizes and spacing */
+            main h1 {
+                font-size: 1.875rem; /* text-2xl */
+                margin-bottom: 1rem; /* mb-4 */
+            }
+            main p.text-center {
+                font-size: 0.9rem; /* Slightly larger than text-sm */
+                margin-bottom: 1.5rem; /* mb-10 -> mb-6 */
+                line-height: 1.6; /* Improve readability */
+            }
+            .service-card {
+                padding: 1.5rem; /* p-8 -> p-6 */
+            }
+            .service-card h2 {
+                font-size: 1.125rem; /* text-xl -> text-lg */
+            }
+            .service-card p, .service-card ul {
+                font-size: 0.9rem; /* Adjust base text size in cards */
+            }
+
+            /* CTA Button: Adjust width and center */
+            .button-container { /* Assuming the div wrapping the button has this class */
+                margin-top: 2rem; /* mt-12 -> mt-8 */
+            }
+            .button-container .button-primary {
+                 width: 90%; /* Make button wider */
+                 max-width: 320px; /* Limit max width */
+                 margin-left: auto; /* Center */
+                 margin-right: auto;
+                 display: flex; /* Overwrite inline-flex if needed, ensure centering */
+                 justify-content: center;
+             }
+
+            /* Footer Links: Stack them */
+            footer p.mt-2 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+            }
+            footer p.mt-2 span { /* Hide separator */
+                display: none;
+            }
+        }
 
     </style>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-purple-500 text-white py-6">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="../" class="text-2xl font-bold">
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <header class="bg-purple-500 text-white py-4 sm:py-6">
+        <div class="container mx-auto flex flex-wrap justify-between items-center">
+             <a href="../" class="text-2xl font-bold flex items-center shrink-0 mr-6">
                 <span class="icon sparkles mr-2"></span>
                 AppCraft Studios
             </a>
-            <nav>
+            <nav class="flex-shrink">
                 <ul class="flex space-x-6">
-                    <li><a href="./" class="text-white hover:text-gray-200 transition-colors">Our Services</a></li>
-                    <li><a href="./contact.html" class="text-white hover:text-gray-200 transition-colors">Contact Us</a></li>
-                    <li><a href="./privacy-policy.html" class="text-white hover:text-gray-200 transition-colors">Privacy Policy</a></li>
-                    <li><a href="./terms-of-service.html" class="text-white hover:text-gray-200 transition-colors">Terms of Service</a></li>
+                    <li><a href="./" class="hover:text-gray-200 transition-colors font-semibold whitespace-nowrap">Our Services</a></li> <li><a href="./contact.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Contact Us</a></li>
+                    <li><a href="./privacy-policy.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                    <li><a href="./terms-of-service.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Terms of Service</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto py-12 px-4">
-        <h1 class="text-3xl font-semibold text-gray-800 text-center mb-8">Our Services</h1>
-        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            We specialize in crafting beautiful, high-performance mobile applications primarily using Flutter for seamless cross-platform experiences on iOS and Android. We also offer custom solutions tailored to your unique requirements.
+    <main class="container mx-auto py-8 sm:py-12 flex-grow">
+        <h1 class="text-3xl font-semibold text-gray-800 text-center mb-4 sm:mb-8">Our Services</h1>
+        <p class="text-center text-gray-600 mb-8 sm:mb-10 max-w-2xl mx-auto px-2"> We specialize in crafting beautiful, high-performance mobile applications primarily using Flutter for seamless cross-platform experiences on iOS and Android. We also offer custom solutions tailored to your unique requirements.
         </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
             <div class="service-card">
                 <div class="service-card-content">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Flutter App Development (iOS & Android)</h2>
-                    <p class="text-gray-600 mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Flutter App Development (iOS & Android)</h2>
+                    <p class="text-gray-600 mb-4 sm:mb-6">
                         Leveraging the power of Flutter, we build stunning, natively compiled applications for mobile from a single codebase. Get your app on the Google Play Store and Apple App Store quickly and efficiently.
                     </p>
-                    <ul class="list-disc list-inside text-gray-500">
-                        <li>Cross-Platform (iOS & Android)</li>
+                    <ul class="list-disc list-inside text-gray-500 space-y-1"> <li>Cross-Platform (iOS & Android)</li>
                         <li>Beautiful UI/UX Implementation</li>
                         <li>High-Performance Applications</li>
                         <li>Firebase Integration</li>
@@ -121,11 +188,11 @@
 
             <div class="service-card">
                  <div class="service-card-content">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Custom Platform Development</h2>
-                    <p class="text-gray-600 mb-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Custom Platform Development</h2>
+                    <p class="text-gray-600 mb-4 sm:mb-6">
                         Need an application beyond iOS and Android? Upon request, we can utilize our diverse skillset to build custom applications for Windows and macOS, ensuring a consistent brand experience across platforms.
                     </p>
-                    <ul class="list-disc list-inside text-gray-500">
+                    <ul class="list-disc list-inside text-gray-500 space-y-1">
                         <li>Windows Desktop Applications</li>
                         <li>macOS Applications</li>
                         <li>Cross-Platform Desktop Solutions</li>
@@ -136,36 +203,33 @@
             </div>
 
             <div class="service-card">
-                 <div class="service-card-content">
-                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Backend & API Development</h2>
-                    <p class="text-gray-600 mb-6">
+                  <div class="service-card-content">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-3 sm:mb-4">Backend & API Development</h2>
+                    <p class="text-gray-600 mb-4 sm:mb-6">
                         Power your mobile applications with robust and scalable backend systems. We build secure APIs and manage server-side logic using modern technologies to support your app's functionality.
                     </p>
-                    <ul class="list-disc list-inside text-gray-500">
+                    <ul class="list-disc list-inside text-gray-500 space-y-1">
                         <li>RESTful API Design & Development</li>
                         <li>Python (Flask, Django)</li>
                         <li>C# (.NET Core)</li>
                         <li>Database Design (SQL, NoSQL)</li>
                         <li>Cloud Integration (Firebase, AWS, Azure)</li>
                     </ul>
-                </div>
+                  </div>
             </div>
 
-            </div>
-             <div class="mt-12 text-center">
-                 <a href="./contact.html" class="button-primary">Request a Custom Quote</a>
+            </div> <div class="mt-10 sm:mt-12 text-center button-container"> <a href="./contact.html" class="button-primary">Request a Custom Quote</a>
              </div>
     </main>
 
-    <footer>
-        <div class="container mx-auto px-4 text-center">
+    <footer class="mt-auto bg-gray-200 text-gray-600 py-6">
+        <div class="container mx-auto text-center">
             &copy; 2025 AppCraft Studios. All rights reserved.
-            <p class="mt-2 text-sm">
-                <a href="./privacy-policy.html" class="hover:text-blue-600 transition-colors">Privacy Policy</a>
-                <span class="mx-2">•</span>
-                <a href="./terms-of-service.html" class="hover:text-blue-600 transition-colors">Terms of Service</a>
+            <p class="mt-2 text-sm footer-links"> <a href="./privacy-policy.html" class="hover:text-purple-600 transition-colors">Privacy Policy</a> <span class="mx-2">•</span>
+                <a href="./terms-of-service.html" class="hover:text-purple-600 transition-colors">Terms of Service</a>
             </p>
         </div>
     </footer>
+
 </body>
 </html>
