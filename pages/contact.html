@@ -14,46 +14,48 @@
             display: inline-block;
             background-size: cover;
             background-position: center;
-            width: 24px; /* Adjust size as needed */
-            height: 24px; /* Adjust size as needed */
-            filter: invert(100%); /* Make icon white for dark backgrounds */
-            vertical-align: middle; /* Align icon nicely with text */
+            width: 24px;
+            height: 24px;
+            filter: invert(100%);
+            vertical-align: middle;
         }
         .sparkles {
              background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
         }
         .button-primary {
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899); /* Tailwind purple-500 to pink-500 */
+            background-image: linear-gradient(to right, #8b5cf6, #ec4899);
             color: white;
-            padding: 0.5rem 1.5rem; /* py-2 px-6 */
-            border-radius: 9999px; /* rounded-full */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease-in-out;
-            font-weight: 600; /* font-semibold */
-            font-size: 1rem; /* text-base */
-            display: inline-flex;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex; /* Changed to inline-flex for alignment */
             align-items: center;
-            gap: 0.5rem; /* gap-2 */
+            justify-content: center; /* Center content */
+            gap: 0.5rem;
             cursor: pointer;
-            border: none; /* Ensure no default border */
+            border: none;
+            text-align: center; /* Ensure text centers */
         }
         .button-primary:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             transform: scale(1.05);
         }
         .button-primary:focus {
              outline: 2px solid transparent;
              outline-offset: 2px;
-             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4); /* Ring focus style */
+             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.4);
         }
 
-        /* Form Styles */
+        /* Form Styles - Largely mirroring Tailwind */
         .contact-form {
             background-color: white; /* bg-white */
             border-radius: 0.75rem; /* rounded-xl */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
             padding: 2rem; /* p-8 */
-            margin-bottom: 2rem; /* mb-8 */
+            /* removed margin-bottom: 2rem; Use grid gap */
         }
         .contact-form h2 {
             font-size: 1.5rem; /* text-2xl */
@@ -80,78 +82,130 @@
             color: #4b5563; /* text-gray-600 */
             outline: none;
             transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            appearance: none; /* Remove default appearance */
+            appearance: none;
         }
         .form-control:focus {
             border-color: #8b5cf6; /* focus:border-purple-500 */
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15); /* focus:ring focus:ring-purple-500/15 */
         }
         textarea.form-control {
-            height: 10rem; /* Custom height */
-            resize: vertical; /* Allow vertical resize */
+            height: 10rem;
+            resize: vertical;
         }
-
-        footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-        }    
 
         /* Contact Info Styles */
+        .contact-info {
+             /* Added background and padding for consistency */
+             background-color: #f9fafb; /* bg-gray-50 or similar */
+             border-radius: 0.75rem; /* rounded-xl */
+             padding: 2rem; /* p-8 */
+             border: 1px solid #e5e7eb; /* border border-gray-200 */
+        }
         .contact-info h2 {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 600; /* font-semibold */
-            color: #1f2937; /* text-gray-800 */
-            margin-bottom: 1.5rem; /* mb-6 */
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
         }
         .contact-info p {
-            font-size: 1rem; /* text-base */
-            color: #4b5563; /* text-gray-600 */
-            margin-bottom: 1rem; /* mb-4 */
+            font-size: 1rem;
+            color: #4b5563;
+            margin-bottom: 1rem;
+            line-height: 1.6; /* Improve readability */
         }
         .contact-info a {
-            color: #4b5563; /* text-gray-600 */
+            color: #6b7280; /* Slightly adjusted for contrast */
             text-decoration: none;
             transition: color 0.2s ease-in-out;
+            word-break: break-all; /* Prevent long emails/links breaking layout */
         }
         .contact-info a:hover {
-            color: #8b5cf6; /* hover:text-purple-500 */
+            color: #8b5cf6;
         }
         .contact-info strong {
-            font-weight: 600; /* font-semibold */
-            color: #1f2937; /* text-gray-800 */
+            font-weight: 600;
+            color: #1f2937;
         }
 
-        /* Ensure container class provides max-width and centering */
+        /* Container: Ensure consistent padding */
         .container {
-            max-width: 1140px; /* Example max-width, adjust as needed */
-            margin-left: auto;
-            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem; /* px-4 */
+        }
+
+        /* --- Mobile Responsive Styles --- */
+        @media (max-width: 767px) { /* Matches Tailwind's 'md' breakpoint */
+            /* Header: Stack logo and nav, center align */
+            header .container { /* Target container inside header */
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            header nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                padding-top: 0.5rem; /* Space from logo */
+                width: 100%; /* Ensure nav takes full width for centering */
+            }
+             header nav ul li {
+                 width: 100%; /* Make list items full width */
+                 text-align: center; /* Center text within list items */
+             }
+             header nav ul li a {
+                 display: block; /* Make links block for full width click area */
+                 padding: 0.25rem 0; /* Add some vertical padding */
+             }
+
+            /* Main Content: Adjust padding/margins */
+            main h1 {
+                font-size: 1.875rem; /* text-3xl -> text-2xl */
+                margin-bottom: 1.5rem; /* mb-8 -> mb-6 */
+            }
+            .contact-form, .contact-info {
+                padding: 1.5rem; /* p-8 -> p-6 */
+            }
+
+            /* Grid: Ensure single column (already default via grid-cols-1) */
+            /* No change needed for grid stacking */
+
+            /* Button: Make full width */
+            .button-primary {
+                width: 100%;
+            }
+
+            /* Footer Links: Stack them */
+            footer p.mt-2 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+            }
+            footer p.mt-2 span { /* Hide separator */
+                display: none;
+            }
+
+             /* Reduce top margin for footer on mobile */
+             footer {
+                 margin-top: 2rem; /* mt-12 -> mt-8 */
+             }
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <header class="bg-purple-500 text-white py-6">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="../" class="text-2xl font-bold flex items-center">
-                <span class="icon sparkles mr-2"></span> AppCraft Studios
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <header class="bg-purple-500 text-white py-4 sm:py-6"> <div class="container mx-auto flex flex-wrap justify-between items-center"> <a href="../" class="text-2xl font-bold flex items-center shrink-0 mr-6"> <span class="icon sparkles mr-2"></span> AppCraft Studios
             </a>
-            <nav>
-                <ul class="flex space-x-6">
-                    <li><a href="./services.html" class="hover:text-gray-200 transition-colors">Our Services</a></li>
-                    <li><a href="./" class="hover:text-gray-200 transition-colors">Contact Us</a></li>
-                    <li><a href="./privacy-policy.html" class="text-white hover:text-gray-200 transition-colors">Privacy Policy</a></li>
-                    <li><a href="./terms-of-service.html" class="text-white hover:text-gray-200 transition-colors">Terms of Service</a></li>
+            <nav class="flex-shrink"> <ul class="flex space-x-6">
+                    <li><a href="./services.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Our Services</a></li>
+                    <li><a href="./" class="hover:text-gray-200 transition-colors font-semibold whitespace-nowrap">Contact Us</a></li> <li><a href="./privacy-policy.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                    <li><a href="./terms-of-service.html" class="hover:text-gray-200 transition-colors whitespace-nowrap">Terms of Service</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto py-12 px-4">
-        <h1 class="text-3xl font-semibold text-gray-800 text-center mb-8">Contact Us</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <main class="container mx-auto py-8 sm:py-12 flex-grow"> <h1 class="text-3xl font-semibold text-gray-800 text-center mb-6 sm:mb-8">Contact Us</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div class="contact-form">
                 <h2>Send us a message</h2>
                 <form id="contactForm">
@@ -163,30 +217,27 @@
                         <label for="message">Your Message</label>
                         <textarea id="message" name="message" class="form-control" placeholder="Enter your message" required></textarea>
                     </div>
-                    <button type="submit" class="button-primary">
-                        <span class="icon" style="background-image: url('https://unpkg.com/lucide-static@latest/icons/send.svg'); width: 20px; height: 20px;"></span> Send Message via Email Client
+                    <button type="submit" class="button-primary mt-4"> <span class="icon" style="background-image: url('https://unpkg.com/lucide-static@latest/icons/send.svg'); width: 20px; height: 20px; filter: invert(100%);"></span> Send Message
                     </button>
                 </form>
             </div>
 
             <div class="contact-info">
                 <h2>Contact Information</h2>
-                <p><strong>Address:</strong> Cape Town, South Africa</p>
-                <p><strong>Phone:</strong> +27 76 060 5261</p> <p><strong>Email:</strong> <a href="mailto:support@appcraftstudios.com">support@appcraftstudios.com</a></p>
-                <p>
-                    <strong>Connect with us:</strong>
-                    <a href="#" class="hover:text-purple-500 mr-2">Facebook</a>
-                    <a href="#" class="hover:text-purple-500 mr-2">Twitter</a>
-                    <a href="#" class="hover:text-purple-500">LinkedIn</a>
+                <p><strong>Address:</strong><br> Cape Town, South Africa</p> <p><strong>Phone:</strong><br> <a href="tel:+27760605261">+27 76 060 5261</a></p> <p><strong>Email:</strong><br> <a href="mailto:support@appcraftstudios.com">support@appcraftstudios.com</a></p>
+                <p class="mt-6"> <strong>Connect with us:</strong>
+                    <span class="block mt-2"> <a href="#" class="hover:text-purple-500 mr-3 inline-block">Facebook</a>
+                        <a href="#" class="hover:text-purple-500 mr-3 inline-block">Twitter</a>
+                        <a href="#" class="hover:text-purple-500 inline-block">LinkedIn</a>
+                    </span>
                 </p>
             </div>
         </div>
     </main>
 
-    <footer class="bg-gray-200 text-gray-600 py-6 mt-12">
-        <div class="container mx-auto px-4 text-center">
+    <footer class="bg-gray-200 text-gray-600 py-6 mt-auto"> <div class="container mx-auto text-center">
             &copy; 2025 AppCraft Studios. All rights reserved.
-            <p class="mt-2 text-sm">
+             <p class="mt-2 text-sm footer-links">
                 <a href="./privacy-policy.html" class="hover:text-purple-500 transition-colors">Privacy Policy</a>
                 <span class="mx-2">•</span>
                 <a href="./terms-of-service.html" class="hover:text-purple-500 transition-colors">Terms of Service</a>
@@ -196,29 +247,15 @@
 
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
-            // 1. Prevent the default form submission behavior
             event.preventDefault();
-
-            // 2. Get values from the form fields
             const messageContent = document.getElementById('message').value;
-            const subjectContent = document.getElementById('subject').value; // Get subject
-            // Note: name and email fields are still not used in the mailto link as per original request focus
-
-            // 3. Define the recipient email address
-            const recipientEmail = 'support@appcraftstudios.com';
-
-            // 4. Construct the mailto link
-            // Encode subject and message content for URL safety
+            const subjectContent = document.getElementById('subject').value;
+            const recipientEmail = 'support@appcraftstudios.com'; // Your email here
             const encodedSubject = encodeURIComponent(subjectContent);
             const encodedMessage = encodeURIComponent(messageContent);
-
-            // Create the mailto link including recipient, subject, AND body
-            // Parameters are separated by '&'
             const mailtoLink = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedMessage}`;
-
-            // 5. Open the user's default email client
             window.location.href = mailtoLink;
         });
     </script>
-    </body>
+</body>
 </html>
