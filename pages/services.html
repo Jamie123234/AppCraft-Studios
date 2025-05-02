@@ -9,6 +9,7 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            padding-bottom: 100px; /* Add padding to prevent footer overlap */
         }
         .icon {
             display: inline-block;
@@ -45,27 +46,35 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* shadow-md */
             padding: 2rem; /* p-8 */
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            height: 100%; /* Make cards equal height */
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Stack content vertically */
         }
-
         .service-card:hover {
             transform: translateY(-0.5rem); /* hover:translate-y-2 */
             box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* hover:shadow-xl approximation */
         }
-
+        .service-card-content {
+            flex-grow: 1; /* Allow content to grow and push button down */
+        }
         .service-icon {
             width: 3rem; /* w-12 */
             height: 3rem; /* h-12 */
             margin-bottom: 1rem; /* mb-4 */
             color: #8b5cf6; /* text-purple-500 */
         }
-
-        footer {
+       footer {
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
         text-align: center;
-        }
+        background-color: #e5e7eb; /* bg-gray-200 */
+        color: #4b5563; /* text-gray-600 */
+        padding-top: 1.5rem; /* py-6 */
+        padding-bottom: 1.5rem; /* py-6 */
+        margin-top: 3rem; /* mt-12 */
+       }
 
     </style>
 </head>
@@ -87,105 +96,66 @@
 
     <main class="container mx-auto py-12 px-4">
         <h1 class="text-3xl font-semibold text-gray-800 text-center mb-8">Our Services</h1>
+        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+            We specialize in crafting beautiful, high-performance mobile applications primarily using Flutter for seamless cross-platform experiences on iOS and Android. We also offer custom solutions tailored to your unique requirements.
+        </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
             <div class="service-card">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Mobile App Development</h2>
-                <p class="text-gray-600 mb-6">
-                    We create native and cross-platform mobile applications for iOS and Android.
-                    Our expertise spans a wide range of technologies to bring your app idea to life.
-                </p>
-                <ul class="list-disc list-inside text-gray-500">
-                    <li>Native iOS (Swift)</li>
-                    <li>Native Android (Kotlin)</li>
-                    <li>Cross-Platform (React Native)</li>
-                    <li>UI/UX Design</li>
-                    <li>App Store Deployment</li>
-                </ul>
+                <div class="service-card-content">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Flutter App Development (iOS & Android)</h2>
+                    <p class="text-gray-600 mb-6">
+                        Leveraging the power of Flutter, we build stunning, natively compiled applications for mobile from a single codebase. Get your app on the Google Play Store and Apple App Store quickly and efficiently.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500">
+                        <li>Cross-Platform (iOS & Android)</li>
+                        <li>Beautiful UI/UX Implementation</li>
+                        <li>High-Performance Applications</li>
+                        <li>Firebase Integration</li>
+                        <li>App Store Deployment & Maintenance</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="service-card">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Web Application Development</h2>
-                <p class="text-gray-600 mb-6">
-                    We build robust and scalable web applications using modern frameworks.  From
-                    e-commerce platforms to complex web portals, we have you covered.
-                </p>
-                <ul class="list-disc list-inside text-gray-500">
-                    <li>Front-End (React, Angular, Vue.js)</li>
-                    <li>Back-End (Node.js, Python/Django, Ruby on Rails)</li>
-                    <li>Database Design (PostgreSQL, MySQL, MongoDB)</li>
-                    <li>Responsive Design</li>
-                    <li>Deployment & Hosting</li>
-                </ul>
+                 <div class="service-card-content">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Custom Platform Development</h2>
+                    <p class="text-gray-600 mb-6">
+                        Need an application beyond iOS and Android? Upon request, we can utilize our diverse skillset to build custom applications for Windows and macOS, ensuring a consistent brand experience across platforms.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500">
+                        <li>Windows Desktop Applications</li>
+                        <li>macOS Applications</li>
+                        <li>Cross-Platform Desktop Solutions</li>
+                        <li>Integration with Mobile Apps</li>
+                        <li>Tailored Feature Development</li>
+                    </ul>
+                 </div>
             </div>
 
             <div class="service-card">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">UI/UX Design</h2>
-                <p class="text-gray-600 mb-6">
-                    Our design team focuses on creating intuitive and visually appealing user
-                    interfaces that enhance the user experience and drive engagement.
-                </p>
-                <ul class="list-disc list-inside text-gray-500">
-                    <li>User Research</li>
-                    <li>Information Architecture</li>
-                    <li>Wireframing & Prototyping</li>
-                    <li>Visual Design</li>
-                    <li>Usability Testing</li>
-                </ul>
+                 <div class="service-card-content">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Backend & API Development</h2>
+                    <p class="text-gray-600 mb-6">
+                        Power your mobile applications with robust and scalable backend systems. We build secure APIs and manage server-side logic using modern technologies to support your app's functionality.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-500">
+                        <li>RESTful API Design & Development</li>
+                        <li>Python (Flask, Django)</li>
+                        <li>C# (.NET Core)</li>
+                        <li>Database Design (SQL, NoSQL)</li>
+                        <li>Cloud Integration (Firebase, AWS, Azure)</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="service-card">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Custom Software Development</h2>
-                <p class="text-gray-600 mb-6">
-                    We develop tailored software solutions to address your specific business needs.
-                    Our team can handle projects of any complexity, ensuring seamless integration
-                    with your existing systems.
-                </p>
-                <ul class="list-disc list-inside text-gray-500">
-                    <li>Software Architecture</li>
-                    <li>Full-Stack Development</li>
-                    <li>API Development</li>
-                    <li>System Integration</li>
-                    <li>Quality Assurance</li>
-                </ul>
             </div>
-
-            <div class="service-card">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Cloud Services</h2>
-                <p class="text-gray-600 mb-6">
-                    Leverage the power of the cloud with our comprehensive cloud services.  We
-                    help you migrate, manage, and optimize your applications and infrastructure
-                    on leading cloud platforms.
-                </p>
-                <ul class="list-disc list-inside text-gray-500">
-                    <li>Cloud Migration (AWS, Azure, GCP)</li>
-                    <li>Cloud Infrastructure Management</li>
-                    <li>DevOps & Automation</li>
-                    <li>Serverless Computing</li>
-                    <li>Database Management</li>
-                </ul>
-            </div>
-
-            <div class="service-card">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Consulting & Strategy</h2>
-                <p class="text-gray-600 mb-6">
-                    Our experienced consultants work with you to define your technology strategy
-                    and provide expert guidance on software development best practices.
-                </p>
-                <ul class="list-disc list-inside text-gray-500">
-                    <li>Technology Roadmaps</li>
-                    <li>Software Architecture Review</li>
-                    <li>Project Management</li>
-                    <li>Agile Coaching</li>
-                    <li>IT Strategy</li>
-                </ul>
-            </div>
-        </div>
-         <div class="mt-12 text-center">
-            <a href="./contact.html" class="button-primary">Get a Quote</a>
-        </div>
+             <div class="mt-12 text-center">
+                 <a href="./contact.html" class="button-primary">Request a Custom Quote</a>
+             </div>
     </main>
 
-    <footer class="bg-gray-200 text-gray-600 py-6 mt-12">
+    <footer>
         <div class="container mx-auto px-4 text-center">
             &copy; 2025 AppCraft Studios. All rights reserved.
             <p class="mt-2 text-sm">
