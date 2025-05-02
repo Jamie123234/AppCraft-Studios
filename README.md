@@ -46,15 +46,3 @@ Consider adding a license file (e.g., MIT License) to define how others can use 
 ---
 
 *Crafted by AppCraft Studios*
-
-  @media print {
-    .ms-editor-squiggler {
-        display:none !important;
-    }
-  }
-  .ms-editor-squiggler {
-    all: initial;
-    display: block !important;
-    height: 0px !important;
-    width: 0px !important;
-  }
