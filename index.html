@@ -14,9 +14,11 @@
             display: inline-block;
             background-size: cover;
             background-position: center;
-            width: 24px;
-            height: 24px;
+            width: 24px; /* Default size */
+            height: 24px; /* Default size */
+            /* Icon Color: White (for dark theme). Remove filter for light theme */
             filter: invert(100%);
+            /* For Light Theme: Remove or comment out the line above */
             vertical-align: middle; /* Align icons better with text */
         }
         .sparkles {
@@ -44,22 +46,24 @@
             font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* Center content within button */
+            justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
             background-size: 200% auto;
             background-position: 0% 0;
-            text-align: center; /* Ensure text centers if it wraps */
+            text-align: center;
         }
         .button-primary:hover {
-             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-             transform: scale(1.05);
-             background-position: 100% 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            background-position: 100% 0;
         }
 
         /* --- Button Ghost --- */
         .button-ghost {
-            color: white;
+            /* Use text color appropriate for the theme */
+            /* color: white; /* For dark theme */
+            /* color: #4b5563; /* Example for light theme - adjust as needed */
             padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -67,163 +71,162 @@
             font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            justify-content: center; /* Center content within button */
+            justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6);
-            background-size: 200% auto;
-            animation: gradient-flow 4s linear infinite;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            text-align: center; /* Ensure text centers if it wraps */
+            border: 2px solid; /* Let Tailwind handle border color */
+            /* border-color: rgba(255, 255, 255, 0.5); /* For dark theme */
+            /* border-color: #8b5cf6; /* Example for light theme */
+            text-align: center;
         }
         .button-ghost:hover {
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
             transform: scale(1.05);
-        }
-
-        @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
-
-        /* --- Unused Button Secondary --- */
-        .button-secondary { /* Included for completeness if used later */
-             background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6);
-             color: white;
-             padding: 0.5rem 1.5rem;
-             border-radius: 9999px;
-             border: 2px solid rgba(255, 255, 255, 0.5);
-             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-             font-weight: 600;
-             font-size: 1rem;
-             display: inline-flex;
-             align-items: center;
-             justify-content: center; /* Center content within button */
-             gap: 0.5rem;
-             cursor: pointer;
-             background-size: 200% auto;
-             animation: gradient-flow 4s linear infinite;
-             text-align: center; /* Ensure text centers if it wraps */
-        }
-        .button-secondary:hover {
-             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-             transform: scale(1.05);
+            /* Optional: Add hover background/border */
         }
 
         /* --- Mobile Responsive Styles --- */
-        /* Targeting screens smaller than Tailwind's 'md' breakpoint (768px) */
         @media (max-width: 767px) {
-            /* Header: Stack logo and nav, center align */
-            header {
-                flex-direction: column; /* Stack logo and nav */
-                align-items: center;   /* Center items horizontally */
-                gap: 1rem; /* Add space between logo and nav */
-            }
-
-            /* Navigation: Stack links vertically */
-            header nav ul {
-                flex-direction: column; /* Stack nav items */
-                align-items: center;   /* Center nav items */
-                gap: 0.75rem; /* Space between nav links (was space-x-6) */
-                padding-top: 0.5rem; /* Add some space above nav */
-            }
-
              /* Main Heading: Reduce size */
             main h1 {
-                font-size: 3rem; /* Equivalent to text-5xl, adjust as needed */
+                font-size: 3rem; /* Adjust as needed */
                 line-height: 1.2; /* Improve readability */
             }
              /* Adjust icon size/margin in heading if needed */
-             main h1 .icon {
+            main h1 .icon {
                 width: 20px;
                 height: 20px;
                 margin-bottom: 0.25rem; /* Adjust vertical alignment */
-             }
+            }
 
             /* Subtitle: Reduce size */
-            main p {
+            main p.subtitle { /* Added class for specificity */
                 font-size: 1rem; /* Equivalent to text-base */
                 max-width: 90%; /* Prevent text from touching edges */
             }
 
-            /* Buttons container already stacks vertically via sm:flex-row */
-            /* Optional: Add more vertical gap between buttons if needed */
-            .button-container { /* Assuming you wrap buttons in a div with this class */
-                 gap: 1rem; /* Increase gap from default 0.5rem if needed */
+            /* Buttons container already stacks vertically */
+            .button-container {
+                gap: 1rem; /* Increase gap between buttons */
             }
-            /* Optional: Slightly reduce button padding on very small screens if they feel too big */
             .button-primary, .button-ghost {
-                 padding: 0.4rem 1.2rem;
-                 width: 90%; /* Make buttons wider on mobile */
-                 max-width: 300px; /* But not excessively wide */
-                 margin-left: auto; /* Center the buttons */
-                 margin-right: auto;
+                padding: 0.4rem 1.2rem;
+                width: 90%; /* Make buttons wider on mobile */
+                max-width: 300px; /* But not excessively wide */
+                margin-left: auto; /* Center the buttons */
+                margin-right: auto;
             }
-
 
             /* Footer Links: Stack them */
-            footer .mt-2 { /* Target the <p> holding policy/terms links */
+            footer .footer-links { /* Use class selector */
                 display: flex;
                 flex-direction: column; /* Stack links */
                 align-items: center; /* Center them */
                 gap: 0.25rem; /* Space between links */
             }
-            footer .mt-2 span { /* Hide the bullet point separator */
+            footer .footer-links span.separator { /* Hide the bullet point separator */
                 display: none;
             }
         }
 
-        /* Optional: Even smaller screen adjustments if needed */
+        /* Optional: Even smaller screen adjustments */
         @media (max-width: 480px) {
-             main h1 {
+            main h1 {
                 font-size: 2.5rem; /* Further reduce heading size */
-             }
-             /* Add any other fine-tuning for very small phones */
+            }
         }
 
     </style>
 </head>
-<body class="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col overflow-x-hidden"
-      style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG00by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
-    <div class="absolute inset-0 bg-black/40"></div>
+<body class="min-h-screen bg-gray-900 text-gray-100 flex flex-col overflow-x-hidden">
 
-    <header class="container mx-auto py-6 px-4 relative z-10 flex justify-between items-center">
-        <a href="./" class="text-2xl font-bold text-white flex items-center shrink-0"> <span class="icon sparkles mr-2"></span>
-            AppCraft Studios
-        </a>
-        <nav class="flex-shrink"> <ul class="flex space-x-6">
-                <li><a href="./pages/services.html" class="text-white hover:text-gray-200 transition-colors whitespace-nowrap">Our Services</a></li>
-                <li><a href="./pages/contact.html" class="text-white hover:text-gray-200 transition-colors whitespace-nowrap">Contact Us</a></li>
-                <li><a href="./pages/privacy-policy.html" class="text-white hover:text-gray-200 transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                <li><a href="./pages/terms-of-service.html" class="text-white hover:text-gray-200 transition-colors whitespace-nowrap">Terms of Service</a></li>
+    <header class="container mx-auto py-6 px-4 relative z-20">
+        <div class="flex justify-between items-center">
+            <a href="./" class="text-2xl font-bold flex items-center shrink-0">
+                <span class="icon sparkles mr-2"></span>
+                AppCraft Studios
+            </a>
+
+            <nav class="hidden md:flex flex-shrink">
+                <ul class="flex space-x-6">
+                    <li><a href="./pages/services.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Services</a></li>
+                    <li><a href="./pages/contact.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Contact Us</a></li>
+                    <li><a href="./pages/privacy-policy.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                    <li><a href="./pages/terms-of-service.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Terms of Service</a></li>
+                </ul>
+            </nav>
+
+            <button id="menu-toggle" class="md:hidden p-2 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-lg py-4 z-30">
+            <ul class="flex flex-col items-center space-y-4">
+                 <li><a href="./pages/services.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Our Services</a></li>
+                 <li><a href="./pages/contact.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Contact Us</a></li>
+                 <li><a href="./pages/privacy-policy.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Privacy Policy</a></li>
+                 <li><a href="./pages/terms-of-service.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Terms of Service</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
-    <main class="container mx-auto px-4 py-12 sm:py-20 flex-grow flex items-center justify-center relative z-10"> <div class="text-center space-y-6 sm:space-y-8"> <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-                <span class="icon sparkles mr-2 sm:mr-3 mb-1 sm:mb-2 inline-block"></span> AppCraft Studios
-                <span class="icon sparkles ml-2 sm:ml-3 mb-1 sm:mb-2 inline-block"></span> </h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+    <main class="container mx-auto px-4 py-12 sm:py-20 flex-grow flex items-center justify-center relative z-10">
+        <div class="text-center space-y-6 sm:space-y-8">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+                <span class="icon sparkles mr-2 sm:mr-3 mb-1 sm:mb-2 inline-block"></span>
+                AppCraft Studios
+                <span class="icon sparkles ml-2 sm:ml-3 mb-1 sm:mb-2 inline-block"></span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto subtitle">
                 Crafting exceptional mobile experiences. We turn your ideas into innovative apps.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 button-container"> <a href="./pages/services.html" class="button-primary">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 button-container">
+                <a href="./pages/services.html" class="button-primary">
                     <span class="icon rocket mr-2"></span>
                     Get Started
                 </a>
-                <a href="./pages/contact.html" class="button-ghost">
-                    <span class="icon phone mr-2"></span>
+                <a href="./pages/contact.html" class="button-ghost text-white border-white/50 hover:bg-white/10">
+                     <span class="icon phone mr-2"></span>
                     Contact Us
                 </a>
-            </div>
+                </div>
         </div>
     </main>
 
-    <footer class="py-6 text-center text-gray-400 relative z-10 border-t border-white/10 px-4"> <p>&copy; 2025 AppCraft Studios. All rights reserved.</p>
+    <footer class="py-6 text-center text-gray-400 relative z-10 border-t border-white/10 px-4">
+        <p>&copy; 2025 AppCraft Studios. All rights reserved.</p>
         <p class="mt-2 text-sm footer-links">
             <a href="./pages/privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-            <span class="mx-2">•</span>
+            <span class="mx-2 separator">•</span>
             <a href="./pages/terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
         </p>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Optional: Toggle ARIA attribute for accessibility
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Optional: Close menu if user clicks outside of it
+        document.addEventListener('click', (event) => {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+
 </body>
 </html>
