@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - AppCraft Studios</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Standard Styles (Copied from other pages for consistency) --- */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .icon {
+            display: inline-block;
+            background-size: cover;
+            background-position: center;
+            width: 24px;
+            height: 24px;
+            filter: invert(100%); /* White icon for dark theme */
+            vertical-align: middle;
+        }
+        .sparkles {
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
+        }
+        .apple-icon {
+             background-image: url('https://unpkg.com/lucide-static@latest/icons/apple.svg');
+        }
+        .google-play-icon {
+             /* Using a generic 'smartphone' or 'tablet' icon as a stand-in */
+             background-image: url('https://unpkg.com/lucide-static@latest/icons/smartphone.svg');
+        }
+        .clock-icon {
+            background-image: url('https://unpkg.com/lucide-static@latest/icons/clock.svg');
+        }
 
+        /* --- Button Ghost (for App Store links) --- */
+        .button-ghost {
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 9999px;
+            transition: all 0.3s ease-in-out;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+        .button-ghost:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- Mobile Responsive Styles --- */
+        @media (max-width: 767px) {
+            main h1 {
+                font-size: 1.875rem; /* text-3xl */
+            }
+            main p.intro-paragraph {
+                font-size: 1rem;
+            }
+            .product-card {
+                padding: 1.5rem;
+            }
+            .product-card h2 {
+                font-size: 1.25rem; /* text-xl */
+            }
+             .product-card .button-container {
+                flex-direction: column;
+                align-items: stretch; /* Make buttons full width of container */
+            }
+            .product-card .button-ghost {
+                width: 100%;
+                justify-content: center;
+            }
+            /* Footer Links: Stack them */
+            footer .footer-links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+            }
+            footer .footer-links span.separator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-900 text-gray-100 flex flex-col overflow-x-hidden">
+
+    <header class="container mx-auto py-6 px-4 relative z-20">
+        <div class="flex justify-between items-center">
+            <a href="../" class="text-2xl font-bold flex items-center shrink-0 text-white">
+                <span class="icon sparkles mr-2"></span>
+                AppCraft Studios
+            </a>
+
+            <nav class="hidden md:flex flex-shrink">
+                <ul class="flex space-x-6 text-white">
+                    <li><a href="./products.html" class="font-semibold whitespace-nowrap">Our Products</a></li>
+                    <li><a href="./services.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Services</a></li>
+                    <li><a href="./contact.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Contact Us</a></li>
+                </ul>
+            </nav>
+
+            <button id="menu-toggle" class="md:hidden p-2 rounded text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-lg py-4 z-30">
+            <ul class="flex flex-col items-center space-y-4 text-white">
+                <li><a href="./products.html" class="block px-4 py-2 bg-gray-700 rounded font-semibold whitespace-nowrap">Our Products</a></li>
+                <li><a href="./services.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Our Services</a></li>
+                <li><a href="./contact.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Contact Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-8 sm:py-12 flex-grow px-4">
+        <h1 class="text-4xl font-bold text-gray-100 text-center mb-4 sm:mb-6">Our Products</h1>
+        <p class="text-center text-gray-300 mb-10 sm:mb-12 max-w-2xl mx-auto intro-paragraph">
+            From powerful utilities to specialized business solutions, our products showcase our commitment to quality, performance, and user-centric design.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 flex flex-col product-card border border-white/10">
+                <div class="flex-grow">
+                    <h2 class="text-2xl font-bold text-white mb-2">Slip-Scan</h2>
+                    <span class="inline-block bg-green-500/20 text-green-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">Available on iOS & Android</span>
+                    <p class="text-gray-300 mb-6">
+                        Your automated data entry clerk. Slip-Scan uses cutting-edge OCR to capture every detail from crumpled or faded receipts with unparalleled accuracy, eliminating manual correction and empowering your business with data you can trust.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6 marker:text-pink-400">
+                        <li>Unparalleled OCR Accuracy</li>
+                        <li>Complete Data Extraction (Line Items, Tax)</li>
+                        <li>Automated P/L & Category Reports</li>
+                        <li>Professional Expense Tagging</li>
+                    </ul>
+                </div>
+                <div class="mt-auto flex flex-col sm:flex-row gap-3 button-container">
+                    <a href="#" class="button-ghost">
+                        <span class="icon apple-icon mr-2"></span> App Store
+                    </a>
+                    <a href="#" class="button-ghost">
+                        <span class="icon google-play-icon mr-2"></span> Google Play
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 flex flex-col product-card border border-white/10">
+                <div class="flex-grow">
+                    <h2 class="text-2xl font-bold text-white mb-2">RecruitAI</h2>
+                    <span class="inline-block bg-purple-500/20 text-purple-300 text-xs font-semibold px-3 py-1 rounded-full mb-4">Coming Soon</span>
+                    <p class="text-gray-300 mb-6">
+                        The future of hiring. RecruitAI is an intelligent platform designed to streamline the entire recruitment pipeline. Go beyond keywords and find the perfect candidate by leveraging AI for automated screening, smart filtering, and unbiased matching.
+                    </p>
+                     <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6 marker:text-purple-400">
+                        <li>AI-Powered Resume Screening</li>
+                        <li>Automated Candidate Matching</li>
+                        <li>Interview Scheduling Integration</li>
+                        <li>Collaborative Hiring Workflows</li>
+                    </ul>
+                </div>
+                 <div class="mt-auto flex flex-col sm:flex-row gap-3 button-container">
+                     <a href="./contact.html" class="button-ghost w-full">
+                        <span class="icon clock-icon mr-2"></span> Join the Waitlist
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-auto border-t border-gray-700">
+        <div class="container mx-auto text-center px-4">
+            &copy; 2025 AppCraft Studios. All rights reserved.
+             <p class="mt-2 text-sm footer-links">
+                <a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <span class="mx-2 separator">•</span>
+                <a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Script
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                menuToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+            document.addEventListener('click', (event) => {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+                if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
