@@ -23,11 +23,8 @@
         .sparkles {
             background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
         }
-        .apple-icon {
-             background-image: url('https://unpkg.com/lucide-static@latest/icons/apple.svg');
-        }
         .google-play-icon {
-             /* Using a generic 'smartphone' or 'tablet' icon as a stand-in */
+             /* Using a generic 'smartphone' icon as a stand-in */
              background-image: url('https://unpkg.com/lucide-static@latest/icons/smartphone.svg');
         }
         .clock-icon {
@@ -56,6 +53,18 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.7);
         }
+        /* Style for inactive/coming soon buttons */
+        .button-inactive {
+            cursor: default;
+            opacity: 0.6;
+        }
+        .button-inactive:hover {
+            box-shadow: none;
+            transform: none;
+            background-color: transparent;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
 
         /* --- Mobile Responsive Styles --- */
         @media (max-width: 767px) {
@@ -148,10 +157,10 @@
                     </ul>
                 </div>
                 <div class="mt-auto flex flex-col sm:flex-row gap-3 button-container">
-                    <a href="#" class="button-ghost">
-                        <span class="icon apple-icon mr-2"></span> App Store
+                    <a href="#" class="button-ghost button-inactive">
+                        <span class="icon clock-icon mr-2"></span> App Store (Coming Soon)
                     </a>
-                    <a href="#" class="button-ghost">
+                    <a href="https://play.google.com/store/apps/details?id=com.appcraftstudios.slip_scan" target="_blank" rel="noopener noreferrer" class="button-ghost">
                         <span class="icon google-play-icon mr-2"></span> Google Play
                     </a>
                 </div>
