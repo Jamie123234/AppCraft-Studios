@@ -3,231 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppCraft Studios</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>AppCraft Studios - We Build Digital Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #F7F9FC;
+            overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
         }
-        .icon {
-            display: inline-block;
-            background-size: cover;
-            background-position: center;
-            width: 24px; /* Default size */
-            height: 24px; /* Default size */
-            /* Icon Color: White (for dark theme). Remove filter for light theme */
-            filter: invert(100%);
-            /* For Light Theme: Remove or comment out the line above */
-            vertical-align: middle; /* Align icons better with text */
+        :root {
+            --brand-orange: #FF4F00;
+            --brand-blue: #0A2540;
+            --brand-light-blue: #F0F4F9;
         }
-        .sparkles {
-            background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
-        }
-        .rocket {
-            background-image: url('https://unpkg.com/lucide-static@latest/icons/rocket.svg');
-        }
-        .code-2 {
-            background-image: url('https://unpkg.com/lucide-static@latest/icons/code-2.svg');
-        }
-        .phone {
-            background-image: url('https://unpkg.com/lucide-static@latest/icons/phone.svg');
-        }
+        .text-brand-orange { color: var(--brand-orange); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .bg-brand-orange { background-color: var(--brand-orange); }
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .bg-brand-light-blue { background-color: var(--brand-light-blue); }
+        .border-brand-orange { border-color: var(--brand-orange); }
 
-        /* --- Button Primary --- */
-        .button-primary {
-            background-image: linear-gradient(to right, #8b5cf6, #ec4899, #8b5cf6);
+        .btn-primary {
+            background-color: var(--brand-orange);
             color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease-in-out;
-            font-weight: 600;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            background-size: 200% auto;
-            background-position: 0% 0;
-            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        .button-primary:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-            transform: scale(1.05);
-            background-position: 100% 0;
+        .btn-primary:hover {
+            background-color: #E64600;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--brand-blue);
+            border-color: #D6D9E0;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: var(--brand-light-blue);
+            color: var(--brand-orange);
+            transform: translateY(-2px);
         }
 
-        /* --- Button Ghost --- */
-        .button-ghost {
-            /* Use text color appropriate for the theme */
-            /* color: white; /* For dark theme */
-            /* color: #4b5563; /* Example for light theme - adjust as needed */
-            padding: 0.5rem 1.5rem;
-            border-radius: 9999px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            font-weight: 600;
-            font-size: 1rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            border: 2px solid; /* Let Tailwind handle border color */
-            /* border-color: rgba(255, 255, 255, 0.5); /* For dark theme */
-            /* border-color: #8b5cf6; /* Example for light theme */
-            text-align: center;
+        /* Initial Animation States */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .button-ghost:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-            transform: scale(1.05);
-            /* Optional: Add hover background/border */
+        .fade-in-up {
+            transform: translateY(30px);
+        }
+        .fade-in-left {
+            transform: translateX(-30px);
+        }
+        .fade-in-right {
+            transform: translateX(30px);
         }
 
-        /* --- Mobile Responsive Styles --- */
-        @media (max-width: 767px) {
-             /* Main Heading: Reduce size */
-            main h1 {
-                font-size: 3rem; /* Adjust as needed */
-                line-height: 1.2; /* Improve readability */
-            }
-             /* Adjust icon size/margin in heading if needed */
-            main h1 .icon {
-                width: 20px;
-                height: 20px;
-                margin-bottom: 0.25rem; /* Adjust vertical alignment */
-            }
-
-            /* Subtitle: Reduce size */
-            main p.subtitle { /* Added class for specificity */
-                font-size: 1rem; /* Equivalent to text-base */
-                max-width: 90%; /* Prevent text from touching edges */
-            }
-
-            /* Buttons container already stacks vertically */
-            .button-container {
-                gap: 1rem; /* Increase gap between buttons */
-            }
-            .button-primary, .button-ghost {
-                padding: 0.4rem 1.2rem;
-                width: 90%; /* Make buttons wider on mobile */
-                max-width: 300px; /* But not excessively wide */
-                margin-left: auto; /* Center the buttons */
-                margin-right: auto;
-            }
-
-            /* Footer Links: Stack them */
-            footer .footer-links { /* Use class selector */
-                display: flex;
-                flex-direction: column; /* Stack links */
-                align-items: center; /* Center them */
-                gap: 0.25rem; /* Space between links */
-            }
-            footer .footer-links span.separator { /* Hide the bullet point separator */
-                display: none;
-            }
+        /* Visible Animation States */
+        .is-visible {
+            opacity: 1;
+            transform: translate(0, 0);
         }
-
-        /* Optional: Even smaller screen adjustments */
-        @media (max-width: 480px) {
-            main h1 {
-                font-size: 2.5rem; /* Further reduce heading size */
-            }
+        
+        header {
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
-
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .mobile-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .feature-icon {
+            background-color: var(--brand-light-blue);
+            color: var(--brand-orange);
+        }
     </style>
 </head>
-<body class="min-h-screen bg-gray-900 text-gray-100 flex flex-col overflow-x-hidden">
+<body>
 
-    <header class="container mx-auto py-6 px-4 relative z-20">
-        <div class="flex justify-between items-center">
-            <a href="./" class="text-2xl font-bold flex items-center shrink-0">
-                <span class="icon sparkles mr-2"></span>
-                AppCraft Studios
-            </a>
-
-            <nav class="hidden md:flex flex-shrink">
-                <ul class="flex space-x-6">
-                    <li><a href="./pages/products.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Products</a></li>
-                    <li><a href="./pages/services.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Services</a></li>
-                    <li><a href="./pages/contact.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Contact Us</a></li>
-                    <li><a href="./pages/privacy-policy.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                    <li><a href="./pages/terms-of-service.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Terms of Service</a></li>
-                </ul>
-            </nav>
-
-            <button id="menu-toggle" class="md:hidden p-2 rounded hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
+                    <img src="logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                    <span>AppCraft Studios</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="./pages/products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
+                    <a href="./pages/services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
+                    <a href="./pages/contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="./pages/contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
         </div>
-
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-lg py-4 z-30">
-            <ul class="flex flex-col items-center space-y-4">
-                <li><a href="./pages/products.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Products</a></li>
-                 <li><a href="./pages/services.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Our Services</a></li>
-                 <li><a href="./pages/contact.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Contact Us</a></li>
-                 <li><a href="./pages/privacy-policy.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                 <li><a href="./pages/terms-of-service.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Terms of Service</a></li>
-            </ul>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
+            <div class="px-6 py-4">
+                <a href="./pages/products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
+                <a href="./pages/services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
+                <a href="./pages/contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
+                <a href="./pages/contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+            </div>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-12 sm:py-20 flex-grow flex items-center justify-center relative z-10">
-        <div class="text-center space-y-6 sm:space-y-8">
-            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-                <span class="icon sparkles mr-2 sm:mr-3 mb-1 sm:mb-2 inline-block"></span>
-                AppCraft Studios
-                <span class="icon sparkles ml-2 sm:ml-3 mb-1 sm:mb-2 inline-block"></span>
+    <!-- Hero Section -->
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-brand-blue leading-tight animate-on-scroll fade-in-up">
+                We Build Digital Products <br class="hidden md:block"> That Drive Growth.
             </h1>
-            <p class="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto subtitle">
-                Crafting exceptional mobile experiences. We turn your ideas into innovative apps.
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                AppCraft Studios is the parent company behind innovative solutions like <strong class="font-semibold">Slip-Scan</strong> and <strong class="font-semibold">RecruitAI</strong>. We turn bold ideas into powerful, user-centric applications.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 button-container">
-                <a href="./pages/products.html" class="button-primary">
-                    <span class="icon rocket mr-2"></span>
-                    Get Started
-                </a>
-                <a href="./pages/contact.html" class="button-ghost text-white border-white/50 hover:bg-white/10">
-                     <span class="icon phone mr-2"></span>
-                    Contact Us
-                </a>
-                </div>
+            <div class="mt-10 flex justify-center items-center space-x-4 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                <a href="./pages/products.html" class="btn-primary font-semibold px-8 py-3 rounded-lg shadow-xl text-lg">Our Products</a>
+                <a href="./pages/services.html" class="btn-secondary font-semibold px-8 py-3 rounded-lg border-2 text-lg">Our Services</a>
+            </div>
         </div>
     </main>
+    
+    <!-- Featured Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Discover Our Flagship Products</h2>
+                <p class="mt-4 text-gray-600 max-w-xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Two platforms, one mission: to simplify complex processes through smart technology.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Slip-Scan Card -->
+                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                    <h3 class="text-2xl font-bold text-brand-blue">Slip-Scan 🚀</h3>
+                    <p class="mt-2 text-gray-600">The ultimate tool for your finances. Say goodbye to guesswork and hello to automated clarity for personal and business expenses.</p>
+                    <a href="#" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Learn more &rarr;</a>
+                </div>
+                <!-- RecruitAI Card -->
+                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
+                    <h3 class="text-2xl font-bold text-brand-blue">RecruitAI</h3>
+                    <p class="mt-2 text-gray-600">Streamline your hiring pipeline with our intelligent recruitment platform, designed to find the perfect candidate, faster.</p>
+                    <a href="https://www.recruitai.co.za" target="_blank" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Visit RecruitAI &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer class="py-6 text-center text-gray-400 relative z-10 border-t border-white/10 px-4">
-        <p>&copy; 2025 AppCraft Studios. All rights reserved.</p>
-        <p class="mt-2 text-sm footer-links">
-            <a href="./pages/privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-            <span class="mx-2 separator">•</span>
-            <a href="./pages/terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
-        </p>
+    <!-- Technology at our Core Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Technology at our Core</h2>
+                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">We leverage cutting-edge technology to build powerful, intelligent applications that solve real-world problems.</p>
+            </div>
+            <!-- RecruitAI Feature -->
+            <div class="mt-16 grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll fade-in-left">
+                    <span class="font-semibold text-brand-orange">FOR RECRUITAI</span>
+                    <h3 class="mt-2 text-2xl font-bold text-brand-blue">AI-Powered Recruitment</h3>
+                    <p class="mt-4 text-gray-600">RecruitAI goes beyond keywords. Our platform uses sophisticated AI to analyze candidate profiles, match skills with job requirements, and provide career guidance, creating a smarter hiring ecosystem for everyone.</p>
+                    <div class="mt-6 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 feature-icon p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
+                            <p class="ml-4 text-gray-700"><strong class="font-semibold">Intelligent Matching:</strong> Connects the right talent with the right opportunities.</p>
+                        </div>
+                         <div class="flex items-start">
+                            <div class="flex-shrink-0 feature-icon p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
+                            <p class="ml-4 text-gray-700"><strong class="font-semibold">AI Career Insights:</strong> Offers personalized guidance to help candidates grow.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-on-scroll fade-in-right">
+                    <img src="recruitai-banner.png" alt="RecruitAI Dashboard Mockup" class="rounded-2xl shadow-xl">
+                </div>
+            </div>
+             <!-- Slip-Scan Feature -->
+            <div class="mt-20 grid md:grid-cols-2 gap-12 items-center">
+                 <div class="animate-on-scroll fade-in-left md:order-2">
+                    <span class="font-semibold text-brand-orange">FOR SLIP-SCAN</span>
+                    <h3 class="mt-2 text-2xl font-bold text-brand-blue">Automated Financial Clarity</h3>
+                    <p class="mt-4 text-gray-600">With Slip-Scan, we use high-accuracy Optical Character Recognition (OCR) and AI to eliminate manual data entry. It captures every detail from receipts, creating clean, reliable data for individuals and businesses.</p>
+                    <div class="mt-6 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 feature-icon p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
+                            <p class="ml-4 text-gray-700"><strong class="font-semibold">High-Accuracy OCR:</strong> Captures line items, taxes, and totals with precision.</p>
+                        </div>
+                         <div class="flex items-start">
+                            <div class="flex-shrink-0 feature-icon p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg></div>
+                            <p class="ml-4 text-gray-700"><strong class="font-semibold">Seamless Integrations:</strong> Pushes approved expenses directly to Xero and Sage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="animate-on-scroll fade-in-right md:order-1">
+                    <img src="slip-scan-banner.png" alt="Slip-Scan App Mockup" class="rounded-2xl shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">From Idea to Impact</h2>
+                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Our streamlined process ensures your vision becomes a high-quality digital product.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-3 gap-10 text-center">
+                <!-- Step 1 -->
+                <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold">1</div>
+                    <h3 class="mt-4 text-xl font-semibold text-brand-blue">Discover & Strategize</h3>
+                    <p class="mt-2 text-gray-600">We start by understanding your goals and mapping out a clear strategy for success.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold">2</div>
+                    <h3 class="mt-4 text-xl font-semibold text-brand-blue">Design & Develop</h3>
+                    <p class="mt-2 text-gray-600">Our team designs a beautiful, user-friendly interface and builds a robust, scalable application.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold">3</div>
+                    <h3 class="mt-4 text-xl font-semibold text-brand-blue">Launch & Grow</h3>
+                    <p class="mt-2 text-gray-600">We handle the launch process and provide ongoing support to ensure your product thrives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-blue text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="text-2xl font-bold flex items-center">
+                        <img src="logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                        AppCraft Studios
+                    </a>
+                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><a href="./pages/products.html" class="hover:text-white">Products</a></li>
+                            <li><a href="./pages/services.html" class="hover:text-white">Services</a></li>
+                            <li><a href="./pages/contact.html" class="hover:text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><a href="./pages/privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="./pages/terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-8 border-gray-700" />
+            <div class="text-center text-gray-500">
+                &copy; 2024 AppCraft Studios (Pty) Ltd. All Rights Reserved.
+            </div>
+        </div>
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            // Optional: Toggle ARIA attribute for accessibility
-            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !isExpanded);
-        });
-
-        // Optional: Close menu if user clicks outside of it
-        document.addEventListener('click', (event) => {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnToggle = menuToggle.contains(event.target);
-
-            if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                menuToggle.setAttribute('aria-expanded', 'false');
+        // Header scroll effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+            }
+        });
+
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => observer.observe(el));
     </script>
 
 </body>
