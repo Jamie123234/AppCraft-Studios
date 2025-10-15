@@ -12,6 +12,8 @@
         .text-brand-orange { color: var(--brand-orange); }
         .text-brand-blue { color: var(--brand-blue); }
         .bg-brand-orange { background-color: var(--brand-orange); }
+        .bg-brand-blue { background-color: var(--brand-blue); } /* This line was missing */
+        
         .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
         .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
         .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -24,20 +26,20 @@
         .form-input:focus { border-color: var(--brand-orange); box-shadow: 0 0 0 2px rgba(255, 79, 0, 0.2); outline: none; }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
     <!-- Header -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
-         <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                    <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6423ce6e31e50085d1d643a6d71b87a" alt="AppCraft Logo" class="h-8 w-8 mr-2">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
                     <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
                     <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
-                    <a href="./contact.html" class="text-brand-orange font-semibold">Contact</a>
+                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
                     <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
@@ -47,81 +49,61 @@
                 </button>
             </div>
         </div>
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
             <div class="px-6 py-4">
                 <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
                 <a href="./services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
-                <a href="./contact.html" class="block py-2 text-brand-orange font-semibold">Contact</a>
+                <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
                 <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-24">
-        <!-- Page Hero -->
-        <section class="text-center py-16">
-            <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-blue animate-on-scroll fade-in-up">Get in Touch</h1>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">We'd love to hear from you. Whether you have a question about our products or a project idea, our team is ready to answer all your questions.</p>
+    <main class="flex-grow pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-blue animate-on-scroll fade-in-up">Let's Get in Touch</h1>
+                <p class="mt-4 text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">We're here to answer any questions you may have about our products or services. Reach out to us and we'll respond as soon as we can.</p>
             </div>
-        </section>
 
-        <!-- Contact Form & Details -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-5 gap-12">
-                    <!-- Form -->
-                    <div class="lg:col-span-3 bg-brand-light-blue p-8 rounded-2xl animate-on-scroll fade-in-up">
-                         <h2 class="text-2xl font-bold text-brand-blue mb-6">Send us a Message</h2>
-                         <form id="contactForm" class="space-y-6">
-                             <div>
-                                 <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                                 <input type="text" name="name" id="name" required class="mt-1 block w-full px-4 py-3 rounded-md form-input">
-                             </div>
-                             <div>
-                                 <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                                 <input type="email" name="email" id="email" required class="mt-1 block w-full px-4 py-3 rounded-md form-input">
-                             </div>
-                             <div>
-                                 <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                 <textarea id="message" name="message" rows="5" required class="mt-1 block w-full px-4 py-3 rounded-md form-input"></textarea>
-                             </div>
-                             <div>
-                                 <button type="submit" class="w-full btn-primary font-semibold px-8 py-3 rounded-lg shadow-lg text-lg">Send Message</button>
-                             </div>
-                         </form>
+            <div class="mt-16 max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                <form action="mailto:support@appcraftstudios.com" method="get" enctype="text/plain">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" name="name" id="name" class="form-input w-full p-3 rounded-lg" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" name="email" id="email" class="form-input w-full p-3 rounded-lg" placeholder="you@example.com" required>
+                        </div>
                     </div>
-                    <!-- Details -->
-                    <div class="lg:col-span-2 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                         <h2 class="text-2xl font-bold text-brand-blue mb-6">Contact Information</h2>
-                         <div class="space-y-6 text-gray-700">
-                             <div>
-                                 <h3 class="font-semibold text-brand-blue">Email</h3>
-                                 <a href="mailto:support@appcraftstudios.com" class="text-brand-orange hover:underline">support@appcraftstudios.com</a>
-                             </div>
-                             <div>
-                                 <h3 class="font-semibold text-brand-blue">Phone</h3>
-                                 <a href="tel:+27760605261" class="hover:text-brand-orange">+27 76 060 5261</a>
-                             </div>
-                              <div>
-                                 <h3 class="font-semibold text-brand-blue">Location</h3>
-                                 <p>Cape Town, South Africa</p>
-                             </div>
-                         </div>
+                    <div class="mt-6">
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <input type="text" name="subject" id="subject" class="form-input w-full p-3 rounded-lg" placeholder="Regarding RecruitAI" required>
                     </div>
-                </div>
+                    <div class="mt-6">
+                        <label for="body" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                        <textarea name="body" id="body" rows="6" class="form-input w-full p-3 rounded-lg resize-vertical" placeholder="Your message..." required></textarea>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button type="submit" class="btn-primary font-semibold px-10 py-4 rounded-lg text-lg">Send Message</button>
+                    </div>
+                </form>
             </div>
-        </section>
+        </div>
     </main>
 
-<!-- Footer -->
+    <!-- Footer -->
     <footer class="bg-brand-blue text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="/" class="text-2xl font-bold flex items-center">
-                        <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2"> AppCraft Studios
+                        <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6423ce6e31e50085d1d643a6d71b87a" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                        AppCraft Studios
                     </a>
                     <p class="mt-4 text-gray-400">Building the future of digital products.</p>
                 </div>
@@ -137,29 +119,47 @@
                     <div>
                         <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
                         <ul class="text-gray-400 space-y-2">
-                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
+                            <li><a href="./pages/privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="./pages/terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <hr class="my-8 border-gray-700" />
-            <div class="text-center text-gray-500">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+            <div class="text-center text-gray-400">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
         </div>
     </footer>
 
     <script>
+        // Header scroll effect
         const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => { window.scrollY > 20 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.contains('opacity-0') ? (mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none'), mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')) : (mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'), mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none'));
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+            }
         });
+
+        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+            });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
+
