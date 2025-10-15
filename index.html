@@ -27,22 +27,25 @@
         .btn-primary {
             background-color: var(--brand-orange);
             color: white;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 79, 0, 0.2);
         }
         .btn-primary:hover {
             background-color: #E64600;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 79, 0, 0.3);
         }
         .btn-secondary {
             background-color: transparent;
             color: var(--brand-blue);
             border-color: #D6D9E0;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
         .btn-secondary:hover {
             background-color: var(--brand-light-blue);
             color: var(--brand-orange);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(10, 37, 64, 0.05);
         }
 
         /* Initial Animation States */
@@ -50,15 +53,9 @@
             opacity: 0;
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-in-up {
-            transform: translateY(30px);
-        }
-        .fade-in-left {
-            transform: translateX(-30px);
-        }
-        .fade-in-right {
-            transform: translateX(30px);
-        }
+        .fade-in-up { transform: translateY(30px); }
+        .fade-in-left { transform: translateX(-30px); }
+        .fade-in-right { transform: translateX(30px); }
 
         /* Visible Animation States */
         .is-visible {
@@ -81,6 +78,39 @@
             background-color: var(--brand-light-blue);
             color: var(--brand-orange);
         }
+
+        /* Animated Gradient Background for Hero */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(-45deg, #F0F4F9, #FFFFFF, #F7F9FC, #E6EFFF);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Nav Link Hover Effect */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--brand-orange);
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -90,16 +120,16 @@
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                    <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6423ce6e31e50085d1d643a6d71b87a" alt="AppCraft Logo" class="h-8 w-8 mr-2">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="./pages/products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
-                    <a href="./pages/services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
-                    <a href="./pages/contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                    <a href="./pages/products.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
+                    <a href="./pages/services.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
+                    <a href="./pages/contact.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
-                    <a href="./pages/contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                    <a href="./pages/contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg">Get in Touch</a>
                 </div>
                 <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,13 +144,13 @@
                 <a href="./pages/products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
                 <a href="./pages/services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
                 <a href="./pages/contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
-                <a href="./pages/contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                <a href="./pages/contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg">Get in Touch</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="pt-32 pb-20">
+    <main class="hero-section pt-32 pb-20">
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-4xl md:text-6xl font-extrabold text-brand-blue leading-tight animate-on-scroll fade-in-up">
                 We Build Digital Products <br class="hidden md:block"> That Drive Growth.
@@ -129,7 +159,7 @@
                 AppCraft Studios is the parent company behind innovative solutions like <strong class="font-semibold">Slip-Scan</strong> and <strong class="font-semibold">RecruitAI</strong>. We turn bold ideas into powerful, user-centric applications.
             </p>
             <div class="mt-10 flex justify-center items-center space-x-4 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                <a href="./pages/products.html" class="btn-primary font-semibold px-8 py-3 rounded-lg shadow-xl text-lg">Our Products</a>
+                <a href="./pages/products.html" class="btn-primary font-semibold px-8 py-3 rounded-lg text-lg">Our Products</a>
                 <a href="./pages/services.html" class="btn-secondary font-semibold px-8 py-3 rounded-lg border-2 text-lg">Our Services</a>
             </div>
         </div>
@@ -144,13 +174,13 @@
             </div>
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- Slip-Scan Card -->
-                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-3 transition-all duration-300 shadow-sm hover:shadow-2xl animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
                     <h3 class="text-2xl font-bold text-brand-blue">Slip-Scan 🚀</h3>
                     <p class="mt-2 text-gray-600">The ultimate tool for your finances. Say goodbye to guesswork and hello to automated clarity for personal and business expenses.</p>
-                    <a href="#" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Learn more &rarr;</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.appcraftstudios.slip_scan&hl=en-ZA" target="_blank" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Learn more &rarr;</a>
                 </div>
                 <!-- RecruitAI Card -->
-                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-2 transition-transform duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
+                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-3 transition-all duration-300 shadow-sm hover:shadow-2xl animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
                     <h3 class="text-2xl font-bold text-brand-blue">RecruitAI</h3>
                     <p class="mt-2 text-gray-600">Streamline your hiring pipeline with our intelligent recruitment platform, designed to find the perfect candidate, faster.</p>
                     <a href="https://www.recruitai.co.za" target="_blank" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Visit RecruitAI &rarr;</a>
@@ -184,7 +214,7 @@
                     </div>
                 </div>
                 <div class="animate-on-scroll fade-in-right">
-                    <img src="recruitai-banner.png" alt="RecruitAI Dashboard Mockup" class="rounded-2xl shadow-xl">
+                    <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/121e73f4922b5123d242d593bdbf69e6" alt="RecruitAI Dashboard Mockup" class="rounded-2xl shadow-xl transform transition-transform duration-500 hover:scale-105">
                 </div>
             </div>
              <!-- Slip-Scan Feature -->
@@ -205,7 +235,7 @@
                     </div>
                 </div>
                 <div class="animate-on-scroll fade-in-right md:order-1">
-                    <img src="slip-scan-banner.png" alt="Slip-Scan App Mockup" class="rounded-2xl shadow-xl">
+                    <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/d895f5104d2e5b8744b82d029520448f" alt="Slip-Scan App Mockup" class="rounded-2xl shadow-xl transform transition-transform duration-500 hover:scale-105">
                 </div>
             </div>
         </div>
@@ -221,19 +251,19 @@
             <div class="mt-12 grid md:grid-cols-3 gap-10 text-center">
                 <!-- Step 1 -->
                 <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold">1</div>
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold border-4 border-white shadow-lg">1</div>
                     <h3 class="mt-4 text-xl font-semibold text-brand-blue">Discover & Strategize</h3>
                     <p class="mt-2 text-gray-600">We start by understanding your goals and mapping out a clear strategy for success.</p>
                 </div>
                 <!-- Step 2 -->
                 <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
-                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold">2</div>
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold border-4 border-white shadow-lg">2</div>
                     <h3 class="mt-4 text-xl font-semibold text-brand-blue">Design & Develop</h3>
                     <p class="mt-2 text-gray-600">Our team designs a beautiful, user-friendly interface and builds a robust, scalable application.</p>
                 </div>
                 <!-- Step 3 -->
                 <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
-                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold">3</div>
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold border-4 border-white shadow-lg">3</div>
                     <h3 class="mt-4 text-xl font-semibold text-brand-blue">Launch & Grow</h3>
                     <p class="mt-2 text-gray-600">We handle the launch process and provide ongoing support to ensure your product thrives.</p>
                 </div>
@@ -241,13 +271,25 @@
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="py-20 bg-brand-light-blue">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Have a project in mind?</h2>
+            <p class="mt-4 text-gray-600 max-w-xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Let's build something amazing together. We're always excited to hear about new ideas and challenges.</p>
+            <div class="mt-8 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                <a href="./pages/contact.html" class="btn-primary font-semibold px-8 py-4 rounded-lg text-lg">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Footer -->
     <footer class="bg-brand-blue text-white">
         <div class="container mx-auto px-6 py-12">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="/" class="text-2xl font-bold flex items-center">
-                        <img src="logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                        <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6423ce6e31e50085d1d643a6d71b87a" alt="AppCraft Logo" class="h-8 w-8 mr-2">
                         AppCraft Studios
                     </a>
                     <p class="mt-4 text-gray-400">Building the future of digital products.</p>
@@ -256,23 +298,23 @@
                     <div>
                         <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
                         <ul class="text-gray-400 space-y-2">
-                            <li><a href="./pages/products.html" class="hover:text-white">Products</a></li>
-                            <li><a href="./pages/services.html" class="hover:text-white">Services</a></li>
-                            <li><a href="./pages/contact.html" class="hover:text-white">Contact Us</a></li>
+                            <li><a href="./pages/products.html" class="hover:text-white transition-colors">Products</a></li>
+                            <li><a href="./pages/services.html" class="hover:text-white transition-colors">Services</a></li>
+                            <li><a href="./pages/contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
                         </ul>
                     </div>
                     <div>
                         <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
                         <ul class="text-gray-400 space-y-2">
-                            <li><a href="./pages/privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="./pages/terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
+                            <li><a href="./pages/privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="./pages/terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <hr class="my-8 border-gray-700" />
-            <div class="text-center text-gray-500">
-                &copy; 2024 AppCraft Studios (Pty) Ltd. All Rights Reserved.
+            <div class="text-center text-gray-400">
+                &copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -318,3 +360,4 @@
 
 </body>
 </html>
+
