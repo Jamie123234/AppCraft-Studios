@@ -7,26 +7,30 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; }
-        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; }
+        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; overflow-x: hidden; }
+        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; --brand-light-blue: #F0F4F9; }
         .text-brand-orange { color: var(--brand-orange); }
         .text-brand-blue { color: var(--brand-blue); }
+        .bg-brand-orange { background-color: var(--brand-orange); }
         .bg-brand-blue { background-color: var(--brand-blue); }
-        .prose h2 { color: var(--brand-blue); font-weight: 700; margin-top: 2em; margin-bottom: 1em; }
-        .prose a { color: var(--brand-orange); }
+        .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
+        .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
+        .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up { transform: translateY(30px); }
+        .is-visible { opacity: 1; transform: translate(0, 0); }
         header { transition: background-color 0.3s, box-shadow 0.3s; }
         header.scrolled { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
     <!-- Header -->
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
-         <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                    <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6423ce6e31e50085d1d643a6d71b87a" alt="AppCraft Logo" class="h-8 w-8 mr-2">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
@@ -34,32 +38,49 @@
                     <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
                     <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
                 </nav>
+                <div class="hidden md:block">
+                    <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
+            <div class="px-6 py-4">
+                <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
+                <a href="./services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
+                <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
+                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="pt-24 pb-20">
+    <main class="flex-grow pt-32 pb-20">
         <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm">
-                <div class="text-center mb-8">
-                     <h1 class="text-3xl md:text-4xl font-extrabold text-brand-blue">Privacy Policy</h1>
-                     <p class="mt-2 text-gray-500">Last Updated: 15 October 2025</p>
-                </div>
-                <div class="prose max-w-none">
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll fade-in-up">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-brand-blue">Privacy Policy</h1>
+                <p class="mt-4 text-sm text-gray-500">Last Updated: October 15, 2025</p>
+
+                <div class="mt-8 prose prose-lg max-w-none text-gray-700">
                     <p>AppCraft Studios (Pty) Ltd ("us", "we", or "our") operates the AppCraft Studios website (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
                     
-                    <h2>Information Collection and Use</h2>
-                    <p>We collect several different types of information for various purposes to provide and improve our Service to you. This may include, but is not limited to, Personal Data (like name and email address) when you contact us, and Usage Data collected automatically when you visit our site.</p>
+                    <h2 class="text-brand-blue">Information Collection and Use</h2>
+                    <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
 
-                    <h2>Use of Data</h2>
-                    <p>AppCraft Studios uses the collected data for various purposes: to provide and maintain the Service; to notify you about changes to our Service; to provide customer care and support; to monitor the usage of the Service; and to detect, prevent and address technical issues.</p>
+                    <h3 class="text-brand-blue">Types of Data Collected</h3>
+                    <h4>Personal Data</h4>
+                    <p>While using our Service, especially when contacting us, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to: Email address, First name and last name, Phone number, and any project details you provide.</p>
+                    <h4>Usage Data</h4>
+                    <p>We may also collect information on how the Service is accessed and used ("Usage Data"). This may include your computer's IP address, browser type, browser version, the pages of our Service that you visit, the time and date of your visit, and other diagnostic data.</p>
+
+                    <h2 class="text-brand-blue">Use of Data</h2>
+                    <p>AppCraft Studios (Pty) Ltd uses the collected data to provide and maintain our Service, notify you about changes, allow you to participate in interactive features, provide customer support, and to monitor the usage of our Service.</p>
                     
-                    <h2>Security of Data</h2>
-                    <p>The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
-
-                    <h2>Contact Us</h2>
-                    <p>If you have any questions about this Privacy Policy, please <a href="./contact.html">contact us</a>.</p>
+                    <h2 class="text-brand-blue">Contact Us</h2>
+                    <p>If you have any questions about this Privacy Policy, please <a href="./contact.html" class="text-brand-orange hover:underline">contact us</a> by visiting the contact page on our website.</p>
                 </div>
             </div>
         </div>
@@ -68,13 +89,64 @@
     <!-- Footer -->
     <footer class="bg-brand-blue text-white">
         <div class="container mx-auto px-6 py-12">
-            <div class="text-center text-gray-500">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="text-2xl font-bold flex items-center">
+                        <img src="https://storage.googleapis.com/gemini-prod-us-west1-assets/e6423ce6e31e50085d1d643a6d71b87a" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                        AppCraft Studios
+                    </a>
+                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><a href="./products.html" class="hover:text-white">Products</a></li>
+                            <li><a href="./services.html" class="hover:text-white">Services</a></li>
+                            <li><a href="./contact.html" class="hover:text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-8 border-gray-700" />
+            <div class="text-center text-gray-400">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
         </div>
     </footer>
 
     <script>
+        // Header scroll effect
         const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => { window.scrollY > 20 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('opacity-0')) {
+                mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
+            }
+        });
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
+            });
+        }, { threshold: 0.1 });
+        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+        elementsToAnimate.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
