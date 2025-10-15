@@ -4,173 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - AppCraft Studios</title>
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Standard Styles - Simplified */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .icon {
-            display: inline-block;
-            background-size: cover;
-            background-position: center;
-            width: 24px; /* Default size */
-            height: 24px; /* Default size */
-            /* Icon Color: White (for dark theme) */
-            filter: invert(100%);
-            vertical-align: middle; /* Align icons better with text */
-        }
-        .sparkles {
-             /* Use CDN link consistent with other pages */
-            background-image: url('https://unpkg.com/lucide-static@latest/icons/sparkles.svg');
-        }
-        /* Add other icons if needed for header/footer */
-
-        /* --- Mobile Responsive Styles (Keep relevant text/spacing adjustments) --- */
-        @media (max-width: 767px) {
-           /* Footer Links: Stack them */
-           footer .footer-links {
-               display: flex;
-               flex-direction: column;
-               align-items: center;
-               gap: 0.25rem;
-           }
-           footer .footer-links span.separator {
-               display: none;
-           }
-            /* Reduce top margin for footer on mobile */
-            footer {
-                margin-top: 2rem; /* mt-8 */
-            }
-            /* Reduce main padding */
-             main {
-                 padding-top: 1.5rem; /* py-6 */
-                 padding-bottom: 1.5rem;
-             }
-        }
-
+        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; }
+        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; }
+        .text-brand-orange { color: var(--brand-orange); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .prose h2 { color: var(--brand-blue); font-weight: 700; margin-top: 2em; margin-bottom: 1em; }
+        .prose a { color: var(--brand-orange); }
+        header { transition: background-color 0.3s, box-shadow 0.3s; }
+        header.scrolled { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
     </style>
 </head>
-<body class="min-h-screen bg-gray-900 text-gray-300 flex flex-col overflow-x-hidden">
+<body>
 
-    <header class="container mx-auto py-6 px-4 relative z-20">
-        <div class="flex justify-between items-center">
-            <a href="../" class="text-2xl font-bold flex items-center shrink-0 text-white">
-                <span class="icon sparkles mr-2"></span>
-                AppCraft Studios
-            </a>
-
-            <nav class="hidden md:flex flex-shrink">
-                <ul class="flex space-x-6 text-white">
-                    <li><a href="./products.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Products</a></li>
-                    <li><a href="./services.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Services</a></li>
-                    <li><a href="./contact.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Contact Us</a></li>
-                    <li><a href="./privacy-policy.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                     <li><a href="./terms-of-service.html" class="font-semibold whitespace-nowrap">Terms of Service</a></li>
-                </ul>
-            </nav>
-
-            <button id="menu-toggle" class="md:hidden p-2 rounded text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-800 shadow-lg py-4 z-30">
-            <ul class="flex flex-col items-center space-y-4 text-white">
-                 <li><a href="./products.html" class="hover:text-gray-300 transition-colors whitespace-nowrap">Our Products</a></li>
-                 <li><a href="./services.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Our Services</a></li>
-                 <li><a href="./contact.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Contact Us</a></li>
-                 <li><a href="./privacy-policy.html" class="block px-4 py-2 hover:bg-gray-700 rounded transition-colors whitespace-nowrap">Privacy Policy</a></li>
-                 <li><a href="./terms-of-service.html" class="block px-4 py-2 bg-gray-700 rounded font-semibold whitespace-nowrap">Terms of Service</a></li> </ul>
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
+                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                    <span>AppCraft Studios</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
+                    <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
+                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                </nav>
+            </div>
         </div>
     </header>
 
-     <main class="container mx-auto py-8 sm:py-12 px-4 max-w-4xl flex-grow">
-        <h1 class="text-3xl md:text-4xl font-semibold text-gray-100 text-center mb-6 sm:mb-8">Terms of Service</h1>
+    <!-- Main Content -->
+    <main class="pt-24 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm">
+                <div class="text-center mb-8">
+                     <h1 class="text-3xl md:text-4xl font-extrabold text-brand-blue">Terms of Service</h1>
+                     <p class="mt-2 text-gray-500">Last Updated: 15 October 2025</p>
+                </div>
+                <div class="prose max-w-none">
+                    <p>Welcome to AppCraft Studios! These Terms of Service ("Terms") govern your use of the AppCraft Studios website (the "Website") and any related services provided by AppCraft Studios (Pty) Ltd.</p>
+                    
+                    <h2>1. Use of Our Website</h2>
+                    <p>By accessing or using our Website, you agree to be bound by these Terms. You agree to use the Website only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the Website.</p>
 
-        <p class="text-sm text-gray-400 mb-6 text-center sm:text-left">Last Updated: May 2, 2025</p>
+                    <h2>2. Intellectual Property</h2>
+                    <p>All content included on the Website, such as text, graphics, logos, and software, is the property of AppCraft Studios or its content suppliers and protected by South African and international copyright laws.</p>
+                    
+                    <h2>3. Limitation of Liability</h2>
+                    <p>The Website and the information contained herein are provided "as is". To the fullest extent permitted by applicable law, AppCraft Studios will not be liable for any indirect, incidental, special, consequential or punitive damages resulting from your access to or use of the Website.</p>
 
-        <p class="mb-4 leading-relaxed">Welcome to AppCraft Studios! These Terms of Service ("Terms") govern your use of the AppCraft Studios website (the "Website") and any related services provided by AppCraft Studios ("us", "we", or "our").</p>
+                     <h2>4. Governing Law</h2>
+                    <p>These Terms shall be governed and construed in accordance with the laws of South Africa, without regard to its conflict of law provisions.</p>
 
-        <p class="mb-4 leading-relaxed">By accessing or using our Website, you agree to be bound by these Terms. If you disagree with any part of the terms, then you may not access the Website.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">1. Use of Our Website</h2>
-        <p class="mb-4 leading-relaxed">You agree to use the Website only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the Website. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within our Website.</p>
-        <p class="mb-4 leading-relaxed">You must not use our Website to send unsolicited commercial communications. You must not use the content on our Website for any marketing-related purpose without our express written consent.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">2. Intellectual Property</h2>
-        <p class="mb-4 leading-relaxed">All content included on the Website, such as text, graphics, logos, icons, images, audio clips, digital downloads, data compilations, and software, is the property of AppCraft Studios or its content suppliers and protected by South African and international copyright laws. The compilation of all content on this site is the exclusive property of AppCraft Studios.</p>
-        <p class="mb-4 leading-relaxed">You may not systematically extract and/or re-utilize parts of the contents of the Website without our express written consent. In particular, you may not utilize any data mining, robots, or similar data gathering and extraction tools to extract (whether once or many times) for re-utilization any substantial parts of this Website, without our express written consent.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">3. Services</h2>
-        <p class="mb-4 leading-relaxed">AppCraft Studios offers mobile application development and related services as described on our Website. Specific terms, conditions, and agreements related to the provision of these services will be outlined in separate contracts or statements of work agreed upon between AppCraft Studios and the client.</p>
-        <p class="mb-4 leading-relaxed">Information provided on the Website regarding services is for informational purposes only and does not constitute a binding offer to perform services.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">4. Limitation of Liability</h2>
-        <p class="mb-4 leading-relaxed">The Website and the information contained herein are provided "as is". AppCraft Studios makes no express or implied representations or warranties regarding the Website or the information provided.</p>
-        <p class="mb-4 leading-relaxed">To the fullest extent permitted by applicable law, AppCraft Studios, its directors, employees, partners, suppliers, or affiliates, will not be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Website; (ii) any conduct or content of any third party on the Website; (iii) any content obtained from the Website; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">5. Links To Other Web Sites</h2>
-        <p class="mb-4 leading-relaxed">Our Website may contain links to third-party web sites or services that are not owned or controlled by AppCraft Studios.</p>
-        <p class="mb-4 leading-relaxed">AppCraft Studios has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that AppCraft Studios shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
-        <p class="mb-4 leading-relaxed">We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">6. Indemnification</h2>
-        <p class="mb-4 leading-relaxed">You agree to defend, indemnify and hold harmless AppCraft Studios and its licensee and licensors, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees), resulting from or arising out of a) your use and access of the Website, or b) a breach of these Terms.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">7. Governing Law</h2>
-        <p class="mb-4 leading-relaxed">These Terms shall be governed and construed in accordance with the laws of South Africa, without regard to its conflict of law provisions.</p>
-        <p class="mb-4 leading-relaxed">Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Website, and supersede and replace any prior agreements we might have between us regarding the Website.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">8. Changes</h2>
-        <p class="mb-4 leading-relaxed">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
-        <p class="mb-4 leading-relaxed">By continuing to access or use our Website after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Website.</p>
-
-        <h2 class="text-xl md:text-2xl font-semibold text-gray-100 mt-6 mb-3">9. Contact Us</h2>
-        <p class="mb-4 leading-relaxed">If you have any questions about these Terms, please contact us:</p>
-         <ul class="list-disc list-inside space-y-1 mb-4 pl-4 marker:text-purple-400 text-gray-300 leading-relaxed">
-            <li>By visiting the contact page on our website: <a href="./contact.html" class="text-purple-400 hover:text-purple-300 underline transition-colors">Contact Us</a></li>
-       </ul>
-
+                    <h2>5. Contact Us</h2>
+                    <p>If you have any questions about these Terms, please <a href="./contact.html">contact us</a>.</p>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer class="bg-gray-800 text-gray-400 py-6 mt-auto border-t border-gray-700">
-        <div class="container mx-auto text-center px-4">
-            &copy; 2025 AppCraft Studios. All rights reserved.
-            <p class="mt-2 text-sm footer-links">
-                <a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-                <span class="mx-2 separator">•</span>
-                <a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a>
-            </p>
+    <!-- Footer -->
+    <footer class="bg-brand-blue text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="text-center text-gray-500">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle Script (Standard)
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
-                menuToggle.setAttribute('aria-expanded', !isExpanded);
-            });
-
-            document.addEventListener('click', (event) => {
-                const isClickInsideMenu = mobileMenu.contains(event.target);
-                const isClickOnToggle = menuToggle.contains(event.target);
-
-                if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => { window.scrollY > 20 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); });
     </script>
-
 </body>
 </html>
