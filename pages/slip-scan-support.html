@@ -79,12 +79,33 @@
                     </details>
                     <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
                         <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            What should I do if the scan (OCR) is inaccurate?
+                            How do I generate a report? What reports are available?
                             <span class="arrow transition-transform duration-200">►</span>
                         </summary>
-                        <p class="mt-4 text-gray-600">Our high-accuracy OCR works best in good lighting with the receipt on a flat, dark surface. If a scan is incorrect, you can manually tap on any field (like 'Total', 'Vendor', or 'Date') to edit the information before saving the expense.</p>
+                        <p class="mt-4 text-gray-600">You can generate expense reports from the "Reporting" tab in the app. Simply select your desired date range (e.g., last 30 days, custom range) and choose the format. Slip-Scan can generate PDF summaries, detailed CSV exports for Excel, and even P&L statements based on your categorised scans.</p>
                     </details>
                     <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
+                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
+                            What can the AI chat integration do?
+                            <span class="arrow transition-transform duration-200">►</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Our AI Chat assistant acts as your personal finance helper. You can ask it questions in plain English, such as "How much did I spend on fuel last month?" or "Show me all transactions from 'Woolworths'". The AI can help you find transactions, understand your spending habits, and categorise expenses.</p>
+                    </details>
+                     <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
+                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
+                            Is my financial data safe?
+                            <span class="arrow transition-transform duration-200">►</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Yes, your data's security is our top priority. All scanned images and extracted data are encrypted and stored in secure Supabase storage buckets. We use Row Level Security (RLS) to ensure that only you have access to your own financial information.</p>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.8s;">
+                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
+                            Can I share my scans?
+                            <span class="arrow transition-transform duration-200">►</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Yes. Once a scan is processed, you can tap the 'Share' icon on the expense details screen. This allows you to send a PDF or image (JPEG) of your receipt via email, WhatsApp, or any other messaging application on your phone. This is perfect for reimbursements or sharing with your accountant.</p>
+                    </details>
+                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.9s;">
                         <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
                             How does Team Management work?
                             <span class="arrow transition-transform duration-200">►</span>
@@ -94,7 +115,7 @@
                 </div>
             </div>
 
-            <div class="mt-20 max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.8s;">
+            <div class="mt-20 max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 1.0s;">
                 <h2 class="text-2xl font-bold text-brand-blue text-center">Submit a Support Request</h2>
                 <form action="mailto:support@appcraftstudios.com" method="get" enctype="text/plain" class="mt-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -111,10 +132,12 @@
                         <div>
                             <label for="topic" class="block text-sm font-medium text-gray-700 mb-2">Support Topic</label>
                             <select id="topic" name="subject" class="form-input w-full p-3 rounded-lg bg-white" required>
-                                <option value="Scanning Issue">Scanning Issue</option>
                                 <option value="Integration Help (Xero/Sage)">Integration Help (Xero/Sage)</option>
+                                <option value="Reporting Issue">Reporting Issue</option>
+                                <option value="AI Chat Question">AI Chat Question</option>
                                 <option value="Team Management">Team Management</option>
                                 <option value="Billing Question">Billing Question</option>
+                                <option value="Data Privacy">Data Privacy</option>
                                 <option value="Other">Other</option>
                             </select>
                         </div>
