@@ -450,7 +450,7 @@
                     </div>
                     
                     <div class="bg-white p-10 md:p-14 rounded-3xl shadow-2xl animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                        <form action="mailto:support@appcraftstudios.com" method="get" enctype="text/plain">
+                        <form id="support-form">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block text-sm font-bold text-brand-blue mb-3">Full Name *</label>
@@ -528,7 +528,9 @@
                             </div>
                             <h3 class="text-xl font-bold text-brand-blue mb-3">User Guide</h3>
                             <p class="text-gray-600 mb-6">Comprehensive documentation on every feature</p>
-                            <p class="text-gray-500 font-medium">Coming Soon</p>
+                            <a href="#" class="open-coming-soon-modal text-gray-500 font-medium cursor-pointer">
+                                Coming Soon
+                            </a>
                         </div>
                         
                         <div class="support-card bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
@@ -555,11 +557,8 @@
                             </div>
                             <h3 class="text-xl font-bold text-brand-blue mb-3">Community Forum</h3>
                             <p class="text-gray-600 mb-6">Connect with other Slip-Scan users</p>
-                            <a href="#" id="forum-coming-soon-btn" class="text-brand-orange font-semibold hover:underline inline-flex items-center">
+                            <a href="#" class="open-coming-soon-modal text-gray-500 font-medium cursor-pointer">
                                 Coming Soon
-                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
                             </a>
                         </div>
                     </div>
@@ -573,7 +572,7 @@
                     <h2 class="text-4xl md:text-5xl font-bold" style="color: #0A2540;">Ready to Transform Your Finances?</h2>
                     <p class="mt-6 text-xl" style="color: #4B5563;">Download Slip-Scan today and experience automated financial clarity</p>
                     <div class="mt-10 flex flex-wrap justify-center gap-4">
-                        <a href="https://apps.apple.com/us/app/slip-scan/id6504223253" target="_blank" class="bg-white text-brand-blue font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 inline-flex items-center border-2 border-gray-200 hover:border-brand-orange">
+                        <a href="#" class="open-coming-soon-modal bg-white text-brand-blue font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 inline-flex items-center border-2 border-gray-200 hover:border-brand-orange">
                             <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
                             </svg>
@@ -669,9 +668,15 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+                // Check if it's a modal trigger, if so, don't smooth scroll
+                if (this.classList.contains('open-coming-soon-modal')) {
+                    e.preventDefault();
+                    return;
+                }
+                
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
@@ -679,10 +684,10 @@
 
         // --- Modal Logic ---
         const modal = document.getElementById('coming-soon-modal');
-        const openModalBtn = document.getElementById('forum-coming-soon-btn');
+        const openModalBtns = document.querySelectorAll('.open-coming-soon-modal');
         const closeModalBtn = document.getElementById('close-modal-btn');
         
-        if (modal && openModalBtn && closeModalBtn) {
+        if (modal && openModalBtns.length > 0 && closeModalBtn) {
             // Function to open the modal
             const openModal = (e) => {
                 e.preventDefault(); // Stop the <a> tag from navigating
@@ -694,8 +699,11 @@
                 modal.classList.remove('show');
             };
 
-            // Event Listeners
-            openModalBtn.addEventListener('click', openModal);
+            // Event Listeners for all open buttons
+            openModalBtns.forEach(btn => {
+                btn.addEventListener('click', openModal);
+            });
+            
             closeModalBtn.addEventListener('click', closeModal);
 
             // Close modal when clicking on the background overlay
@@ -703,6 +711,37 @@
                 if (e.target === modal) {
                     closeModal();
                 }
+            });
+        }
+        
+        // --- Mailto Form Handler ---
+        const supportForm = document.getElementById('support-form');
+        if (supportForm) {
+            supportForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const topic = document.getElementById('topic').value;
+                const device = document.getElementById('device').value;
+                const issue = document.getElementById('body').value;
+
+                // Build the body string with newlines
+                const bodyParts = [
+                    "Name: " + name,
+                    "Email: " + email,
+                    "Device: " + device,
+                    "\n-----------------\n\n" + issue
+                ];
+
+                const subject = encodeURIComponent(topic);
+                // encodeURIComponent correctly handles spaces as %20 and newlines as %0A
+                const body = encodeURIComponent(bodyParts.join('\n'));
+
+                window.location.href = \`mailto:support@appcraftstudios.com?subject=\${subject}&body=\${body}\`;
+                
+                // Optional: Clear the form after submission
+                // supportForm.reset();
             });
         }
     </script>
