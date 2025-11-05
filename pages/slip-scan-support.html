@@ -8,24 +8,132 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; overflow-x: hidden; }
-        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; --brand-light-blue: #F0F4F9; }
+        :root { 
+            --brand-orange: #FF4F00; 
+            --brand-blue: #0A2540; 
+            --brand-light-blue: #F0F4F9;
+            --brand-baby-blue: #0260C0;
+        }
         .text-brand-orange { color: var(--brand-orange); }
         .text-brand-blue { color: var(--brand-blue); }
+        .text-brand-baby-blue { color: var(--brand-baby-blue); }
         .bg-brand-orange { background-color: var(--brand-orange); }
         .bg-brand-blue { background-color: var(--brand-blue); }
-        .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
-        .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
+        .bg-brand-light-blue { background-color: var(--brand-light-blue); }
+        
+        .btn-primary { 
+            background-color: var(--brand-orange); 
+            color: white; 
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 79, 0, 0.2);
+        }
+        .btn-primary:hover { 
+            background-color: #E64600; 
+            transform: translateY(-3px); 
+            box-shadow: 0 7px 20px rgba(255, 79, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--brand-blue);
+            border: 2px solid #D6D9E0;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: var(--brand-light-blue);
+            border-color: var(--brand-orange);
+            color: var(--brand-orange);
+            transform: translateY(-2px);
+        }
+        
         .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in-up { transform: translateY(30px); }
+        .fade-in-left { transform: translateX(-30px); }
+        .fade-in-right { transform: translateX(30px); }
         .is-visible { opacity: 1; transform: translate(0, 0); }
+        
         header { transition: background-color 0.3s, box-shadow 0.3s; }
-        header.scrolled { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        header.scrolled { 
+            background-color: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+        }
+        
         .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
-        .form-input { border: 1px solid #D6D9E0; transition: border-color 0.3s, box-shadow 0.3s; }
-        .form-input:focus { border-color: var(--brand-orange); box-shadow: 0 0 0 2px rgba(255, 79, 0, 0.2); outline: none; }
-        details > summary { list-style: none; cursor: pointer; }
+        
+        .form-input { 
+            border: 2px solid #E5E7EB; 
+            transition: all 0.3s;
+            background-color: white;
+        }
+        .form-input:focus { 
+            border-color: var(--brand-orange); 
+            box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.1); 
+            outline: none; 
+        }
+        
+        .faq-item {
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .faq-item:hover {
+            border-color: var(--brand-orange);
+            transform: translateX(5px);
+        }
+        
+        details > summary { 
+            list-style: none; 
+            cursor: pointer;
+            user-select: none;
+        }
         details > summary::-webkit-details-marker { display: none; }
-        details[open] summary .arrow { transform: rotate(90deg); }
+        details[open] summary .arrow { transform: rotate(180deg); }
+        details[open] .faq-item { border-color: var(--brand-orange); }
+        
+        .support-card {
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+        .support-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--brand-orange);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #F0F4F9 0%, #FFFFFF 50%, #E6EFFF 100%);
+        }
+        
+        .icon-circle {
+            background: linear-gradient(135deg, var(--brand-light-blue) 0%, #E6EFFF 100%);
+            transition: all 0.3s;
+        }
+        .support-card:hover .icon-circle {
+            transform: scale(1.1) rotate(5deg);
+        }
+        
+        .category-badge {
+            background: linear-gradient(135deg, var(--brand-orange) 0%, #FF6B2B 100%);
+            box-shadow: 0 4px 12px rgba(255, 79, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--brand-orange);
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -38,12 +146,12 @@
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
-                    <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
-                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                    <a href="./products.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
+                    <a href="./services.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
+                    <a href="./contact.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
-                    <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                    <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg">Get in Touch</a>
                 </div>
                 <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
@@ -55,107 +163,435 @@
                 <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
                 <a href="./services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
                 <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
-                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg">Get in Touch</a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow pt-32 pb-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-blue animate-on-scroll fade-in-up">Slip-Scan Support</h1>
-                <p class="mt-4 text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">We're here to help. Check our FAQs below or submit a support ticket directly to our team.</p>
-            </div>
-
-            <div class="mt-16 max-w-3xl mx-auto">
-                <h2 class="text-2xl font-bold text-brand-blue text-center">Frequently Asked Questions</h2>
-                <div class="mt-8 space-y-4">
-                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            How do I connect Slip-Scan to Xero or Sage?
-                            <span class="arrow transition-transform duration-200">►</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600">You can connect your accounting software in the "Settings" menu under "Integrations". Simply select Xero or Sage and follow the prompts to log in and authorize your account. Once connected, you can push approved expenses directly to your ledger.</p>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
-                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            How do I generate a report? What reports are available?
-                            <span class="arrow transition-transform duration-200">►</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600">You can generate expense reports from the "Reporting" tab in the app. Simply select your desired date range (e.g., last 30 days, custom range) and choose the format. Slip-Scan can generate PDF summaries, detailed CSV exports for Excel, and even P&L statements based on your categorised scans.</p>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
-                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            What can the AI chat integration do?
-                            <span class="arrow transition-transform duration-200">►</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600">Our AI Chat assistant acts as your personal finance helper. You can ask it questions in plain English, such as "How much did I spend on fuel last month?" or "Show me all transactions from 'Woolworths'". The AI can help you find transactions, understand your spending habits, and categorise expenses.</p>
-                    </details>
-                     <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
-                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            Is my financial data safe?
-                            <span class="arrow transition-transform duration-200">►</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600">Yes, your data's security is our top priority. All scanned images and extracted data are encrypted and stored in secure Supabase storage buckets. We use Row Level Security (RLS) to ensure that only you have access to your own financial information.</p>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.8s;">
-                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            Can I share my scans?
-                            <span class="arrow transition-transform duration-200">►</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600">Yes. Once a scan is processed, you can tap the 'Share' icon on the expense details screen. This allows you to send a PDF or image (JPEG) of your receipt via email, WhatsApp, or any other messaging application on your phone. This is perfect for reimbursements or sharing with your accountant.</p>
-                    </details>
-                    <details class="bg-white p-6 rounded-lg shadow-sm animate-on-scroll fade-in-up" style="animation-delay: 0.9s;">
-                        <summary class="font-semibold text-lg text-brand-blue flex justify-between items-center">
-                            How does Team Management work?
-                            <span class="arrow transition-transform duration-200">►</span>
-                        </summary>
-                        <p class="mt-4 text-gray-600">If you are an admin, you can invite team members from the "Team" tab. Members can scan and submit expenses, which will then appear in your "Approval" queue. You can approve or reject expenses before they are synced to your accounting software.</p>
-                    </details>
+    <main class="flex-grow pt-24">
+        <!-- Hero Section -->
+        <section class="hero-gradient py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <div class="inline-block category-badge text-white text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-6 animate-on-scroll fade-in-up">
+                        Support Center
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold text-brand-blue animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
+                        How Can We Help You?
+                    </h1>
+                    <p class="mt-6 text-xl text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        Find answers to common questions or reach out to our dedicated support team. We're here to ensure your Slip-Scan experience is seamless.
+                    </p>
+                    
+                    <!-- Quick Action Cards -->
+                    <div class="mt-12 grid md:grid-cols-3 gap-6 animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                        <a href="#faqs" class="support-card bg-white p-6 rounded-2xl shadow-lg text-center">
+                            <div class="icon-circle w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-brand-baby-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-brand-blue text-lg">FAQs</h3>
+                            <p class="text-gray-600 text-sm mt-2">Browse common questions</p>
+                        </a>
+                        
+                        <a href="#contact-form" class="support-card bg-white p-6 rounded-2xl shadow-lg text-center">
+                            <div class="icon-circle w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-brand-baby-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-brand-blue text-lg">Submit Ticket</h3>
+                            <p class="text-gray-600 text-sm mt-2">Get personalized support</p>
+                        </a>
+                        
+                        <a href="mailto:support@appcraftstudios.com" class="support-card bg-white p-6 rounded-2xl shadow-lg text-center">
+                            <div class="icon-circle w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-brand-baby-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="font-bold text-brand-blue text-lg">Email Us</h3>
+                            <p class="text-gray-600 text-sm mt-2">Direct email support</p>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-20 max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 1.0s;">
-                <h2 class="text-2xl font-bold text-brand-blue text-center">Submit a Support Request</h2>
-                <form action="mailto:support@appcraftstudios.com" method="get" enctype="text/plain" class="mt-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                            <input type="text" name="name" id="name" class="form-input w-full p-3 rounded-lg" placeholder="John Doe" required>
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                            <input type="email" name="email" id="email" class="form-input w-full p-3 rounded-lg" placeholder="you@example.com" required>
-                        </div>
+        <!-- FAQs Section -->
+        <section id="faqs" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Frequently Asked Questions</h2>
+                        <p class="mt-4 text-gray-600 text-lg animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">Quick answers to questions you may have</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                        <div>
-                            <label for="topic" class="block text-sm font-medium text-gray-700 mb-2">Support Topic</label>
-                            <select id="topic" name="subject" class="form-input w-full p-3 rounded-lg bg-white" required>
-                                <option value="Integration Help (Xero/Sage)">Integration Help (Xero/Sage)</option>
-                                <option value="Reporting Issue">Reporting Issue</option>
-                                <option value="AI Chat Question">AI Chat Question</option>
-                                <option value="Team Management">Team Management</option>
-                                <option value="Billing Question">Billing Question</option>
-                                <option value="Data Privacy">Data Privacy</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="device" class="block text-sm font-medium text-gray-700 mb-2">Device & App Version</label>
-                            <input type="text" name="device" id="device" class="form-input w-full p-3 rounded-lg" placeholder="e.g. iPhone 15, v1.0.2">
-                        </div>
+                    
+                    <div class="space-y-4">
+                        <details class="faq-item bg-white p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                            <summary class="font-bold text-xl text-brand-blue flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <span class="w-8 h-8 bg-brand-light-blue rounded-full flex items-center justify-center mr-4 text-brand-orange text-sm">1</span>
+                                    How do I connect Slip-Scan to Xero or Sage?
+                                </span>
+                                <svg class="arrow w-6 h-6 text-brand-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </summary>
+                            <div class="mt-6 pl-12 text-gray-700 leading-relaxed">
+                                <p class="mb-4">Connecting your accounting software is quick and secure. Follow these steps:</p>
+                                <ol class="list-decimal pl-5 space-y-2">
+                                    <li>Navigate to the <strong>Settings</strong> menu in the app</li>
+                                    <li>Select <strong>Integrations</strong></li>
+                                    <li>Choose either Xero or Sage</li>
+                                    <li>Log in with your accounting software credentials</li>
+                                    <li>Authorize Slip-Scan to access your account</li>
+                                </ol>
+                                <p class="mt-4">Once connected, you can push approved expenses directly to your ledger with a single tap!</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item bg-white p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                            <summary class="font-bold text-xl text-brand-blue flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <span class="w-8 h-8 bg-brand-light-blue rounded-full flex items-center justify-center mr-4 text-brand-orange text-sm">2</span>
+                                    How do I generate reports?
+                                </span>
+                                <svg class="arrow w-6 h-6 text-brand-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </summary>
+                            <div class="mt-6 pl-12 text-gray-700 leading-relaxed">
+                                <p class="mb-4">Slip-Scan offers powerful reporting capabilities:</p>
+                                <div class="bg-brand-light-blue p-4 rounded-lg mb-4">
+                                    <p class="font-semibold text-brand-blue mb-2">Available Report Types:</p>
+                                    <ul class="space-y-1 text-sm">
+                                        <li>• <strong>PDF Summaries</strong> - Professional expense reports</li>
+                                        <li>• <strong>CSV Exports</strong> - Detailed data for Excel analysis</li>
+                                        <li>• <strong>P&L Statements</strong> - Based on categorized scans</li>
+                                        <li>• <strong>Custom Reports</strong> - Filter by date, category, or team member</li>
+                                    </ul>
+                                </div>
+                                <p>Simply navigate to the <strong>Reporting</strong> tab, select your date range (last 30 days, custom range, etc.), and choose your format.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item bg-white p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                            <summary class="font-bold text-xl text-brand-blue flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <span class="w-8 h-8 bg-brand-light-blue rounded-full flex items-center justify-center mr-4 text-brand-orange text-sm">3</span>
+                                    What can the AI chat integration do?
+                                </span>
+                                <svg class="arrow w-6 h-6 text-brand-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </summary>
+                            <div class="mt-6 pl-12 text-gray-700 leading-relaxed">
+                                <p class="mb-4">Our AI Chat assistant is your personal finance helper, understanding natural language queries:</p>
+                                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg">
+                                        <p class="font-semibold text-brand-blue mb-2">Example Questions:</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>💬 "How much did I spend on fuel last month?"</li>
+                                            <li>💬 "Show me all Woolworths transactions"</li>
+                                            <li>💬 "What's my biggest expense category?"</li>
+                                        </ul>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-orange-50 to-red-50 p-4 rounded-lg">
+                                        <p class="font-semibold text-brand-blue mb-2">AI Capabilities:</p>
+                                        <ul class="text-sm space-y-1">
+                                            <li>✓ Find specific transactions</li>
+                                            <li>✓ Analyze spending patterns</li>
+                                            <li>✓ Auto-categorize expenses</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="faq-item bg-white p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
+                            <summary class="font-bold text-xl text-brand-blue flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <span class="w-8 h-8 bg-brand-light-blue rounded-full flex items-center justify-center mr-4 text-brand-orange text-sm">4</span>
+                                    Is my financial data safe?
+                                </span>
+                                <svg class="arrow w-6 h-6 text-brand-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </summary>
+                            <div class="mt-6 pl-12 text-gray-700 leading-relaxed">
+                                <p class="mb-4"><strong>Absolutely.</strong> Your data security is our top priority. Here's how we protect you:</p>
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold text-brand-blue">End-to-End Encryption</p>
+                                            <p class="text-sm">All scanned images and data are encrypted both in transit and at rest</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold text-brand-blue">Row Level Security (RLS)</p>
+                                            <p class="text-sm">Only you can access your financial information - even our team can't see it</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold text-brand-blue">Secure Cloud Storage</p>
+                                            <p class="text-sm">Stored in enterprise-grade Supabase infrastructure with automatic backups</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="faq-item bg-white p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
+                            <summary class="font-bold text-xl text-brand-blue flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <span class="w-8 h-8 bg-brand-light-blue rounded-full flex items-center justify-center mr-4 text-brand-orange text-sm">5</span>
+                                    Can I share my scans?
+                                </span>
+                                <svg class="arrow w-6 h-6 text-brand-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </summary>
+                            <div class="mt-6 pl-12 text-gray-700 leading-relaxed">
+                                <p class="mb-4">Yes! Sharing receipts is easy and flexible:</p>
+                                <ol class="list-decimal pl-5 space-y-2">
+                                    <li>Open the expense details screen</li>
+                                    <li>Tap the <strong>Share</strong> icon</li>
+                                    <li>Choose your format: <span class="px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm font-medium">PDF</span> or <span class="px-2 py-1 bg-green-100 text-green-800 rounded text-sm font-medium">JPEG</span></li>
+                                    <li>Select your sharing method (Email, WhatsApp, etc.)</li>
+                                </ol>
+                                <p class="mt-4 bg-orange-50 border-l-4 border-brand-orange p-4 rounded">
+                                    <strong>Perfect for:</strong> Expense reimbursements, sharing with your accountant, or keeping records for your team.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item bg-white p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
+                            <summary class="font-bold text-xl text-brand-blue flex justify-between items-center">
+                                <span class="flex items-center">
+                                    <span class="w-8 h-8 bg-brand-light-blue rounded-full flex items-center justify-center mr-4 text-brand-orange text-sm">6</span>
+                                    How does Team Management work?
+                                </span>
+                                <svg class="arrow w-6 h-6 text-brand-orange transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </summary>
+                            <div class="mt-6 pl-12 text-gray-700 leading-relaxed">
+                                <p class="mb-4">Team Management provides a seamless approval workflow for businesses:</p>
+                                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl mb-4">
+                                    <p class="font-bold text-brand-blue mb-3">For Admins:</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Invite team members from the <strong>Team</strong> tab</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Review submissions in your <strong>Approval</strong> queue</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Approve or reject expenses with notes</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Sync approved expenses to accounting software</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gradient-to-r from-orange-50 to-red-50 p-6 rounded-xl">
+                                    <p class="font-bold text-brand-blue mb-3">For Team Members:</p>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Scan and submit expenses instantly</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Track submission status in real-time</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="text-brand-orange mr-2">→</span>
+                                            <span>Receive instant approval notifications</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
                     </div>
-                    <div class="mt-6">
-                        <label for="body" class="block text-sm font-medium text-gray-700 mb-2">Please describe your issue</label>
-                        <textarea name="body" id="body" rows="6" class="form-input w-full p-3 rounded-lg resize-vertical" placeholder="Please provide as much detail as possible..." required></textarea>
-                    </div>
-                    <div class="mt-8 text-center">
-                        <button type="submit" class="btn-primary font-semibold px-10 py-4 rounded-lg text-lg">Send Request</button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact-form" class="py-20 bg-brand-light-blue">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12 animate-on-scroll fade-in-up">
+                        <h2 class="text-4xl font-bold text-brand-blue">Still Need Help?</h2>
+                        <p class="mt-4 text-gray-600 text-lg">Submit a support request and our team will get back to you within 24 hours</p>
+                    </div>
+                    
+                    <div class="bg-white p-10 md:p-14 rounded-3xl shadow-2xl animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        <form action="mailto:support@appcraftstudios.com" method="get" enctype="text/plain">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-bold text-brand-blue mb-3">Full Name *</label>
+                                    <input type="text" name="name" id="name" class="form-input w-full p-4 rounded-xl font-medium" placeholder="John Doe" required>
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-bold text-brand-blue mb-3">Email Address *</label>
+                                    <input type="email" name="email" id="email" class="form-input w-full p-4 rounded-xl font-medium" placeholder="you@example.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                <div>
+                                    <label for="topic" class="block text-sm font-bold text-brand-blue mb-3">Support Topic *</label>
+                                    <div class="relative">
+                                        <select id="topic" name="subject" class="form-input w-full p-4 rounded-xl bg-white font-medium appearance-none cursor-pointer" required>
+                                            <option value="">Select a topic...</option>
+                                            <option value="Integration Help (Xero/Sage)">🔗 Integration Help (Xero/Sage)</option>
+                                            <option value="Reporting Issue">📊 Reporting Issue</option>
+                                            <option value="AI Chat Question">🤖 AI Chat Question</option>
+                                            <option value="Team Management">👥 Team Management</option>
+                                            <option value="Billing Question">💳 Billing Question</option>
+                                            <option value="Data Privacy">🔒 Data Privacy</option>
+                                            <option value="Technical Issue">⚙️ Technical Issue</option>
+                                            <option value="Feature Request">💡 Feature Request</option>
+                                            <option value="Other">📝 Other</option>
+                                        </select>
+                                        <svg class="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="device" class="block text-sm font-bold text-brand-blue mb-3">Device & App Version</label>
+                                    <input type="text" name="device" id="device" class="form-input w-full p-4 rounded-xl font-medium" placeholder="e.g. iPhone 15, v1.0.2">
+                                    <p class="text-xs text-gray-500 mt-2">Find version in Settings → About</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6">
+                                <label for="body" class="block text-sm font-bold text-brand-blue mb-3">Describe Your Issue *</label>
+                                <textarea name="body" id="body" rows="7" class="form-input w-full p-4 rounded-xl resize-vertical font-medium" placeholder="Please provide as much detail as possible so we can help you effectively..." required></textarea>
+                                <p class="text-xs text-gray-500 mt-2">💡 Tip: Include screenshots or error messages if applicable</p>
+                            </div>
+                            
+                            <div class="mt-10 text-center">
+                                <button type="submit" class="btn-primary font-bold px-12 py-5 rounded-xl text-lg inline-flex items-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                    </svg>
+                                    Send Support Request
+                                </button>
+                                <p class="text-sm text-gray-500 mt-4">We typically respond within 24 hours on business days</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Additional Resources -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-12 animate-on-scroll fade-in-up">
+                        <h2 class="text-4xl font-bold text-brand-blue">Additional Resources</h2>
+                        <p class="mt-4 text-gray-600 text-lg">Everything you need to get the most out of Slip-Scan</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="support-card bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                            <div class="icon-circle w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-brand-baby-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">User Guide</h3>
+                            <p class="text-gray-600 mb-6">Comprehensive documentation on every feature</p>
+                            <a href="./slip-scan.html" class="text-brand-orange font-semibold hover:underline inline-flex items-center">
+                                Read Guide
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="support-card bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                            <div class="icon-circle w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-brand-baby-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">Privacy Policy</h3>
+                            <p class="text-gray-600 mb-6">Learn how we protect your financial data</p>
+                            <a href="./slip-scan-privacy.html" class="text-brand-orange font-semibold hover:underline inline-flex items-center">
+                                View Policy
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        
+                        <div class="support-card bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl shadow-lg animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="icon-circle w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                                <svg class="w-8 h-8 text-brand-baby-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-blue mb-3">Community Forum</h3>
+                            <p class="text-gray-600 mb-6">Connect with other Slip-Scan users</p>
+                            <a href="./contact.html" class="text-brand-orange font-semibold hover:underline inline-flex items-center">
+                                Join Forum
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download CTA -->
+        <section class="py-20" style="background-color: #F0F4F9;">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center animate-on-scroll fade-in-up">
+                    <h2 class="text-4xl md:text-5xl font-bold" style="color: #0A2540;">Ready to Transform Your Finances?</h2>
+                    <p class="mt-6 text-xl" style="color: #4B5563;">Download Slip-Scan today and experience automated financial clarity</p>
+                    <div class="mt-10 flex flex-wrap justify-center gap-4">
+                        <a href="https://apps.apple.com/us/app/slip-scan/id6504223253" target="_blank" class="bg-white text-brand-blue font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 inline-flex items-center border-2 border-gray-200 hover:border-brand-orange">
+                            <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 17 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                            </svg>
+                            App Store
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.appcraftstudios.slip_scan&hl=en-ZA" target="_blank" class="bg-white text-brand-blue font-bold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1 inline-flex items-center border-2 border-gray-200 hover:border-brand-orange">
+                            <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                            </svg>
+                            Google Play
+                        </a>
+                    </div>
+                    <p class="mt-8 text-gray-500 text-sm">Available for iOS and Android • Free to download</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-brand-blue text-white">
@@ -172,16 +608,16 @@
                     <div>
                         <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
                         <ul class="text-gray-400 space-y-2">
-                            <li><a href="./products.html" class="hover:text-white">Products</a></li>
-                            <li><a href="./services.html" class="hover:text-white">Services</a></li>
-                            <li><a href="./contact.html" class="hover:text-white">Contact Us</a></li>
+                            <li><a href="./products.html" class="hover:text-white transition-colors">Products</a></li>
+                            <li><a href="./services.html" class="hover:text-white transition-colors">Services</a></li>
+                            <li><a href="./contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
                         </ul>
                     </div>
                     <div>
                         <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
                         <ul class="text-gray-400 space-y-2">
-                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
+                            <li><a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            <li><a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
                         </ul>
                     </div>
                 </div>
@@ -198,6 +634,7 @@
             if (window.scrollY > 20) { header.classList.add('scrolled'); } 
             else { header.classList.remove('scrolled'); }
         });
+        
         // Mobile menu toggle
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -210,14 +647,27 @@
                 mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
             }
         });
+        
         // Scroll animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
             });
         }, { threshold: 0.1 });
+        
         const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
         elementsToAnimate.forEach(el => observer.observe(el));
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
