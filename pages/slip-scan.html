@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slip-Scan - AppCraft Studios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; overflow-x: hidden; }
+        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; --brand-light-blue: #F0F4F9; }
+        .text-brand-orange { color: var(--brand-orange); }
+        .text-brand-blue { color: var(--brand-blue); }
+        .bg-brand-orange { background-color: var(--brand-orange); }
+        .bg-brand-blue { background-color: var(--brand-blue); }
+        .bg-brand-light-blue { background-color: var(--brand-light-blue); }
+        .border-brand-orange { border-color: var(--brand-orange); }
+        .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
+        .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
+        .btn-secondary { background-color: transparent; color: var(--brand-blue); border: 1px solid #D6D9E0; transition: background-color 0.3s, transform 0.3s; }
+        .btn-secondary:hover { background-color: var(--brand-light-blue); transform: translateY(-2px); }
+        .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up { transform: translateY(30px); }
+        .is-visible { opacity: 1; transform: translate(0, 0); }
+        header { transition: background-color 0.3s, box-shadow 0.3s; }
+        header.scrolled { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .feature-check { color: var(--brand-orange); }
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
+                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                    <span>AppCraft Studios</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
+                    <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
+                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
+            <div class="px-6 py-4">
+                <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
+                <a href="./services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
+                <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
+                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll fade-in-up">
+                        <span class="text-sm font-bold uppercase text-gray-500 tracking-widest">Financial Automation</span>
+                        <h1 class="mt-4 text-4xl md:text-5xl font-bold text-brand-blue">Slip-Scan 🚀</h1>
+                        <p class="mt-4 text-lg text-gray-600">Say goodbye to guesswork and hello to automated clarity! Slip-Scan is the ultimate tool for your finances, built for both personal use and your entire business team.</p>
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="flex items-start"><span class="feature-check mr-3 mt-1">✓</span><span><strong>Team Management:</strong> Seamless approval workflows for your entire team.</span></div>
+                            <div class="flex items-start"><span class="feature-check mr-3 mt-1">✓</span><span><strong>Accounting Integrations:</strong> Push expenses straight to Xero and Sage.</span></div>
+                            <div class="flex items-start"><span class="feature-check mr-3 mt-1">✓</span><span><strong>High-Accuracy Scanning:</strong> AI captures every line item with precision.</span></div>
+                            <div class="flex items-start"><span class="feature-check mr-3 mt-1">✓</span><span><strong>Powerful Reporting:</strong> Instantly generate P&L statements and more.</span></div>
+                        </div>
+                        <div class="mt-10 flex flex-wrap gap-4">
+                            <a href="https://play.google.com/store/apps/details?id=com.appcraftstudios.slip_scan&hl=en-ZA" target="_blank" class="btn-primary font-semibold px-8 py-3 rounded-lg shadow-lg text-lg">View on Google Play</a>
+                            <a href="https://apps.apple.com/us/app/slip-scan/id6504223253" target="_blank" class="btn-secondary font-semibold px-8 py-3 rounded-lg text-lg">View on App Store</a>
+                        </div>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        <img src="../slip-scan-banner.png" alt="Slip-Scan App Interface" class="rounded-2xl shadow-xl w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="py-20 bg-brand-light-blue">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg text-center animate-on-scroll fade-in-up">
+                        <h3 class="text-2xl font-bold text-brand-blue">Need Support?</h3>
+                        <p class="mt-3 text-gray-600">Have a question or need help with the app? Our team is here to assist you.</p>
+                        <a href="./contact.html" class="btn-primary inline-block mt-6 font-semibold px-6 py-3 rounded-lg">Contact Support</a>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg text-center animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        <h3 class="text-2xl font-bold text-brand-blue">App Privacy</h3>
+                        <p class="mt-3 text-gray-600">Understand how we handle your data. Read the dedicated privacy policy for Slip-Scan.</p>
+                        <a href="./slip-scan-privacy.html" class="btn-secondary inline-block mt-6 font-semibold px-6 py-3 rounded-lg">View Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-brand-blue text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="text-2xl font-bold flex items-center">
+                        <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2"> AppCraft Studios
+                    </a>
+                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><a href="./products.html" class="hover:text-white">Products</a></li>
+                            <li><a href="./services.html" class="hover:text-white">Services</a></li>
+                            <li><a href="./contact.html" class="hover:text-white">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
+                        <ul class="text-gray-400 space-y-2">
+                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-8 border-gray-700" />
+            <div class="text-center text-gray-500">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => { window.scrollY > 20 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); });
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.contains('opacity-0') ? (mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none'), mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')) : (mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'), mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none'));
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
