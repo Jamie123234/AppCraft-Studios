@@ -738,7 +738,8 @@
                 // encodeURIComponent correctly handles spaces as %20 and newlines as %0A
                 const body = encodeURIComponent(bodyParts.join('\n'));
 
-                window.location.href = \`mailto:support@appcraftstudios.com?subject=\${subject}&body=\${body}\`;
+                // *** THIS IS THE FIXED LINE ***
+                window.location.href = `mailto:support@appcraftstudios.com?subject=${subject}&body=${body}`;
                 
                 // Optional: Clear the form after submission
                 // supportForm.reset();
