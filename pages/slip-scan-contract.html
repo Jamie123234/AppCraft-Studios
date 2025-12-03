@@ -128,18 +128,24 @@
         
         input[type="text"] {
             border: none;
-            border-bottom: 1px solid #000;
             background: transparent;
             font-family: 'Times New Roman', serif;
             font-size: 11px;
             font-style: italic;
-            padding: 2px 5px;
+            padding: 0;
             min-width: 200px;
+            border-bottom: 1px solid #000;
         }
         
         input[type="text"]:focus {
             outline: none;
             background: #fffacd;
+            border-bottom: 1px solid #000;
+        }
+        
+        .inline-field {
+            display: inline-block;
+            position: relative;
         }
         
         .print-btn {
@@ -310,7 +316,7 @@
     
     <div class="signatures">
         <div class="signature-block">
-            <p><strong>SIGNED at</strong> <input type="text" id="signPlace" placeholder="__________________" style="min-width: 150px;"> <strong>on this</strong> <input type="text" id="signDay" placeholder="_____" style="min-width: 40px;"> <strong>day of</strong> <input type="text" id="signMonth" placeholder="________________" style="min-width: 120px;"> <strong>2025.</strong></p>
+            <p><strong>SIGNED at</strong> <input type="text" id="signPlace" style="min-width: 150px;"> <strong>on this</strong> <input type="text" id="signDay" style="min-width: 40px;"> <strong>day of</strong> <input type="text" id="signMonth" style="min-width: 120px;"> <strong>2025.</strong></p>
         </div>
         
         <div class="signature-block">
