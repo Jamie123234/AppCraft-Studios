@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Security & Service Continuity Schedule</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #000;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .parties {
+            margin-bottom: 30px;
+        }
+        
+        .party-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #2c3e50;
+        }
+        
+        .party-section h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+        
+        .party-details {
+            margin-left: 20px;
+        }
+        
+        .party-details p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        
+        .editable {
+            display: inline-block;
+            min-width: 200px;
+            border-bottom: 1px solid #000;
+            padding: 2px 5px;
+            background: #fff;
+            font-style: italic;
+        }
+        
+        .date {
+            text-align: right;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 12px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section h2 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+        }
+        
+        .section p, .section ul {
+            font-size: 11px;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        
+        .section ul {
+            margin-left: 20px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+        }
+        
+        .subsection {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .subsection strong {
+            color: #2c3e50;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .print-btn:hover {
+            background: #34495e;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .editable {
+                border-bottom: 1px solid #000;
+            }
+        }
+        
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px solid #000;
+            background: transparent;
+            font-family: 'Times New Roman', serif;
+            font-size: 12px;
+            font-style: italic;
+            padding: 2px 5px;
+            min-width: 200px;
+        }
+        
+        input[type="text"]:focus {
+            outline: none;
+            background: #fffacd;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    
+    <div class="header">
+        <h1>Data Security & Service Continuity Schedule</h1>
+    </div>
+    
+    <div class="parties">
+        <div class="party-section">
+            <h3>Prepared By:</h3>
+            <div class="party-details">
+                <p><strong>Company:</strong> AppCraft Studios (Pty) Ltd</p>
+                <p><strong>Registration Number:</strong> 2025/257862/07</p>
+                <p><strong>Represented By:</strong> Jamie Abrahams</p>
+                <p><strong>ID Number:</strong> 0403085200083</p>
+            </div>
+        </div>
+        
+        <div class="party-section">
+            <h3>Prepared For:</h3>
+            <div class="party-details">
+                <p><strong>Company:</strong> <input type="text" id="clientCompany" placeholder="Enter company name"></p>
+                <p><strong>Registration Number:</strong> <input type="text" id="clientReg" placeholder="Enter registration number"></p>
+                <p><strong>Represented By:</strong> <input type="text" id="clientRep" placeholder="Enter director's full name"></p>
+                <p><strong>ID Number:</strong> <input type="text" id="clientId" placeholder="Enter director's ID number"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="date">
+        <strong>Date:</strong> December 03, 2025
+    </div>
+    
+    <div class="section">
+        <h2>1. Server Infrastructure & Backup Protocol</h2>
+        <p>We utilize a managed Platform-as-a-Service (PaaS) infrastructure powered by Supabase, which is hosted on Amazon Web Services (AWS) enterprise-grade data centers.</p>
+        
+        <div class="subsection">
+            <p><strong>Infrastructure:</strong> Our database and backend services are hosted in AWS regions compliant with SOC2, HIPAA, and ISO27001 standards.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Backup Frequency:</strong> We maintain automated daily full backups of all production databases.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Storage:</strong> Backups are encrypted at rest and stored in geographically redundant AWS Availability Zones to ensure data survival in the event of a physical data center failure.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>2. Disaster Recovery & Business Continuity</h2>
+        
+        <div class="subsection">
+            <p><strong>Server-Side Recovery (RTO):</strong> In the event of a server-side disruption (e.g., database connectivity or API failure) within our control, we aim to restore backend service functionality within 4 to 24 hours.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Client-Side Updates (Platform Dependency):</strong> For critical issues requiring an update to the mobile application binary (APK/IPA), the timeline for resolution is subject to the review and approval processes of third-party platforms (Google Play Store and Apple App Store).</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Disclaimer:</strong> AppCraft Studios cannot guarantee specific turnaround times for updates that require App Store approval. We commit to submitting the critical patch to the relevant Store within 24 hours of resolution, but the "Go Live" time is strictly dependent on the Platform's review queue.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Third-Party Dependency (Force Majeure):</strong> The Service relies on the Supabase platform (hosted on AWS). In the event of a catastrophic failure, discontinuation, or extended outage of the upstream provider (Supabase/AWS), recovery timelines will be subject to the provider's restoration schedule. AppCraft Studios is not liable for downtime caused strictly by third-party infrastructure outages.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Recovery Point Objective (RPO):</strong> Our backup frequency ensures that in a standard recovery scenario (restoring from the previous night's backup), data loss will not exceed 24 hours.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>3. Data Privacy & Third-Party Disclosure</h2>
+        
+        <div class="subsection">
+            <p><strong>Sub-Processors:</strong> Our core infrastructure provider is Supabase (running on AWS). We do not grant these providers access to view raw data; they act solely as infrastructure hosts.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>No Third-Party Sharing:</strong> We do not sell, trade, or transfer Client Data to external parties for marketing, advertising, or data mining purposes. Data is used solely for the provision of the agreed-upon service.</p>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>4. Data Retention Policy</h2>
+        
+        <div class="subsection">
+            <p><strong>Active Term:</strong> Data is retained indefinitely while the client holds an active account/contract to facilitate service usage.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Termination:</strong> Upon contract termination, data is retained in a dormant state for 30 days to facilitate potential reactivation or data export requests.</p>
+        </div>
+        
+        <div class="subsection">
+            <p><strong>Purge:</strong> After the 30-day retention period, all Client Data is permanently and irretrievably deleted from our live production databases.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Save input values to localStorage
+        const inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach(input => {
+            const savedValue = localStorage.getItem(input.id);
+            if (savedValue) {
+                input.value = savedValue;
+            }
+            
+            input.addEventListener('input', (e) => {
+                localStorage.setItem(e.target.id, e.target.value);
+            });
+        });
+    </script>
+</body>
+</html>
