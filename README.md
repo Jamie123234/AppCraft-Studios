@@ -26,23 +26,4 @@ AppCraft Studios is presented as a modern, responsive website showcasing service
 * **Lucide Icons (via CDN/SVG):** For iconography.
 * **Google Fonts (Inter):** For typography.
 
-## Setup & Usage
-
-1.  **Clone the repository:**
-    ```bash
-    git clone <your-repository-url>
-    cd <repository-directory>
-    ```
-2.  **Open the file:** Simply open the `index.html` file in your web browser. No server or build process is required.
-
-    * On macOS: `open index.html`
-    * On Windows: `start index.html`
-    * On Linux: `xdg-open index.html`
-
-## License
-
-Consider adding a license file (e.g., MIT License) to define how others can use your code.
-
----
-
 *Crafted by AppCraft Studios*
