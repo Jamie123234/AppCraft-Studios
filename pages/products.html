@@ -31,6 +31,11 @@
             --product-tripkit: #074469;
             --product-tripkit-accent: #0284C7;
             --product-tripkit-hover: #0369A1;
+
+            --product-finyang: #D4B36A;
+            --product-finyang-hover: #B8923F;
+            --product-finyang-navy: #0A1128;
+            --product-finyang-bg: #FCF9F2;
         }
         .text-brand-primary { color: var(--brand-primary); }
         .text-brand-navy { color: var(--brand-navy); }
@@ -145,13 +150,57 @@
                         </div>
                     </div>
                     <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="../slip-scan-banner.png" alt="Slip-Scan App Interface" class="rounded-3xl shadow-xl w-full border border-slate-200">
+                        <img src="../slip-scan-banner.png" alt="Slip-Scan App Interface" width="1200" height="600" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full border border-slate-200 aspect-[2/1] object-cover">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Product 2: CraveMatch (Salmon Pink) -->
+        <!-- Product 2: FinYang AI (Navy & Gold) -->
+        <section id="finyang" class="py-24 bg-[#FAF7F0] border-b border-amber-200/60">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="lg:order-2 animate-on-scroll fade-in-up">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#B8923F] bg-amber-50 border border-amber-200/70 px-3 py-1 rounded-full">Financial Intelligence</span>
+                            <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy flex items-center gap-3">FinYang AI <span class="w-9 h-9 md:w-11 md:h-11 rounded-xl bg-white shadow-md border border-amber-200/80 inline-flex items-center justify-center p-1.5"><img src="../finyang-logo.svg" alt="FinYang AI Logo" class="h-full w-auto object-contain"></span></h2>
+                        <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                            Bank statement intelligence for any bank in any country. Turn multi-month, multi-account PDF statements into verified ledgers, audited cash-flow metrics, and decision-ready AI credit committee memorandums in minutes.
+                        </p>
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B8923F] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>Deterministic & Cloud OCR:</strong> Layout parsing for digital statements with Document AI fallback.</span>
+                            </div>
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B8923F] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>Printed-Summary Verification:</strong> Reconciles opening, closing & turnover totals to the cent.</span>
+                            </div>
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B8923F] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>Pre-Deal & Post-Deal DSCR:</strong> Audited debt-service coverage and 12-month amortizations.</span>
+                            </div>
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B8923F] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>Dual-Stream AI Underwriter:</strong> Debt scrubbing and conduct risk scoring via Gemini AI.</span>
+                            </div>
+                        </div>
+                        <div class="mt-10 flex flex-wrap gap-4">
+                            <a href="https://finyang.net/" target="_blank" class="inline-flex items-center px-8 py-3.5 rounded-xl bg-[#0A1128] hover:bg-[#14224A] text-[#F0DA9A] border border-[#D4B36A]/40 font-semibold shadow-lg transition-all text-base">
+                                Visit FinYang Website &rarr;
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:order-1 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        <img src="../finyang-banner.png" alt="FinYang AI Banner Showcase" width="1200" height="600" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full border border-amber-200/50 aspect-[2/1] object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product 3: CraveMatch (Salmon Pink) -->
         <section id="crave-match" class="py-24 bg-[#FFF6F5] border-b border-red-100">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -189,7 +238,7 @@
                         </div>
                     </div>
                     <div class="lg:order-1 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="../cravematch-banner.png" alt="CraveMatch Banner Showcase" class="rounded-3xl shadow-xl w-full border border-red-100">
+                        <img src="../cravematch-banner.png" alt="CraveMatch Banner Showcase" width="1200" height="600" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full border border-red-100 aspect-[2/1] object-cover">
                     </div>
                 </div>
             </div>
@@ -233,7 +282,7 @@
                         </div>
                     </div>
                     <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="../tripkit-banner.png" alt="TripKit Showcase Banner" class="rounded-3xl shadow-xl w-full border border-sky-200">
+                        <img src="../tripkit-banner.png" alt="TripKit Showcase Banner" width="1200" height="600" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full border border-sky-200 aspect-[2/1] object-cover">
                     </div>
                 </div>
             </div>
@@ -248,7 +297,7 @@
                             <span class="text-xs font-bold uppercase tracking-wider text-[#FF5722] bg-orange-50 border border-orange-200/60 px-3 py-1 rounded-full">Intelligent Hiring</span>
                             <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product</span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy flex items-center gap-3">RecruitAI <span class="w-9 h-9 md:w-11 md:h-11 rounded-xl bg-white shadow-md border border-orange-100 inline-flex items-center justify-center p-1.5"><img src="../recruitai-icon.png" alt="RecruitAI Logo" class="h-full w-auto object-contain"></span></h2>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy flex items-center gap-3">RecruitAI <span class="w-9 h-9 md:w-11 md:h-11 rounded-xl bg-white shadow-md border border-orange-100 inline-flex items-center justify-center p-1"><img src="../recruitai-icon.png" alt="RecruitAI Logo" class="h-full w-auto object-contain"></span></h2>
                         <p class="mt-4 text-lg text-slate-600 leading-relaxed">
                             The next generation of hiring and talent acquisition (Coming Soon). Currently in active engineering, RecruitAI streamlines candidate screening, parsing vectors beyond simple keywords to match candidates with high-impact job opportunities without bias.
                         </p>
@@ -277,7 +326,7 @@
                         </div>
                     </div>
                     <div class="lg:order-1 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                        <img src="../recruitai-banner.png" alt="RecruitAI Dashboard" class="rounded-3xl shadow-xl w-full border border-orange-200">
+                        <img src="../recruitai-banner.png" alt="RecruitAI Dashboard" width="1200" height="600" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full border border-orange-200 aspect-[2/1] object-cover">
                     </div>
                 </div>
             </div>
@@ -302,6 +351,7 @@
                     <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Products</h3>
                     <ul class="text-slate-400 space-y-2.5 text-sm">
                         <li><a href="./slip-scan.html" class="hover:text-blue-400 transition-colors">Slip-Scan</a></li>
+                        <li><a href="https://finyang.net/" target="_blank" class="hover:text-amber-400 transition-colors">FinYang AI <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
                         <li><a href="https://crave-match.vercel.app" target="_blank" class="hover:text-red-400 transition-colors">CraveMatch <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
                         <li><a href="./products.html#tripkit" class="hover:text-sky-400 transition-colors">TripKit <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
                         <li><a href="https://www.recruitai.co.za" target="_blank" class="hover:text-orange-400 transition-colors">RecruitAI <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
