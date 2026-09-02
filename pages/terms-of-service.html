@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service - AppCraft Studios</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; overflow-x: hidden; }
-        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; --brand-light-blue: #F0F4F9; }
-        .text-brand-orange { color: var(--brand-orange); }
-        .text-brand-blue { color: var(--brand-blue); }
-        .bg-brand-orange { background-color: var(--brand-orange); }
-        .bg-brand-blue { background-color: var(--brand-blue); }
-        .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
-        .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
+        body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+        :root {
+            --brand-primary: #1D63ED;
+            --brand-primary-hover: #154FC1;
+            --brand-navy: #0B192C;
+            --brand-slate: #1E293B;
+            --brand-light-blue: #F0F5FB;
+            --brand-ice-border: #DCE6F2;
+            --brand-accent-glow: rgba(29, 99, 237, 0.2);
+        }
+        .text-brand-primary { color: var(--brand-primary); }
+        .text-brand-navy { color: var(--brand-navy); }
+        .bg-brand-primary { background-color: var(--brand-primary); }
+        .bg-brand-navy { background-color: var(--brand-navy); }
+        
+        .btn-primary { background-color: var(--brand-primary); color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 18px var(--brand-accent-glow); }
+        .btn-primary:hover { background-color: var(--brand-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29, 99, 237, 0.35); }
+        
         .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in-up { transform: translateY(30px); }
         .is-visible { opacity: 1; transform: translate(0, 0); }
         header { transition: background-color 0.3s, box-shadow 0.3s; }
-        header.scrolled { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        header.scrolled { background-color: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px); box-shadow: 0 4px 20px rgba(11, 25, 44, 0.06); }
         .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
     </style>
 </head>
@@ -29,127 +39,131 @@
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                <a href="/" class="text-2xl font-extrabold text-brand-navy flex items-center tracking-tight">
+                    <img src="../appcraft_studios.png" alt="AppCraft Studios Logo" class="h-9 w-9 mr-3 object-contain">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
-                    <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
-                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                    <a href="./products.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Products</a>
+                    <a href="./services.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Services</a>
+                    <a href="./contact.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
-                    <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                    <a href="./contact.html" class="btn-primary font-semibold px-6 py-2.5 rounded-xl">Get in Touch</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-brand-navy hover:bg-gray-100">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
-            <div class="px-6 py-4">
-                <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
-                <a href="./services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
-                <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
-                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+        <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-md shadow-xl absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none transition-all duration-300">
+            <div class="px-6 py-5 space-y-3">
+                <a href="./products.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Products</a>
+                <a href="./services.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Services</a>
+                <a href="./contact.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Contact</a>
+                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-3 rounded-xl">Get in Touch</a>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-32 pb-20">
-        <div class="container mx-auto px-6">
-            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-xl animate-on-scroll fade-in-up">
-                <h1 class="text-3xl md:text-4xl font-extrabold text-brand-blue">Terms of Service</h1>
-                <p class="mt-4 text-sm text-gray-500">Last Updated: October 15, 2025</p>
+    <main class="flex-grow pt-32 pb-24 bg-gradient-to-b from-[#F0F5FB] to-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white p-8 md:p-14 rounded-3xl shadow-xl border border-slate-200/70 animate-on-scroll fade-in-up">
+                <h1 class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4">Terms of Service</h1>
+                <p class="text-sm text-slate-500 mb-8 pb-4 border-b border-slate-100">Last updated: September 2, 2026</p>
 
-                <div class="mt-8 prose prose-lg max-w-none text-gray-700">
-                    <p>Welcome to AppCraft Studios! These Terms of Service ("Terms") govern your use of the AppCraft Studios website (the "Website") and any related services provided by AppCraft Studios (Pty) Ltd ("us", "we", or "our"). By accessing or using our Website, you agree to be bound by these Terms.</p>
-                    
-                    <h2 class="text-brand-blue">1. Use of Our Website</h2>
-                    <p>You agree to use the Website only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the Website. Prohibited behavior includes harassing or causing distress or inconvenience to any other user.</p>
+                <div class="prose max-w-none text-slate-600 space-y-6 text-sm md:text-base leading-relaxed">
+                    <p>
+                        Welcome to AppCraft Studios (Pty) Ltd. ("AppCraft Studios", "we", "our", or "us"). These Terms of Service govern your access to and use of our website, software products, mobile applications, and services.
+                    </p>
 
-                    <h2 class="text-brand-blue">2. Intellectual Property</h2>
-                    <p>All content included on the Website, such as text, graphics, logos, and software, is the property of AppCraft Studios (Pty) Ltd or its content suppliers and protected by South African and international copyright laws.</p>
+                    <h2 class="text-xl font-bold text-brand-navy pt-4">1. Acceptance of Terms</h2>
+                    <p>
+                        By accessing or using our websites or products, you agree to be bound by these Terms and our Privacy Policy. If you do not agree, you may not access or use our services.
+                    </p>
 
-                    <h2 class="text-brand-blue">3. Limitation of Liability</h2>
-                    <p>The Website and the information contained herein are provided "as is". AppCraft Studios makes no express or implied representations or warranties regarding the Website. To the fullest extent permitted by law, AppCraft Studios will not be liable for any damages arising out of or in connection with the use of this Website.</p>
-                    
-                    <h2 class="text-brand-blue">4. Governing Law</h2>
-                    <p>These Terms shall be governed and construed in accordance with the laws of South Africa, without regard to its conflict of law provisions.</p>
-                    
-                    <h2 class="text-brand-blue">5. Changes</h2>
-                    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will try to provide at least 30 days' notice prior to any new terms taking effect.</p>
+                    <h2 class="text-xl font-bold text-brand-navy pt-4">2. Intellectual Property Rights</h2>
+                    <p>
+                        Our services, platforms, branding, proprietary algorithms, and software content are owned by AppCraft Studios (Pty) Ltd. and protected by copyright, trademark, and other applicable intellectual property laws.
+                    </p>
 
-                    <h2 class="text-brand-blue">Contact Us</h2>
-                    <p>If you have any questions about these Terms, please <a href="./contact.html" class="text-brand-orange hover:underline">contact us</a>.</p>
+                    <h2 class="text-xl font-bold text-brand-navy pt-4">3. User Conduct & Accounts</h2>
+                    <p>
+                        You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You agree not to misuse our services or engage in reverse engineering of our platforms.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-brand-navy pt-4">4. Limitation of Liability</h2>
+                    <p>
+                        To the maximum extent permitted by applicable law, AppCraft Studios shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use our services.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-brand-navy pt-4">5. Contact Information</h2>
+                    <p>
+                        For any legal inquiries regarding these terms, please contact us at <a href="mailto:support@appcraftstudios.com" class="text-brand-primary font-semibold hover:underline">support@appcraftstudios.com</a>.
+                    </p>
                 </div>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-blue text-white">
-        <div class="container mx-auto px-6 py-12">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <a href="/" class="text-2xl font-bold flex items-center">
-                        <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
-                        AppCraft Studios
+    <footer class="bg-[#07111E] text-white border-t border-slate-800">
+        <div class="container mx-auto px-6 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="md:col-span-2">
+                    <a href="/" class="text-2xl font-extrabold flex items-center text-white tracking-tight">
+                        <img src="../appcraft_studios.png" alt="AppCraft Studios Logo" class="h-8 w-8 mr-3 object-contain">
+                        <span>AppCraft Studios</span>
                     </a>
-                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                    <p class="mt-4 text-slate-400 max-w-sm leading-relaxed text-sm">
+                        Building the future of digital products with intelligent AI, financial automation, and human-centric engineering.
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./products.html" class="hover:text-white">Products</a></li>
-                            <li><a href="./services.html" class="hover:text-white">Services</a></li>
-                            <li><a href="./contact.html" class="hover:text-white">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Products</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./slip-scan.html" class="hover:text-blue-400 transition-colors">Slip-Scan</a></li>
+                        <li><a href="https://www.recruitai.co.za" target="_blank" class="hover:text-orange-400 transition-colors">RecruitAI</a></li>
+                        <li><a href="https://crave-match.vercel.app" target="_blank" class="hover:text-red-400 transition-colors">CraveMatch <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                        <li><a href="./products.html#tripkit" class="hover:text-sky-400 transition-colors">TripKit <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Company & Legal</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-            <hr class="my-8 border-gray-700" />
-            <div class="text-center text-gray-400">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+            <hr class="my-10 border-slate-800" />
+            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+                <div>&copy; 2026 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+                <div class="flex space-x-6">
+                    <a href="./privacy-policy.html" class="hover:text-slate-400">Privacy</a>
+                    <a href="./terms-of-service.html" class="hover:text-slate-400">Terms</a>
+                    <a href="./contact.html" class="hover:text-slate-400">Support</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Header scroll effect
         const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) { header.classList.add('scrolled'); } 
-            else { header.classList.remove('scrolled'); }
-        });
-        // Mobile menu toggle
+        window.addEventListener('scroll', () => { window.scrollY > 20 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); });
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         menuToggle.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('opacity-0')) {
-                mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none');
-                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-            } else {
-                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-                mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none');
-            }
+            mobileMenu.classList.contains('opacity-0') ? (mobileMenu.classList.remove('opacity-0', '-translate-y-2', 'pointer-events-none'), mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto')) : (mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto'), mobileMenu.classList.add('opacity-0', '-translate-y-2', 'pointer-events-none'));
         });
-        // Scroll animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) { entry.target.classList.add('is-visible'); }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); } });
         }, { threshold: 0.1 });
-        const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
-        elementsToAnimate.forEach(el => observer.observe(el));
+        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>

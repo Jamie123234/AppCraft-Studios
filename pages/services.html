@@ -5,25 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - AppCraft Studios</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; overflow-x: hidden; }
-        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; --brand-light-blue: #F0F4F9; }
-        .text-brand-orange { color: var(--brand-orange); }
-        .text-brand-blue { color: var(--brand-blue); }
-        .bg-brand-orange { background-color: var(--brand-orange); }
-        .bg-brand-blue { background-color: var(--brand-blue); }
+        body { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; background-color: #F8FAFC; color: #0F172A; overflow-x: hidden; }
+        :root {
+            --brand-primary: #1D63ED;
+            --brand-primary-hover: #154FC1;
+            --brand-navy: #0B192C;
+            --brand-slate: #1E293B;
+            --brand-light-blue: #F0F5FB;
+            --brand-ice-border: #DCE6F2;
+            --brand-accent-glow: rgba(29, 99, 237, 0.2);
+        }
+        .text-brand-primary { color: var(--brand-primary); }
+        .text-brand-navy { color: var(--brand-navy); }
+        .bg-brand-primary { background-color: var(--brand-primary); }
+        .bg-brand-navy { background-color: var(--brand-navy); }
         .bg-brand-light-blue { background-color: var(--brand-light-blue); }
-        .border-brand-orange { border-color: var(--brand-orange); }
-        .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
-        .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
+        .border-brand-primary { border-color: var(--brand-primary); }
+        
+        .btn-primary { background-color: var(--brand-primary); color: white; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 18px var(--brand-accent-glow); }
+        .btn-primary:hover { background-color: var(--brand-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29, 99, 237, 0.35); }
+        
         .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in-up { transform: translateY(30px); }
         .is-visible { opacity: 1; transform: translate(0, 0); }
         header { transition: background-color 0.3s, box-shadow 0.3s; }
-        header.scrolled { background-color: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        header.scrolled { background-color: rgba(255, 255, 255, 0.88); backdrop-filter: blur(14px); box-shadow: 0 4px 20px rgba(11, 25, 44, 0.06); }
         .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(10, 37, 64, 0.1); }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(11, 25, 44, 0.08); }
     </style>
 </head>
 <body>
@@ -32,29 +42,29 @@
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                <a href="/" class="text-2xl font-extrabold text-brand-navy flex items-center tracking-tight">
+                    <img src="../appcraft_studios.png" alt="AppCraft Studios Logo" class="h-9 w-9 mr-3 object-contain">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
-                    <a href="./services.html" class="text-brand-orange font-semibold">Services</a>
-                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                    <a href="./products.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Products</a>
+                    <a href="./services.html" class="text-brand-primary font-bold">Services</a>
+                    <a href="./contact.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
-                    <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+                    <a href="./contact.html" class="btn-primary font-semibold px-6 py-2.5 rounded-xl">Get in Touch</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-brand-navy hover:bg-gray-100">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
-            <div class="px-6 py-4">
-                <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
-                <a href="./services.html" class="block py-2 text-brand-orange font-semibold">Services</a>
-                <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
-                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
+        <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-md shadow-xl absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none transition-all duration-300">
+            <div class="px-6 py-5 space-y-3">
+                <a href="./products.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Products</a>
+                <a href="./services.html" class="block py-2 text-brand-primary font-bold">Services</a>
+                <a href="./contact.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Contact</a>
+                <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-3 rounded-xl">Get in Touch</a>
             </div>
         </div>
     </header>
@@ -62,78 +72,109 @@
     <!-- Main Content -->
     <main class="pt-24">
         <!-- Page Hero -->
-        <section class="text-center py-16">
+        <section class="text-center py-20 bg-gradient-to-b from-[#F0F5FB] to-[#F8FAFC] border-b border-slate-200/60">
             <div class="container mx-auto px-6">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-brand-blue animate-on-scroll fade-in-up">Our Capabilities</h1>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">We offer a focused set of services that power our products and can be leveraged for your custom projects.</p>
+                <span class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-brand-primary text-xs font-bold uppercase tracking-wider mb-4 animate-on-scroll fade-in-up">Engineering Expertise</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-brand-navy animate-on-scroll fade-in-up">Our Capabilities</h1>
+                <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    We offer a specialized set of engineering and design disciplines that power our products and select client partnerships.
+                </p>
             </div>
         </section>
 
         <!-- Services Grid -->
-        <section class="py-20 bg-white">
+        <section class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Service 1 -->
-                    <div class="bg-brand-light-blue p-8 rounded-2xl service-card transition-all duration-300 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                        <h3 class="text-xl font-bold text-brand-blue">AI & Machine Learning</h3>
-                        <p class="mt-2 text-gray-600">From the intelligent OCR in Slip-Scan to the candidate matching in RecruitAI, we build and integrate custom AI models to solve complex problems.</p>
+                    <div class="bg-[#F0F6FE] border border-blue-100 p-8 rounded-3xl service-card transition-all duration-300 animate-on-scroll fade-in-up flex flex-col justify-between" style="animation-delay: 0.2s;">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brand-primary flex items-center justify-center text-2xl font-bold mb-6">🤖</div>
+                            <h3 class="text-2xl font-bold text-brand-navy">AI & Machine Learning</h3>
+                            <p class="mt-3 text-slate-600 leading-relaxed text-sm">
+                                From the proprietary financial OCR in Slip-Scan and vector scoring in CraveMatch to candidate matching in RecruitAI, we engineer bespoke AI models that solve real-world problems.
+                            </p>
+                        </div>
                     </div>
                     <!-- Service 2 -->
-                    <div class="bg-brand-light-blue p-8 rounded-2xl service-card transition-all duration-300 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                        <h3 class="text-xl font-bold text-brand-blue">Cross-Platform App Development</h3>
-                        <p class="mt-2 text-gray-600">Using frameworks like Flutter, we build beautiful, high-performance mobile applications for both iOS and Android from a single codebase.</p>
+                    <div class="bg-[#F0F6FE] border border-blue-100 p-8 rounded-3xl service-card transition-all duration-300 animate-on-scroll fade-in-up flex flex-col justify-between" style="animation-delay: 0.4s;">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brand-primary flex items-center justify-center text-2xl font-bold mb-6">📱</div>
+                            <h3 class="text-2xl font-bold text-brand-navy">Cross-Platform Development</h3>
+                            <p class="mt-3 text-slate-600 leading-relaxed text-sm">
+                                Using modern frameworks like Flutter and Swift/Kotlin, we architect fluid, high-performance mobile applications for iOS and Android from single, maintainable codebases.
+                            </p>
+                        </div>
                     </div>
                     <!-- Service 3 -->
-                    <div class="bg-brand-light-blue p-8 rounded-2xl service-card transition-all duration-300 animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
-                        <h3 class="text-xl font-bold text-brand-blue">Backend & API Development</h3>
-                        <p class="mt-2 text-gray-600">We create robust, scalable backend systems and secure APIs that power our products and ensure seamless data flow.</p>
+                    <div class="bg-[#F0F6FE] border border-blue-100 p-8 rounded-3xl service-card transition-all duration-300 animate-on-scroll fade-in-up flex flex-col justify-between" style="animation-delay: 0.6s;">
+                        <div>
+                            <div class="w-14 h-14 rounded-2xl bg-blue-100 text-brand-primary flex items-center justify-center text-2xl font-bold mb-6">⚡</div>
+                            <h3 class="text-2xl font-bold text-brand-navy">Backend & Cloud Architecture</h3>
+                            <p class="mt-3 text-slate-600 leading-relaxed text-sm">
+                                We design scalable serverless backends, secure APIs, and event-driven data pipelines (Supabase, Firebase, Node.js, Cloudflare) that handle high concurrency effortlessly.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Have a project in mind?</h2>
-                <p class="mt-4 max-w-xl mx-auto text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">While our focus is on our products, we are open to discussing custom projects that align with our expertise. Let's build something amazing together.</p>
-                <div class="mt-8 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                    <a href="./contact.html" class="btn-primary font-semibold px-10 py-4 rounded-lg shadow-xl text-xl">Get a Custom Quote</a>
+        <section class="py-20 bg-brand-navy text-white text-center relative overflow-hidden">
+            <div class="container mx-auto px-6 relative z-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white animate-on-scroll fade-in-up">Have a project in mind?</h2>
+                <p class="mt-4 max-w-xl mx-auto text-lg text-slate-300 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    While our core focus is our flagship product portfolio, we occasionally take on select engineering collaborations.
+                </p>
+                <div class="mt-10 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                    <a href="./contact.html" class="btn-primary font-bold px-10 py-4 rounded-xl text-lg shadow-xl inline-block">Discuss a Project</a>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-brand-blue text-white">
-        <div class="container mx-auto px-6 py-12">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <a href="/" class="text-2xl font-bold flex items-center">
-                        <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2"> AppCraft Studios
+    <footer class="bg-[#07111E] text-white border-t border-slate-800">
+        <div class="container mx-auto px-6 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="md:col-span-2">
+                    <a href="/" class="text-2xl font-extrabold flex items-center text-white tracking-tight">
+                        <img src="../appcraft_studios.png" alt="AppCraft Studios Logo" class="h-8 w-8 mr-3 object-contain">
+                        <span>AppCraft Studios</span>
                     </a>
-                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                    <p class="mt-4 text-slate-400 max-w-sm leading-relaxed text-sm">
+                        Building the future of digital products with intelligent AI, financial automation, and human-centric engineering.
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./products.html" class="hover:text-white">Products</a></li>
-                            <li><a href="./services.html" class="hover:text-white">Services</a></li>
-                            <li><a href="./contact.html" class="hover:text-white">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Products</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./slip-scan.html" class="hover:text-blue-400 transition-colors">Slip-Scan</a></li>
+                        <li><a href="https://www.recruitai.co.za" target="_blank" class="hover:text-orange-400 transition-colors">RecruitAI</a></li>
+                        <li><a href="https://crave-match.vercel.app" target="_blank" class="hover:text-red-400 transition-colors">CraveMatch <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                        <li><a href="./products.html#tripkit" class="hover:text-sky-400 transition-colors">TripKit <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Company & Legal</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-            <hr class="my-8 border-gray-700" />
-            <div class="text-center text-gray-500">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+            <hr class="my-10 border-slate-800" />
+            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+                <div>&copy; 2026 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+                <div class="flex space-x-6">
+                    <a href="./privacy-policy.html" class="hover:text-slate-400">Privacy</a>
+                    <a href="./terms-of-service.html" class="hover:text-slate-400">Terms</a>
+                    <a href="./contact.html" class="hover:text-slate-400">Support</a>
+                </div>
+            </div>
         </div>
     </footer>
 

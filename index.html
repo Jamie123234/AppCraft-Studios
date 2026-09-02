@@ -5,49 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AppCraft Studios - We Build Digital Products</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #F7F9FC;
-            overflow-x: hidden; /* Prevent horizontal scrollbar from animations */
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
         }
         :root {
-            --brand-orange: #FF4F00;
-            --brand-blue: #0A2540;
-            --brand-light-blue: #F0F4F9;
-            --brand-baby-blue: #0260C0;
+            /* Studio Brand Palette derived from New Metallic Logo */
+            --brand-primary: #1D63ED;
+            --brand-primary-hover: #154FC1;
+            --brand-navy: #0B192C;
+            --brand-slate: #1E293B;
+            --brand-light-blue: #F0F5FB;
+            --brand-ice-border: #DCE6F2;
+            --brand-accent-glow: rgba(29, 99, 237, 0.2);
+
+            /* Distinct Product Color Palettes */
+            --product-recruitai: #FF5722;
+            --product-recruitai-hover: #E64600;
+            --product-recruitai-bg: #FFF4ED;
+            
+            --product-slipscan: #0260C0;
+            --product-slipscan-hover: #014A96;
+            --product-slipscan-bg: #EFF6FF;
+
+            --product-cravematch: #FF7F6E;
+            --product-cravematch-hover: #E66858;
+            --product-cravematch-bg: #FFF1EF;
+
+            --product-tripkit: #074469;
+            --product-tripkit-accent: #0284C7;
+            --product-tripkit-hover: #0369A1;
+            --product-tripkit-bg: #F0F9FF;
         }
-        .text-brand-orange { color: var(--brand-orange); }
-        .text-brand-blue { color: var(--brand-blue); }
-        .text-brand-baby-blue { color: var(--brand-baby-blue); }
-        .bg-brand-orange { background-color: var(--brand-orange); }
-        .bg-brand-blue { background-color: var(--brand-blue); }
+
+        .text-brand-primary { color: var(--brand-primary); }
+        .text-brand-navy { color: var(--brand-navy); }
+        .bg-brand-primary { background-color: var(--brand-primary); }
+        .bg-brand-navy { background-color: var(--brand-navy); }
         .bg-brand-light-blue { background-color: var(--brand-light-blue); }
-        .border-brand-orange { border-color: var(--brand-orange); }
+        .border-brand-primary { border-color: var(--brand-primary); }
 
         .btn-primary {
-            background-color: var(--brand-orange);
+            background-color: var(--brand-primary);
             color: white;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 79, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 18px var(--brand-accent-glow);
         }
         .btn-primary:hover {
-            background-color: #E64600;
-            transform: translateY(-3px);
-            box-shadow: 0 7px 20px rgba(255, 79, 0, 0.3);
+            background-color: var(--brand-primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(29, 99, 237, 0.35);
         }
         .btn-secondary {
-            background-color: transparent;
-            color: var(--brand-blue);
-            border-color: #D6D9E0;
-            transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+            background-color: #FFFFFF;
+            color: var(--brand-navy);
+            border: 1.5px solid var(--brand-ice-border);
+            transition: all 0.3s ease;
         }
         .btn-secondary:hover {
             background-color: var(--brand-light-blue);
-            color: var(--brand-orange);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(10, 37, 64, 0.05);
+            color: var(--brand-primary);
+            border-color: var(--brand-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(11, 25, 44, 0.06);
         }
 
         /* Initial Animation States */
@@ -69,32 +93,22 @@
             transition: background-color 0.3s, box-shadow 0.3s;
         }
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 4px 20px rgba(11, 25, 44, 0.06);
         }
         .mobile-menu {
             transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .feature-icon {
-            background-color: var(--brand-light-blue);
-            color: var(--brand-orange);
-        }
-
-        .feature-icon-slip-scan {
-            background-color: var(--brand-light-blue);
-            color: var(--brand-baby-blue);
         }
 
         /* Animated Gradient Background for Hero */
         .hero-section {
             position: relative;
-            background: linear-gradient(-45deg, #F0F4F9, #FFFFFF, #F7F9FC, #E6EFFF);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: linear-gradient(135deg, #F0F5FB 0%, #FFFFFF 50%, #E8F0FA 100%);
+            background-size: 200% 200%;
+            animation: heroShift 12s ease infinite;
         }
-
-        @keyframes gradientBG {
+        @keyframes heroShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -112,11 +126,23 @@
             bottom: -5px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--brand-orange);
+            background-color: var(--brand-primary);
             transition: width 0.3s ease-in-out;
         }
         .nav-link:hover::after {
             width: 100%;
+        }
+
+        /* Product Badges */
+        .badge-upcoming {
+            background: rgba(245, 158, 11, 0.12);
+            color: #D97706;
+            border: 1px solid rgba(245, 158, 11, 0.25);
+        }
+        .badge-live {
+            background: rgba(16, 185, 129, 0.12);
+            color: #059669;
+            border: 1px solid rgba(16, 185, 129, 0.25);
         }
     </style>
 </head>
@@ -126,19 +152,19 @@
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                <a href="/" class="text-2xl font-extrabold text-brand-navy flex items-center tracking-tight">
+                    <img src="appcraft_studios.png" alt="AppCraft Studios Logo" class="h-9 w-9 mr-3 object-contain">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="./pages/products.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
-                    <a href="./pages/services.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
-                    <a href="./pages/contact.html" class="nav-link text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                    <a href="./pages/products.html" class="nav-link text-gray-700 font-semibold hover:text-brand-primary transition-colors">Products</a>
+                    <a href="./pages/services.html" class="nav-link text-gray-700 font-medium hover:text-brand-primary transition-colors">Services</a>
+                    <a href="./pages/contact.html" class="nav-link text-gray-700 font-medium hover:text-brand-primary transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
-                    <a href="./pages/contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg">Get in Touch</a>
+                    <a href="./pages/contact.html" class="btn-primary font-semibold px-6 py-2.5 rounded-xl">Get in Touch</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-brand-navy hover:bg-gray-100">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
@@ -146,186 +172,368 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
-            <div class="px-6 py-4">
-                <a href="./pages/products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
-                <a href="./pages/services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
-                <a href="./pages/contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
-                <a href="./pages/contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg">Get in Touch</a>
+        <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-md shadow-xl absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none transition-all duration-300">
+            <div class="px-6 py-5 space-y-3">
+                <a href="./pages/products.html" class="block py-2 text-brand-navy font-semibold hover:text-brand-primary">Products</a>
+                <a href="./pages/services.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Services</a>
+                <a href="./pages/contact.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Contact</a>
+                <a href="./pages/contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-3 rounded-xl">Get in Touch</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <main class="hero-section pt-32 pb-20">
+    <main class="hero-section pt-36 pb-24 border-b border-slate-200/60">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-brand-blue leading-tight animate-on-scroll fade-in-up">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/60 text-brand-primary text-xs md:text-sm font-bold uppercase tracking-wider mb-6 animate-on-scroll fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                Software & Product Engineering Studio
+            </div>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-brand-navy leading-tight tracking-tight animate-on-scroll fade-in-up">
                 We Build Digital Products <br class="hidden md:block"> That Drive Growth.
             </h1>
-            <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600 animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
-                AppCraft Studios is the parent company behind innovative solutions like <strong class="font-semibold">Slip-Scan</strong> and <strong class="font-semibold">RecruitAI</strong>. We turn bold ideas into powerful, user-centric applications.
+            <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-slate-600 leading-relaxed animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                AppCraft Studios is the parent product engineering house behind transformative solutions like <strong class="text-brand-navy font-semibold">Slip-Scan</strong>, <strong class="text-brand-navy font-semibold">RecruitAI</strong>, <strong class="text-brand-navy font-semibold">CraveMatch</strong>, and <strong class="text-brand-navy font-semibold">TripKit</strong>.
             </p>
-            <div class="mt-10 flex justify-center items-center space-x-4 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                <a href="./pages/products.html" class="btn-primary font-semibold px-8 py-3 rounded-lg text-lg">Our Products</a>
-                <a href="./pages/services.html" class="btn-secondary font-semibold px-8 py-3 rounded-lg border-2 text-lg">Our Services</a>
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-4 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                <a href="./pages/products.html" class="btn-primary font-semibold px-8 py-3.5 rounded-xl text-lg shadow-lg">Explore Our Products</a>
+                <a href="./pages/services.html" class="btn-secondary font-semibold px-8 py-3.5 rounded-xl text-lg">Our Capabilities</a>
             </div>
         </div>
     </main>
     
     <!-- Featured Products Section -->
-    <section id="products" class="py-20 bg-white">
+    <section id="products" class="py-24 bg-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Discover Our Flagship Products</h2>
-                <p class="mt-4 text-gray-600 max-w-xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Two platforms, one mission: to simplify complex processes through smart technology.</p>
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold uppercase tracking-widest text-brand-primary">Our Portfolio</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy mt-2 animate-on-scroll fade-in-up">Discover Our Products</h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto text-lg animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    From intelligent AI hiring and seamless expense automation to algorithmic culinary discovery and in-flight satellite companions.
+                </p>
             </div>
-            <div class="grid md:grid-cols-2 gap-10">
-                <!-- Slip-Scan Card -->
-                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-3 transition-all duration-300 shadow-sm hover:shadow-2xl animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                    <h3 class="text-2xl font-bold text-brand-blue">Slip-Scan 🧾</h3>
-                    <p class="mt-2 text-gray-600">The ultimate tool for your finances. Say goodbye to guesswork and hello to automated clarity for personal and business expenses.</p>
-                    <a href="./pages/slip-scan.html" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Learn more &rarr;</a>
+
+            <!-- 4 Products Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- 1. Slip-Scan Card (Blue) -->
+                <div class="bg-[#F0F6FE] border border-blue-100 rounded-3xl p-8 flex flex-col justify-between transform hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                    <div>
+                        <div class="flex justify-between items-center mb-5">
+                            <span class="text-3xl">🧾</span>
+                            <span class="badge-live text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Live App</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy">Slip-Scan</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider text-[#0260C0] mt-1">Financial Automation</p>
+                        <p class="mt-3 text-slate-600 text-sm leading-relaxed">
+                            100% accurate AI receipt and invoice OCR. Eliminate manual data entry with seamless Xero & Sage integrations and multi-tier approval flows.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-blue-200/50">
+                        <a href="./pages/slip-scan.html" class="inline-flex items-center font-bold text-[#0260C0] hover:text-[#014A96] transition-colors text-sm">
+                            Learn more <span class="ml-1 transition-transform group-hover:translate-x-1">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
-                <!-- RecruitAI Card -->
-                <div class="bg-brand-light-blue rounded-2xl p-8 transform hover:-translate-y-3 transition-all duration-300 shadow-sm hover:shadow-2xl animate-on-scroll fade-in-up" style="animation-delay: 0.6s;">
-                    <h3 class="text-2xl font-bold text-brand-blue">RecruitAI 👔</h3>
-                    <p class="mt-2 text-gray-600">Streamline your hiring pipeline with our intelligent recruitment platform, designed to find the perfect candidate, faster.</p>
-                    <a href="https://www.recruitai.co.za" target="_blank" class="mt-6 inline-block font-semibold text-brand-orange hover:underline">Visit RecruitAI &rarr;</a>
+
+                <!-- 2. RecruitAI Card (Orange) -->
+                <div class="bg-[#FFF6F0] border border-orange-100 rounded-3xl p-8 flex flex-col justify-between transform hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                    <div>
+                        <div class="flex justify-between items-center mb-5">
+                            <span class="text-3xl">💼</span>
+                            <span class="badge-live text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Live Platform</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy">RecruitAI</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider text-[#FF5722] mt-1">Intelligent Hiring</p>
+                        <p class="mt-3 text-slate-600 text-sm leading-relaxed">
+                            Smart AI-driven talent recruitment ecosystem. Goes beyond keywords with vector profile parsing, bias-free candidate matching, and career coaching.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-orange-200/50">
+                        <a href="https://www.recruitai.co.za" target="_blank" class="inline-flex items-center font-bold text-[#FF5722] hover:text-[#E64600] transition-colors text-sm">
+                            Visit RecruitAI <span class="ml-1">&rarr;</span>
+                        </a>
+                    </div>
                 </div>
+
+                <!-- 3. CraveMatch Card (Salmon Pink) -->
+                <div class="bg-[#FFF3F1] border border-red-100 rounded-3xl p-8 flex flex-col justify-between transform hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                    <div>
+                        <div class="flex justify-between items-center mb-5">
+                            <span class="text-3xl">🍽️</span>
+                            <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy">CraveMatch</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider text-[#FF7F6E] mt-1">Culinary Discovery Engine</p>
+                        <p class="mt-3 text-slate-600 text-sm leading-relaxed">
+                            Swipe your way to your next favourite meal. Physics card deck with taste vector scoring, zero-waste pantry matcher, and 797+ verified chef recipes.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-red-200/50">
+                        <a href="https://crave-match.vercel.app" target="_blank" class="inline-flex items-center font-bold text-[#FF7F6E] hover:text-[#E66858] transition-colors text-sm">
+                            Try Interactive Web Demo <span class="ml-1">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. TripKit Card (Aviation Teal / Cobalt Blue) -->
+                <div class="bg-[#F0F8FF] border border-sky-100 rounded-3xl p-8 flex flex-col justify-between transform hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
+                    <div>
+                        <div class="flex justify-between items-center mb-5">
+                            <span class="text-3xl">✈️</span>
+                            <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-navy">TripKit</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider text-[#0284C7] mt-1">Smart Travel Companion</p>
+                        <p class="mt-3 text-slate-600 text-sm leading-relaxed">
+                            In-flight GNSS telemetry tracker, dynamic itineraries, zero-Wi-Fi multiplayer lounge games (Rummikub & Chess), and digital travel wallet.
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-sky-200/50">
+                        <a href="./pages/products.html#tripkit" class="inline-flex items-center font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors text-sm">
+                            Learn more <span class="ml-1">&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Technology at our Core Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center">
-                 <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Technology at our Core</h2>
-                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">We leverage cutting-edge technology to build powerful, intelligent applications that solve real-world problems.</p>
+    <!-- Deep-Dive Product Showcases -->
+    <section class="py-24 bg-slate-50 border-t border-slate-200/60">
+        <div class="container mx-auto px-6 space-y-28">
+            
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-sm font-bold uppercase tracking-widest text-brand-primary">Deep Dives</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy mt-2">Technology at our Core</h2>
+                <p class="mt-4 text-slate-600 text-lg">We architect intelligent, user-centric experiences crafted with robust foundations.</p>
             </div>
-            <!-- RecruitAI Feature -->
-            <div class="mt-16 grid md:grid-cols-2 gap-12 items-center">
+
+            <!-- Product 1: RecruitAI (Orange) -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="animate-on-scroll fade-in-left">
-                    <span class="font-semibold text-brand-orange">FOR RECRUITAI</span>
-                    <h3 class="mt-2 text-2xl font-bold text-brand-blue">AI-Powered Recruitment</h3>
-                    <p class="mt-4 text-gray-600">RecruitAI goes beyond keywords. Our platform uses sophisticated AI to analyze candidate profiles, match skills with job requirements, and provide career guidance, creating a smarter hiring ecosystem for everyone.</p>
-                    <div class="mt-6 space-y-4">
+                    <span class="inline-block px-3.5 py-1 rounded-lg bg-orange-100 text-[#FF5722] text-xs font-bold uppercase tracking-wider mb-3">RecruitAI · Intelligent Recruitment</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-navy">AI-Powered Career & Hiring Copilot</h3>
+                    <p class="mt-4 text-slate-600 leading-relaxed text-lg">
+                        RecruitAI transforms the recruitment lifecycle. Utilizing advanced machine learning, our platform breaks down candidate profiles beyond simple keywords, matches skills accurately with opportunities, and provides candidates with actionable career guidance.
+                    </p>
+                    <div class="mt-8 space-y-4">
                         <div class="flex items-start">
-                            <div class="flex-shrink-0 feature-icon p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg></div>
-                            <p class="ml-4 text-gray-700"><strong class="font-semibold">Intelligent Matching:</strong> Connects the right talent with the right opportunities.</p>
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-100 text-[#FF5722] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Intelligent Vector Matching:</strong> Connects candidate capabilities directly with employer requirements.</p>
                         </div>
-                         <div class="flex items-start">
-                            <div class="flex-shrink-0 feature-icon p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                            <p class="ml-4 text-gray-700"><strong class="font-semibold">AI Career Insights:</strong> Offers personalized guidance to help candidates grow.</p>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-orange-100 text-[#FF5722] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Unbiased Candidate Screening:</strong> Accelerates hiring timelines while eliminating screening bias.</p>
                         </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="https://www.recruitai.co.za" target="_blank" class="inline-flex items-center px-6 py-3 rounded-xl bg-[#FF5722] hover:bg-[#E64600] text-white font-semibold transition-all shadow-md">
+                            Visit RecruitAI Website &rarr;
+                        </a>
                     </div>
                 </div>
                 <div class="animate-on-scroll fade-in-right">
-                    <a href="https://www.recruitai.co.za" target="_blank">
-                        <img src="recruitai-banner.png" alt="RecruitAI Dashboard Mockup" class="rounded-2xl shadow-xl transform transition-transform duration-500 hover:scale-105">
+                    <a href="https://www.recruitai.co.za" target="_blank" class="block group">
+                        <img src="recruitai-banner.png" alt="RecruitAI Showcase Banner" class="rounded-3xl shadow-xl transform transition-transform duration-500 group-hover:scale-[1.02] border border-slate-200">
                     </a>
                 </div>
             </div>
-             <!-- Slip-Scan Feature -->
-            <div class="mt-20 grid md:grid-cols-2 gap-12 items-center">
-                 <div class="animate-on-scroll fade-in-left md:order-2">
-                    <span class="font-semibold text-brand-baby-blue">FOR SLIP-SCAN</span>
-                    <h3 class="mt-2 text-2xl font-bold text-brand-blue">Automated Financial Clarity</h3>
-                    <p class="mt-4 text-gray-600">With Slip-Scan, we use high-accuracy Optical Character Recognition (OCR) and AI to eliminate manual data entry. It captures every detail from receipts, creating clean, reliable data for individuals and businesses.</p>
-                    <div class="mt-6 space-y-4">
+
+            <!-- Product 2: Slip-Scan (Blue) -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll fade-in-left lg:order-2">
+                    <span class="inline-block px-3.5 py-1 rounded-lg bg-blue-100 text-[#0260C0] text-xs font-bold uppercase tracking-wider mb-3">Slip-Scan · Expense Clarity</span>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-navy">Automated Financial & Expense Intelligence</h3>
+                    <p class="mt-4 text-slate-600 leading-relaxed text-lg">
+                        Say goodbye to paper clutter and spreadsheet errors. Slip-Scan uses cutting-edge OCR and proprietary financial parsing models to extract items, tax rates, and category metadata instantly, synchronizing directly with accounting platforms.
+                    </p>
+                    <div class="mt-8 space-y-4">
                         <div class="flex items-start">
-                            <div class="flex-shrink-0 feature-icon-slip-scan p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div>
-                            <p class="ml-4 text-gray-700"><strong class="font-semibold">High-Accuracy OCR:</strong> Captures line items, taxes, and totals with precision.</p>
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-[#0260C0] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Line-Item Accuracy:</strong> Captures taxes, totals, and merchant metadata with high fidelity.</p>
                         </div>
-                         <div class="flex items-start">
-                            <div class="flex-shrink-0 feature-icon-slip-scan p-2 rounded-full"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg></div>
-                            <p class="ml-4 text-gray-700"><strong class="font-semibold">Seamless Integrations:</strong> Pushes approved expenses directly to Xero and Sage.</p>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-100 text-[#0260C0] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Accounting Integration:</strong> Direct sync to Xero, Sage, and team management dashboards.</p>
                         </div>
                     </div>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="./pages/slip-scan.html" class="inline-flex items-center px-6 py-3 rounded-xl bg-[#0260C0] hover:bg-[#014A96] text-white font-semibold transition-all shadow-md">
+                            Explore Slip-Scan &rarr;
+                        </a>
+                    </div>
                 </div>
-                <div class="animate-on-scroll fade-in-right md:order-1">
-                    <a href="./pages/slip-scan.html">
-                        <img src="slip-scan-banner.png" alt="Slip-Scan App Mockup" class="rounded-2xl shadow-xl transform transition-transform duration-500 hover:scale-105">
+                <div class="animate-on-scroll fade-in-right lg:order-1">
+                    <a href="./pages/slip-scan.html" class="block group">
+                        <img src="slip-scan-banner.png" alt="Slip-Scan Showcase Banner" class="rounded-3xl shadow-xl transform transition-transform duration-500 group-hover:scale-[1.02] border border-slate-200">
                     </a>
                 </div>
             </div>
+
+            <!-- Product 3: CraveMatch (Salmon Pink) -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll fade-in-left">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="inline-block px-3.5 py-1 rounded-lg bg-red-100 text-[#FF7F6E] text-xs font-bold uppercase tracking-wider">CraveMatch · Culinary Discovery</span>
+                        <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-navy">Swipe Your Way to Your Next Favourite Meal</h3>
+                    <p class="mt-4 text-slate-600 leading-relaxed text-lg">
+                        Dinner indecision solved in under 30 seconds. CraveMatch combines a tactile physics card deck with mathematical flavor vector calibration, natural language craving moods, and a zero-waste fridge inventory matcher.
+                    </p>
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-red-100 text-[#FF7F6E] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Taste Vector Calibration:</strong> Machine learning algorithms calibrate to your cravings with every swipe.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-red-100 text-[#FF7F6E] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Zero-Waste Pantry Matcher:</strong> Calculates recipe ingredient overlap % with your current groceries.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-red-100 text-[#FF7F6E] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">797+ Master Recipes:</strong> Curated from Gordon Ramsay, Jamie Oliver, Asian street food, and artisanal classics.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="https://crave-match.vercel.app" target="_blank" class="inline-flex items-center px-6 py-3 rounded-xl bg-[#FF7F6E] hover:bg-[#E66858] text-white font-semibold transition-all shadow-md">
+                            Try Interactive Web Demo &rarr;
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-on-scroll fade-in-right">
+                    <a href="https://crave-match.vercel.app" target="_blank" class="block group">
+                        <img src="cravematch-banner.png" alt="CraveMatch Showcase Banner" class="rounded-3xl shadow-xl transform transition-transform duration-500 group-hover:scale-[1.02] border border-slate-200">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product 4: TripKit (Aviation Teal / Cobalt Blue) -->
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll fade-in-left lg:order-2">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="inline-block px-3.5 py-1 rounded-lg bg-sky-100 text-[#0284C7] text-xs font-bold uppercase tracking-wider">TripKit · Smart Travel</span>
+                        <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product</span>
+                    </div>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-brand-navy">In-Flight Telemetry & Offline Travel Suite</h3>
+                    <p class="mt-4 text-slate-600 leading-relaxed text-lg">
+                        TripKit is the all-in-one flight and travel companion built with Flutter. Keep track of live GNSS flight telemetry even in airplane mode, organize dynamic day-by-day itineraries, and play multiplayer lounge games completely offline.
+                    </p>
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">In-Flight Satellite Telemetry:</strong> Real-time altitude, ground speed, and route ETA computed on-device with zero Wi-Fi.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Offline Nearby Lounge:</strong> Multiplayer P2P Rummikub and Chess using Bluetooth & Multipeer connectivity.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-lg bg-sky-100 text-[#0284C7] flex items-center justify-center font-bold">✓</div>
+                            <p class="ml-4 text-slate-700"><strong class="font-semibold text-brand-navy">Digital Travel Wallet & eSIM:</strong> Stacked boarding passes with QR codes, airport terminal gate maps, and eSIM data.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="./pages/products.html#tripkit" class="inline-flex items-center px-6 py-3 rounded-xl bg-[#074469] hover:bg-[#05324D] text-white font-semibold transition-all shadow-md">
+                            Explore TripKit Details &rarr;
+                        </a>
+                    </div>
+                </div>
+                <div class="animate-on-scroll fade-in-right lg:order-1">
+                    <a href="./pages/products.html#tripkit" class="block group">
+                        <img src="tripkit-banner.png" alt="TripKit Showcase Banner" class="rounded-3xl shadow-xl transform transition-transform duration-500 group-hover:scale-[1.02] border border-slate-200">
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <!-- Our Process Section -->
-    <section class="py-20 bg-white">
+    <section class="py-24 bg-white border-t border-slate-200/60">
         <div class="container mx-auto px-6">
-            <div class="text-center">
-                 <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">From Idea to Impact</h2>
-                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Our streamlined process ensures your vision becomes a high-quality digital product.</p>
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                 <span class="text-sm font-bold uppercase tracking-widest text-brand-primary">Our Process</span>
+                 <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy mt-2 animate-on-scroll fade-in-up">From Idea to Impact</h2>
+                 <p class="mt-4 text-slate-600 text-lg animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Our agile product engineering lifecycle ensures high velocity and exceptional craftsmanship.</p>
             </div>
-            <div class="mt-12 grid md:grid-cols-3 gap-10 text-center">
+            <div class="grid md:grid-cols-3 gap-10">
                 <!-- Step 1 -->
-                <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
-                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold border-4 border-white shadow-lg">1</div>
-                    <h3 class="mt-4 text-xl font-semibold text-brand-blue">Discover & Strategize</h3>
-                    <p class="mt-2 text-gray-600">We start by understanding your goals and mapping out a clear strategy for success.</p>
+                <div class="bg-slate-50 border border-slate-200/70 p-8 rounded-3xl text-center animate-on-scroll fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-blue-100 text-brand-primary rounded-2xl text-2xl font-black mb-6 shadow-sm">1</div>
+                    <h3 class="text-xl font-bold text-brand-navy">Discover & Strategize</h3>
+                    <p class="mt-3 text-slate-600 leading-relaxed text-sm">We identify high-impact problem spaces and map out intuitive user experiences with data-driven architecture.</p>
                 </div>
                 <!-- Step 2 -->
-                <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
-                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold border-4 border-white shadow-lg">2</div>
-                    <h3 class="mt-4 text-xl font-semibold text-brand-blue">Design & Develop</h3>
-                    <p class="mt-2 text-gray-600">Our team designs a beautiful, user-friendly interface and builds a robust, scalable application.</p>
+                <div class="bg-slate-50 border border-slate-200/70 p-8 rounded-3xl text-center animate-on-scroll fade-in-up" style="animation-delay: 0.5s;">
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-blue-100 text-brand-primary rounded-2xl text-2xl font-black mb-6 shadow-sm">2</div>
+                    <h3 class="text-xl font-bold text-brand-navy">Design & Engineer</h3>
+                    <p class="mt-3 text-slate-600 leading-relaxed text-sm">We craft refined interfaces, intelligent AI algorithms, and resilient cross-platform apps that scale effortlessly.</p>
                 </div>
                 <!-- Step 3 -->
-                <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
-                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-brand-light-blue text-brand-orange rounded-full text-2xl font-bold border-4 border-white shadow-lg">3</div>
-                    <h3 class="mt-4 text-xl font-semibold text-brand-blue">Launch & Grow</h3>
-                    <p class="mt-2 text-gray-600">We handle the launch process and provide ongoing support to ensure your product thrives.</p>
+                <div class="bg-slate-50 border border-slate-200/70 p-8 rounded-3xl text-center animate-on-scroll fade-in-up" style="animation-delay: 0.7s;">
+                    <div class="flex justify-center items-center h-16 w-16 mx-auto bg-blue-100 text-brand-primary rounded-2xl text-2xl font-black mb-6 shadow-sm">3</div>
+                    <h3 class="text-xl font-bold text-brand-navy">Launch & Scale</h3>
+                    <p class="mt-3 text-slate-600 leading-relaxed text-sm">We deploy with continuous testing, monitor real-world telemetry, and iterate rapidly to drive sustained user growth.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-brand-light-blue">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-brand-blue animate-on-scroll fade-in-up">Have a project in mind?</h2>
-            <p class="mt-4 text-gray-600 max-w-xl mx-auto animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Let's build something amazing together. We're always excited to hear about new ideas and challenges.</p>
-            <div class="mt-8 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
-                <a href="./pages/contact.html" class="btn-primary font-semibold px-8 py-4 rounded-lg text-lg">Get in Touch</a>
+    <section class="py-20 bg-brand-navy text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#38BDF8_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white animate-on-scroll fade-in-up">Have a project or partnership in mind?</h2>
+            <p class="mt-4 text-slate-300 max-w-xl mx-auto text-lg animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">Let's build something remarkable together. We're always excited to discuss bold ideas and high-impact software.</p>
+            <div class="mt-10 animate-on-scroll fade-in-up" style="animation-delay: 0.4s;">
+                <a href="./pages/contact.html" class="btn-primary font-bold px-10 py-4 rounded-xl text-lg shadow-xl inline-block">Get in Touch with Our Team</a>
             </div>
         </div>
     </section>
 
-
     <!-- Footer -->
-    <footer class="bg-brand-blue text-white">
-        <div class="container mx-auto px-6 py-12">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <a href="/" class="text-2xl font-bold flex items-center">
-                        <img src="logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
-                        AppCraft Studios
+    <footer class="bg-[#07111E] text-white border-t border-slate-800">
+        <div class="container mx-auto px-6 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="md:col-span-2">
+                    <a href="/" class="text-2xl font-extrabold flex items-center text-white tracking-tight">
+                        <img src="appcraft_studios.png" alt="AppCraft Studios Logo" class="h-8 w-8 mr-3 object-contain">
+                        <span>AppCraft Studios</span>
                     </a>
-                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                    <p class="mt-4 text-slate-400 max-w-sm leading-relaxed text-sm">
+                        Building the future of digital products with intelligent AI, financial automation, and human-centric engineering.
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./pages/products.html" class="hover:text-white transition-colors">Products</a></li>
-                            <li><a href="./pages/services.html" class="hover:text-white transition-colors">Services</a></li>
-                            <li><a href="./pages/contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./pages/privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                            <li><a href="./pages/terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Products</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./pages/slip-scan.html" class="hover:text-blue-400 transition-colors">Slip-Scan</a></li>
+                        <li><a href="https://www.recruitai.co.za" target="_blank" class="hover:text-orange-400 transition-colors">RecruitAI</a></li>
+                        <li><a href="https://crave-match.vercel.app" target="_blank" class="hover:text-red-400 transition-colors">CraveMatch <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                        <li><a href="./pages/products.html#tripkit" class="hover:text-sky-400 transition-colors">TripKit <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Company & Legal</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./pages/services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="./pages/contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="./pages/privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="./pages/terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-            <hr class="my-8 border-gray-700" />
-            <div class="text-center text-gray-400">
-                &copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.
+            <hr class="my-10 border-slate-800" />
+            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+                <div>&copy; 2026 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+                <div class="flex space-x-6">
+                    <a href="./pages/privacy-policy.html" class="hover:text-slate-400">Privacy</a>
+                    <a href="./pages/terms-of-service.html" class="hover:text-slate-400">Terms</a>
+                    <a href="./pages/contact.html" class="hover:text-slate-400">Support</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -371,4 +579,3 @@
 
 </body>
 </html>
-

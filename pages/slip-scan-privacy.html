@@ -7,14 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F7F9FC; overflow-x: hidden; }
-        :root { --brand-orange: #FF4F00; --brand-blue: #0A2540; --brand-light-blue: #F0F4F9; }
-        .text-brand-orange { color: var(--brand-orange); }
-        .text-brand-blue { color: var(--brand-blue); }
-        .bg-brand-orange { background-color: var(--brand-orange); }
-        .bg-brand-blue { background-color: var(--brand-blue); }
-        .btn-primary { background-color: var(--brand-orange); color: white; transition: background-color 0.3s, transform 0.3s; }
-        .btn-primary:hover { background-color: #E64600; transform: translateY(-2px); }
+        body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; overflow-x: hidden; }
+        :root { 
+            --brand-primary: #1D63ED;
+            --brand-primary-hover: #154FC1;
+            --brand-navy: #0B192C;
+            --brand-light-blue: #F0F5FB;
+            --product-slipscan: #0260C0;
+        }
+        .text-brand-primary { color: var(--brand-primary); }
+        .text-brand-navy { color: var(--brand-navy); }
+        .bg-brand-primary { background-color: var(--brand-primary); }
+        .bg-brand-navy { background-color: var(--brand-navy); }
+        .btn-primary { background-color: var(--brand-primary); color: white; transition: all 0.3s; box-shadow: 0 4px 15px rgba(29, 99, 237, 0.2); }
+        .btn-primary:hover { background-color: var(--brand-primary-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29, 99, 237, 0.35); }
         .animate-on-scroll { opacity: 0; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in-up { transform: translateY(30px); }
         .is-visible { opacity: 1; transform: translate(0, 0); }
@@ -23,10 +29,10 @@
         .mobile-menu { transition: opacity 0.3s ease, transform 0.3s ease; }
         .toc { position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; }
         .toc a { transition: color 0.2s; }
-        .toc a:hover { color: var(--brand-orange); }
-        .toc a.active { color: var(--brand-orange); font-weight: 600; }
+        .toc a:hover { color: var(--brand-primary); }
+        .toc a.active { color: var(--brand-primary); font-weight: 600; }
         .section-card { background: white; border-radius: 1rem; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-        .permission-box { background: #F0F4F9; border-left: 4px solid var(--brand-orange); padding: 1.5rem; margin: 1rem 0; border-radius: 0.5rem; }
+        .permission-box { background: #F0F5FB; border-left: 4px solid var(--product-slipscan); padding: 1.5rem; margin: 1rem 0; border-radius: 0.5rem; }
         @media (max-width: 768px) {
             .toc { position: relative; top: 0; max-height: none; margin-bottom: 2rem; }
             .section-card { padding: 1.5rem; }
@@ -38,28 +44,28 @@
     <header id="main-header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="/" class="text-2xl font-bold text-brand-blue flex items-center">
-                    <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
+                <a href="/" class="text-2xl font-bold text-brand-navy flex items-center">
+                    <img src="../appcraft_studios.png" alt="AppCraft Logo" class="h-8 w-8 mr-2 object-contain">
                     <span>AppCraft Studios</span>
                 </a>
                 <nav class="hidden md:flex items-center space-x-8">
-                    <a href="./products.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Products</a>
-                    <a href="./services.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Services</a>
-                    <a href="./contact.html" class="text-brand-blue font-medium hover:text-brand-orange transition-colors">Contact</a>
+                    <a href="./products.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Products</a>
+                    <a href="./services.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Services</a>
+                    <a href="./contact.html" class="text-gray-700 font-medium hover:text-brand-primary transition-colors">Contact</a>
                 </nav>
                 <div class="hidden md:block">
                     <a href="./contact.html" class="btn-primary font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
                 </div>
-                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-blue hover:bg-gray-100">
+                <button id="menu-toggle" class="md:hidden p-2 rounded text-brand-navy hover:bg-gray-100">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
                 </button>
             </div>
         </div>
         <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute top-full left-0 w-full opacity-0 transform -translate-y-2 pointer-events-none">
             <div class="px-6 py-4">
-                <a href="./products.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Products</a>
-                <a href="./services.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Services</a>
-                <a href="./contact.html" class="block py-2 text-brand-blue font-medium hover:text-brand-orange">Contact</a>
+                <a href="./products.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Products</a>
+                <a href="./services.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Services</a>
+                <a href="./contact.html" class="block py-2 text-gray-700 font-medium hover:text-brand-primary">Contact</a>
                 <a href="./contact.html" class="btn-primary block text-center w-full mt-4 font-semibold px-5 py-2 rounded-lg shadow-md">Get in Touch</a>
             </div>
         </div>
@@ -352,36 +358,47 @@
         </div>
     </main>
 
-    <footer class="bg-brand-blue text-white">
-        <div class="container mx-auto px-6 py-12">
-            <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
-                    <a href="/" class="text-2xl font-bold flex items-center">
-                        <img src="../logo.png" alt="AppCraft Logo" class="h-8 w-8 mr-2">
-                        AppCraft Studios
+    <!-- Footer -->
+    <footer class="bg-[#07111E] text-white border-t border-slate-800">
+        <div class="container mx-auto px-6 py-14">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="md:col-span-2">
+                    <a href="/" class="text-2xl font-extrabold flex items-center text-white tracking-tight">
+                        <img src="../appcraft_studios.png" alt="AppCraft Studios Logo" class="h-8 w-8 mr-3 object-contain">
+                        <span>AppCraft Studios</span>
                     </a>
-                    <p class="mt-4 text-gray-400">Building the future of digital products.</p>
+                    <p class="mt-4 text-slate-400 max-w-sm leading-relaxed text-sm">
+                        Building the future of digital products with intelligent AI, financial automation, and human-centric engineering.
+                    </p>
                 </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Company</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./products.html" class="hover:text-white">Products</a></li>
-                            <li><a href="./services.html" class="hover:text-white">Services</a></li>
-                            <li><a href="./contact.html" class="hover:text-white">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 class="mb-4 text-sm font-semibold uppercase tracking-wider">Legal</h2>
-                        <ul class="text-gray-400 space-y-2">
-                            <li><a href="./privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="./terms-of-service.html" class="hover:text-white">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Products</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./slip-scan.html" class="hover:text-blue-400 transition-colors">Slip-Scan</a></li>
+                        <li><a href="https://www.recruitai.co.za" target="_blank" class="hover:text-orange-400 transition-colors">RecruitAI</a></li>
+                        <li><a href="https://crave-match.vercel.app" target="_blank" class="hover:text-red-400 transition-colors">CraveMatch <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                        <li><a href="./products.html#tripkit" class="hover:text-sky-400 transition-colors">TripKit <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="mb-4 text-xs font-bold uppercase tracking-wider text-slate-300">Company & Legal</h3>
+                    <ul class="text-slate-400 space-y-2.5 text-sm">
+                        <li><a href="./services.html" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="./contact.html" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="./privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="./terms-of-service.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
                 </div>
             </div>
-            <hr class="my-8 border-gray-700" />
-            <div class="text-center text-gray-400">&copy; 2025 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+            <hr class="my-10 border-slate-800" />
+            <div class="flex flex-col md:flex-row justify-between items-center text-slate-500 text-xs gap-4">
+                <div>&copy; 2026 AppCraft Studios (Pty) Ltd. All Rights Reserved.</div>
+                <div class="flex space-x-6">
+                    <a href="./privacy-policy.html" class="hover:text-slate-400">Privacy</a>
+                    <a href="./terms-of-service.html" class="hover:text-slate-400">Terms</a>
+                    <a href="./contact.html" class="hover:text-slate-400">Support</a>
+                </div>
+            </div>
         </div>
     </footer>
 
