@@ -76,6 +76,64 @@
             box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.1); 
             outline: none; 
         }
+
+        /* Dynamic Auto-Expanding Textarea & Overhauled Scrollbars */
+        #body {
+            min-height: 140px;
+            field-sizing: content;
+            resize: none;
+            overflow-x: hidden;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            scrollbar-width: thin;
+            scrollbar-color: #CBD5E1 #F8FAFC;
+        }
+
+        #body:focus {
+            scrollbar-color: var(--brand-primary) #F1F5F9;
+        }
+
+        /* Desktop: Never scroll horizontally or vertically; expand freely */
+        @media (min-width: 768px) {
+            #body {
+                max-height: none;
+                overflow-y: hidden;
+            }
+        }
+
+        /* Mobile: Allow vertical scrolling with sleek custom scrollbar if exceeding max height */
+        @media (max-width: 767px) {
+            #body {
+                max-height: 280px;
+                overflow-y: auto;
+            }
+        }
+
+        /* Custom Scrollbar Pseudo-Elements (Chrome, Safari, Edge) */
+        #body::-webkit-scrollbar,
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        #body::-webkit-scrollbar-track,
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F8FAFC;
+            border-radius: 9999px;
+        }
+        #body::-webkit-scrollbar-thumb,
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #CBD5E1;
+            border-radius: 9999px;
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            transition: background-color 0.2s ease;
+        }
+        #body::-webkit-scrollbar-thumb:hover,
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover,
+        #body:focus::-webkit-scrollbar-thumb {
+            background-color: var(--brand-primary);
+        }
         
         .faq-item {
             transition: all 0.3s;
@@ -497,8 +555,11 @@
                             </div>
                             
                             <div class="mt-6">
-                                <label for="body" class="block text-sm font-bold text-brand-blue mb-3">Describe Your Issue *</label>
-                                <textarea name="body" id="body" rows="7" class="form-input w-full p-4 rounded-xl resize-vertical font-medium" placeholder="Please provide as much detail as possible so we can help you effectively..." required></textarea>
+                                <div class="flex justify-between items-center mb-3">
+                                    <label for="body" class="block text-sm font-bold text-brand-blue">Describe Your Issue *</label>
+                                    <span class="text-xs text-gray-400 font-medium hidden sm:inline">Expands automatically</span>
+                                </div>
+                                <textarea name="body" id="body" rows="6" class="form-input custom-scrollbar w-full p-4 rounded-xl font-medium leading-relaxed" placeholder="Please provide as much detail as possible so we can help you effectively..." required></textarea>
                                 <p class="text-xs text-gray-500 mt-2">💡 Tip: Include screenshots or error messages if applicable</p>
                             </div>
                             
@@ -762,6 +823,35 @@
                 // Optional: Clear the form after submission
                 // supportForm.reset();
             });
+        }
+
+        // Auto-expanding support form message body
+        const supportBodyInput = document.getElementById('body');
+        if (supportBodyInput) {
+            const adjustSupportHeight = () => {
+                const isDesktop = window.innerWidth >= 768;
+                supportBodyInput.style.height = 'auto';
+                const scrollHeight = supportBodyInput.scrollHeight;
+                const minHeight = 140;
+
+                if (isDesktop) {
+                    supportBodyInput.style.height = Math.max(minHeight, scrollHeight) + 'px';
+                    supportBodyInput.style.overflowY = 'hidden';
+                } else {
+                    const maxMobileHeight = 280;
+                    if (scrollHeight > maxMobileHeight) {
+                        supportBodyInput.style.height = maxMobileHeight + 'px';
+                        supportBodyInput.style.overflowY = 'auto';
+                    } else {
+                        supportBodyInput.style.height = Math.max(minHeight, scrollHeight) + 'px';
+                        supportBodyInput.style.overflowY = 'hidden';
+                    }
+                }
+            };
+
+            supportBodyInput.addEventListener('input', adjustSupportHeight);
+            window.addEventListener('resize', adjustSupportHeight);
+            adjustSupportHeight();
         }
     </script>
 </body>
