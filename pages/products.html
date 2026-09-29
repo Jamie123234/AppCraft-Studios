@@ -36,6 +36,11 @@
             --product-finyang-hover: #B8923F;
             --product-finyang-navy: #0A1128;
             --product-finyang-bg: #FCF9F2;
+
+            --product-afribush: #B88A34;
+            --product-afribush-hover: #967027;
+            --product-afribush-dark: #121A14;
+            --product-afribush-bg: #FBF8F2;
         }
         .text-brand-primary { color: var(--brand-primary); }
         .text-brand-navy { color: var(--brand-navy); }
@@ -244,7 +249,7 @@
             </div>
         </section>
 
-        <!-- Product 3: TripKit (Aviation Teal / Cobalt Blue) -->
+        <!-- Product 4: TripKit (Aviation Teal / Cobalt Blue) -->
         <section id="tripkit" class="py-24 bg-white border-b border-slate-200/60">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -288,7 +293,7 @@
             </div>
         </section>
 
-        <!-- Product 4: RecruitAI (Orange) -->
+        <!-- Product 5: RecruitAI (Orange) -->
         <section id="recruit-ai" class="py-24 bg-[#FFF8F5] border-b border-orange-100">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -332,6 +337,52 @@
             </div>
         </section>
 
+        <!-- Product 6: AfriBush (Savanna Gold & Deep Ranger Slate) -->
+        <section id="afribush" class="py-24 bg-[#FBF8F2] border-b border-amber-200/60">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="animate-on-scroll fade-in-up">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#B88A34] bg-amber-50 border border-amber-200/70 px-3 py-1 rounded-full">Wilderness OS & LoRa Mesh</span>
+                            <span class="badge-upcoming text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Upcoming Product · Launch 2026</span>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy flex items-center gap-3">AfriBush <img src="../afribush-icon.png" alt="AfriBush Logo" class="w-9 h-9 md:w-11 md:h-11 rounded-xl shadow-md object-contain inline-block"></h2>
+                        <p class="mt-4 text-lg text-slate-600 leading-relaxed">
+                            Where the signal ends, the safari begins. AfriBush is the sovereign African wilderness operating system (Bush OS) paired with BushLink, a rugged clip-on long-range radio transceiver puck. Built for low-spec Android devices and modern smartphones alike to navigate, track, and protect wildlife with zero cell signal.
+                        </p>
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B88A34] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>Zero-Signal Satellite GIS:</strong> 100% offline reserve vector maps (Kruger, Mara, Serengeti & Okavango).</span>
+                            </div>
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B88A34] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>BushLink 15 km LoRa Mesh:</strong> Autonomous BLE/LoRa puck for convoy chat, voice memos & 3s SOS beacon.</span>
+                            </div>
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B88A34] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>Deterministic Bush ID:</strong> Whisker-spot trait filtering for lions and field guides without heavy ML.</span>
+                            </div>
+                            <div class="flex items-start bg-white p-3.5 rounded-xl border border-amber-200/70 shadow-sm">
+                                <span class="text-[#B88A34] font-bold mr-3">✓</span>
+                                <span class="text-sm text-slate-700"><strong>BushSense & Trust:</strong> Rhino & den site coordinate blackout with 10% gross proceeds to Anti-Poaching Units.</span>
+                            </div>
+                        </div>
+                        <div class="mt-10 flex flex-wrap gap-4">
+                            <a href="https://afribush.com/" target="_blank" class="inline-flex items-center px-8 py-3.5 rounded-xl bg-[#121A14] hover:bg-[#1D2B20] text-[#F0CF85] border border-[#D4A346]/40 font-semibold shadow-lg transition-all text-base">
+                                Visit AfriBush Website &rarr;
+                            </a>
+                        </div>
+                    </div>
+                    <div class="animate-on-scroll fade-in-up" style="animation-delay: 0.2s;">
+                        <a href="https://afribush.com/" target="_blank" class="block group">
+                            <img src="../afribush-banner.png" alt="AfriBush Showcase Banner" width="1200" height="600" loading="lazy" decoding="async" class="rounded-3xl shadow-xl w-full border border-amber-200/50 aspect-[2/1] object-cover transform transition-transform duration-500 group-hover:scale-[1.02]">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -355,6 +406,7 @@
                         <li><a href="https://crave-match.vercel.app" target="_blank" class="hover:text-red-400 transition-colors">CraveMatch <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
                         <li><a href="./products.html#tripkit" class="hover:text-sky-400 transition-colors">TripKit <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
                         <li><a href="https://www.recruitai.co.za" target="_blank" class="hover:text-orange-400 transition-colors">RecruitAI <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
+                        <li><a href="https://afribush.com/" target="_blank" class="hover:text-amber-400 transition-colors">AfriBush <span class="text-xs text-amber-400">(Upcoming)</span></a></li>
                     </ul>
                 </div>
                 <div>
