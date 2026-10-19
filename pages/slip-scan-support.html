@@ -19,12 +19,21 @@
             --brand-light-blue: #F0F5FB;
             --product-slipscan: #0260C0;
             --product-slipscan-hover: #014A96;
+            
+            /* Support page & palette compatibility */
+            --brand-blue: #0B192C;
+            --brand-baby-blue: #0260C0;
+            --brand-orange: #0260C0;
         }
         .text-brand-primary { color: var(--brand-primary); }
         .text-brand-navy { color: var(--brand-navy); }
+        .text-brand-blue { color: var(--brand-navy); }
+        .text-brand-baby-blue { color: var(--product-slipscan); }
+        .text-brand-orange { color: var(--product-slipscan); }
         .bg-brand-primary { background-color: var(--brand-primary); }
         .bg-brand-navy { background-color: var(--brand-navy); }
         .bg-brand-light-blue { background-color: var(--brand-light-blue); }
+        .border-brand-orange { border-color: var(--product-slipscan); }
         
         .btn-primary { 
             background-color: var(--brand-primary); 
@@ -40,14 +49,14 @@
         
         .btn-secondary {
             background-color: transparent;
-            color: var(--brand-blue);
+            color: var(--brand-navy);
             border: 2px solid #D6D9E0;
             transition: all 0.3s;
         }
         .btn-secondary:hover {
             background-color: var(--brand-light-blue);
-            border-color: var(--brand-orange);
-            color: var(--brand-orange);
+            border-color: var(--product-slipscan);
+            color: var(--product-slipscan);
             transform: translateY(-2px);
         }
         
@@ -72,8 +81,8 @@
             background-color: white;
         }
         .form-input:focus { 
-            border-color: var(--brand-orange); 
-            box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.1); 
+            border-color: var(--brand-primary); 
+            box-shadow: 0 0 0 3px rgba(29, 99, 237, 0.15); 
             outline: none; 
         }
 
@@ -140,7 +149,7 @@
             border: 2px solid transparent;
         }
         .faq-item:hover {
-            border-color: var(--brand-orange);
+            border-color: var(--product-slipscan);
             transform: translateX(5px);
         }
         
@@ -151,7 +160,7 @@
         }
         details > summary::-webkit-details-marker { display: none; }
         details[open] summary .arrow { transform: rotate(180deg); }
-        details[open] .faq-item { border-color: var(--brand-orange); }
+        details[open] .faq-item { border-color: var(--product-slipscan); }
         
         .support-card {
             transition: all 0.4s;
@@ -159,8 +168,8 @@
         }
         .support-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-color: var(--brand-orange);
+            box-shadow: 0 20px 40px rgba(2, 96, 192, 0.12);
+            border-color: var(--product-slipscan);
         }
         
         .hero-gradient {
@@ -176,8 +185,10 @@
         }
         
         .category-badge {
-            background: linear-gradient(135deg, var(--brand-orange) 0%, #FF6B2B 100%);
-            box-shadow: 0 4px 12px rgba(255, 79, 0, 0.3);
+            background-color: #EFF6FB;
+            border: 1px solid #BFDBFE;
+            color: var(--product-slipscan);
+            box-shadow: 0 1px 3px rgba(2, 96, 192, 0.08);
         }
         
         .nav-link {
@@ -191,7 +202,7 @@
             bottom: -5px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--brand-orange);
+            background-color: var(--brand-primary);
             transition: width 0.3s ease-in-out;
         }
         .nav-link:hover::after {
@@ -245,7 +256,7 @@
         <section class="hero-gradient py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center max-w-3xl mx-auto">
-                    <div class="inline-block category-badge text-white text-sm font-bold uppercase tracking-wider px-4 py-2 rounded-full mb-6 animate-on-scroll fade-in-up">
+                    <div class="inline-block category-badge bg-blue-50 border border-blue-200/70 text-[#0260C0] text-xs md:text-sm font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-6 animate-on-scroll fade-in-up">
                         Support Center
                     </div>
                     <h1 class="text-5xl md:text-6xl font-extrabold text-brand-blue animate-on-scroll fade-in-up" style="animation-delay: 0.1s;">
